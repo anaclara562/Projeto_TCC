@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+
+
 /* CONFIG GERAL */
 * {
     margin: 0;
@@ -76,6 +80,10 @@ header img{
     margin-bottom: 5px;
 }
 
+header svg {
+    fill: currentColor;
+}
+
 .abas {
     display: flex;
     gap: 20px;
@@ -91,6 +99,16 @@ header img{
     padding-right: 25px;
     color: #000000;
     text-decoration: none;
+}
+
+.abas a:hover {
+    color: #E8F9FF;
+    font-weight: 900;
+    background-color: rgba(96, 170, 197, 0.584);
+}
+
+.abas a:hover svg {
+    fill: #E8F9FF;
 }
 
 .pesquisa {
@@ -127,6 +145,8 @@ header img{
     font-size: 24px;
     font-family: "Jacques Francois";
 }
+
+
 
 
 
