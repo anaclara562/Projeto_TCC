@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Bar Test</title>
+  <link rel="stylesheet" href="/PAGES/Livros/Modo_Leitura.css">
+</head>
+<body>
+
+  <div id="barra-progresso"></div>
+  <div class="progress-bar-inner">0%</div>
+
+  <button id="theme-toggle" class="day" aria-label="Alternar tema">
+    <div class="toggle-track">
+      <span class="label text-day">Daymode</span>
+      <span class="label text-night">Nightmode</span>
+      <div class="toggle-thumb">
+        <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+
+        <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </div>
+    </div>
+  </button>
+
+    <div id="controles">
+        <button onclick="mudarFonte(2)">+</button>
+        <button onclick="mudarFonte(-2)">-</button>
+    </div>
+
+  <div class="post-wrap">
+    <h1>    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam harum alias aliquid perspiciatis eum aperiam enim iusto quaerat amet. Labore vero iure aspernatur enim sed mollitia earum harum accusamus doloremque!</h1>
+    <p class="subtitulo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsum earum obcaecati rerum dicta qui, id quasi, nobis dolorum saepe tenetur modi libero quae nostrum repellat. Est quam tempore in?</p>
+
+    <h2>Capítulo 1</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae accusantium laborum non consequuntur eaque at voluptatem totam placeat odit? Voluptas, soluta quod? Ex officiis assumenda possimus alias voluptas ab aperiam.</p>
+    
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quis quasi officiis impedit asperiores tenetur. Dignissimos deserunt, accusamus vitae fugit incidunt, voluptate hic labore odio dolore fugiat ab explicabo exercitationem.</p>
+
+
+    <h2>Capítulo 2</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo dolore odit omnis, consequatur praesentium quibusdam ratione expedita officia sequi provident! Dolore voluptatibus officiis, aut voluptatum adipisci enim quos cum in!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi vitae recusandae officiis ad, illum animi alias amet exercitationem sequi hic libero soluta eius ea error! Cumque obcaecati voluptate tenetur repellendus!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam in nihil cum quibusdam temporibus voluptate est, laborum repellat qui at maxime non officiis voluptas atque dolorum obcaecati rem voluptates dicta.</p>
+
+    <h2>Capítulo 3</h2>
+    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi nihil iure laborum accusantium unde laboriosam dolor quas labore, sit blanditiis doloremque, vitae temporibus voluptas? Mollitia sunt nihil sint maxime!</p>
+
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam maiores quidem, ipsa ab ratione tenetur fuga eveniet culpa error. Facere, commodi architecto nisi quo aliquid facilis ducimus ipsam non quod.</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae velit, mollitia aut asperiores consequatur quam saepe esse aspernatur magni, veniam tempore quae repellendus delectus. Doloribus natus voluptate voluptatibus saepe vitae.</p>
+
+    <h2>Capítulo 4</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt aliquam esse, saepe corporis, ea temporibus amet, praesentium eum aperiam expedita nesciunt nulla soluta doloremque neque! Dicta inventore aut illum quaerat.</p>
+
+    <h2>Capítulo 5</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente aperiam facilis nihil, delectus, quaerat quo obcaecati modi natus sed labore laudantium iure ullam? Eius ipsam, at aspernatur natus illo repudiandae.</p>
+
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda mollitia quod vel adipisci saepe maxime cum accusamus provident facilis commodi quisquam, dolor voluptatem deserunt dolore beatae consectetur officia neque quidem.</p>
+
+    <h2>Capítulo 6</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur eveniet ducimus, fuga temporibus repudiandae praesentium debitis quidem aliquid. Eos expedita quae accusantium deleniti debitis quidem iste veritatis alias, delectus praesentium.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio atque earum placeat eligendi excepturi deleniti dolorum cupiditate illo consequuntur cum molestiae necessitatibus minima tempore nobis nesciunt dolorem quis, enim deserunt.</p>
+
+  <script src="/PAGES/Livros/Modo_Leitura.js"></script>
+</body>
+</html>
