@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 
 /* CONFIG GERAL */
@@ -30,8 +29,7 @@ body {
     height: 548px;
 
     background:
-    radial-gradient(
-        circle at 0% 50%,
+    radial-gradient( circle at 0% 50%,
         rgba(97, 202, 248, 0.9) 0%,
         rgba(97, 202, 248, 0.5) 35%,
         rgba(97, 202, 248, 0.2) 65%,
@@ -52,8 +50,7 @@ body {
     height: 887px;
 
     background:
-    radial-gradient(
-        circle at right center,
+    radial-gradient( circle at right center,
         rgba(97, 202, 248, 0.9) 0%,
         rgba(97, 202, 248, 0.5) 35%,
         rgba(97, 202, 248, 0.2) 65%,
@@ -186,13 +183,12 @@ header svg {
 
 .card {
     width: 303px;
-    height: 389px;
+    height: 420px;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 100;
 }
 
@@ -278,9 +274,7 @@ header svg {
     background-color: #5e5743;
 }
 
-
-
-/* Badge de XP (+250 XP) */
+/* XP */
 .badge-xp {
     width: 124px;
     height: 40px;
@@ -290,7 +284,6 @@ header svg {
     position: absolute;
     bottom: 14px;
     left: 14px;
-
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
@@ -313,7 +306,7 @@ header svg {
     margin-top: 7px;
 }
 
-/* Parte inferior esverdeada */
+/* PARTE INFERIOR DO CARD */
 .card-body {
     color: #ffffff;
     padding: 18px 16px 16px 16px;
@@ -324,7 +317,7 @@ header svg {
     height: 208px;
 }
 
-/* Título e Ano */
+/* TÍTULO E ANO */
 .title-row {
     display: flex;
     justify-content: space-between;
@@ -351,14 +344,14 @@ header svg {
     opacity: 0.95;
 }
 
-/* Dificuldade */
+/* DIFICULDADE */
 .difficulty {
     font-size: 13px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 7px;
     opacity: 0.95;
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 .difficulty svg {
@@ -367,19 +360,26 @@ header svg {
     height: 14px;
 }
 
-/* Barra de Progresso */
+/* BARRA DE PROGRESSO */
 .progress-container {
-    margin-top: auto;
-    margin-bottom: 14px;
+    margin-top: 10px;
+    margin-bottom: 12px;
 }
 
 .progress-text {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-family: "Source Serif 4", serif;
+    font-weight: 600;
+    font-size: 15px;
     margin-bottom: 6px;
-    font-weight: bold;
     letter-spacing: 0.3px;
+}
+
+#progresso-texto {
+    font-family: "Idiqlat";
+    font-weight: 900;
+    font-size: 13px;
 }
 
 .progress-bar {
@@ -396,7 +396,7 @@ header svg {
     transition: width 0.4s ease-out;
 }
 
-/* Botão Continuar */
+/* BOTÃO CONTINUAR */
 .btn-continue {
     text-align: center;
     text-decoration: none;
@@ -447,4 +447,218 @@ header svg {
 
 .segunda-linha {
     margin-top: 60px;
+}
+
+/* PÓDIO */
+.podio {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+.podio-card {
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px 14px;
+    position: relative;
+    flex: 1;
+    border: 3px solid transparent;
+}
+
+.podio-card.primeiro {
+    border-color: #f5c518;
+    transform: translateY(-20px);
+}
+
+.podio-card.segundo {
+    border-color: #c0c0c0;
+}
+
+.podio-card.terceiro {
+    border-color: #f5a623;
+}
+
+/* MEDALHA NO TOPO DO CARD */
+.medalha {
+    position: absolute;
+    top: -18px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: 3px solid #f5c518;
+}
+
+.segundo .medalha { border-color: #c0c0c0; }
+.terceiro .medalha { border-color: #f5a623; }
+
+/* AVATAR */
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.avatar.ouro    { background: linear-gradient(135deg, #f5c518, #e6a800); }
+.avatar.prata   { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); }
+.avatar.bronze  { background: linear-gradient(135deg, #f5a623, #d4821a); }
+
+.podio-nome {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-align: center;
+}
+
+.podio-nivel {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.podio-xp {
+    font-size: 13px;
+    font-weight: 800;
+    color: #f5c518;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.podio-sequencia {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* LISTA */
+.lista {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.item {
+    background: white;
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.item-pos {
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    min-width: 24px;
+}
+
+.item-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-nome {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.item-detalhes {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+    display: flex;
+    gap: 8px;
+}
+
+.item-xp {
+    font-size: 14px;
+    font-weight: 800;
+    color: #f5c518;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.item-xp span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: #aaa;
+    text-align: right;
+}
+
+/* DIVISOR SUA POSIÇÃO */
+.divisor {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.divisor hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #b0dce8;
+}
+
+.divisor p {
+    font-size: 12px;
+    color: #4ab3cc;
+    white-space: nowrap;
+}
+
+/* CARD PRÓPRIO */
+.item.proprio {
+    border: 2px solid #f5c518;
+}
+
+.medalha.primeiro {
+background:
+    radial-gradient(
+        circle at 0% 50%,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+
 }
