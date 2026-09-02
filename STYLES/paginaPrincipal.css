@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 /* CONFIG GERAL */
 ::-webkit-scrollbar { 
@@ -449,15 +448,74 @@ header svg {
     margin-top: 60px;
 }
 
+
+
+
+
+
+
+
+
+/*POSIÇÃO NO SITE*/
+.posicao_site-ranking {
+    width: 165px;
+    height: 28px;
+    background-color: #ABDDF0;
+    color: #3890B1;
+    font-family: "Idiqlat";
+    border-radius: 45px;
+    display: flex;
+    gap: 15px;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    margin: auto;
+    margin-top: 100px;
+    padding-left: 15px;
+}
+
+.posicao_site-ranking p {
+    padding-right: 15px;
+}
+
+/*BIBLIOTECA*/
+/*TÍTULO*/
+.ranking h1 {
+    color: #000000;
+    font-size: 40px;
+    font-family: "Fredoka";
+    margin-top: 7px;
+    text-align: center;
+    z-index: 100;
+}
+
+.ranking h2 {
+    color: #000000;
+    font-size: 20px;
+    font-family: "Jacques Francois";
+    margin-top: 6px;
+    text-align: center;
+    font-weight: normal;
+    z-index: 100;
+}
+
+.ranking-frame {
+    position: relative;
+    margin: auto;
+    margin-top: 90px;
+}
+
 /* PÓDIO */
 .podio {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 16px;
-    margin-bottom: 2rem;
+    gap: 12px;
+    margin: auto;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
+    position: relative;
 }
 
 .podio-card {
@@ -466,7 +524,7 @@ header svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 12px 14px;
+    padding: 20px 12px 16px;
     position: relative;
     flex: 1;
     border: 3px solid transparent;
@@ -474,23 +532,17 @@ header svg {
 
 .podio-card.primeiro {
     border-color: #f5c518;
-    transform: translateY(-20px);
+    transform: translateY(-24px);
 }
 
-.podio-card.segundo {
-    border-color: #c0c0c0;
-}
+.podio-card.segundo { border-color: #c0c0c0; }
+.podio-card.terceiro { border-color: #f5a623; }
 
-.podio-card.terceiro {
-    border-color: #f5a623;
-}
-
-/* MEDALHA NO TOPO DO CARD */
 .medalha {
     position: absolute;
     top: -18px;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: white;
     display: flex;
@@ -498,15 +550,15 @@ header svg {
     justify-content: center;
     font-size: 18px;
     border: 3px solid #f5c518;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .segundo .medalha { border-color: #c0c0c0; }
 .terceiro .medalha { border-color: #f5a623; }
 
-/* AVATAR */
-.avatar {
-    width: 56px;
-    height: 56px;
+.avatar-ranking {
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -514,25 +566,27 @@ header svg {
     font-size: 22px;
     font-weight: bold;
     color: white;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 
-.avatar.ouro    { background: linear-gradient(135deg, #f5c518, #e6a800); }
-.avatar.prata   { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); }
-.avatar.bronze  { background: linear-gradient(135deg, #f5a623, #d4821a); }
+.avatar-ranking.ouro   { background: linear-gradient(135deg, #f5c518, #e6a800); }
+.avatar-ranking.prata  { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); }
+.avatar-ranking.bronze { background: linear-gradient(135deg, #f5a623, #d4821a); }
 
 .podio-nome {
     font-size: 13px;
     font-weight: 700;
     color: #1a1a2e;
     text-align: center;
+    font-family: "Poppins", sans-serif;
 }
 
 .podio-nivel {
     font-size: 11px;
     color: #888;
     margin-bottom: 6px;
+    font-family: "Inter", sans-serif;
 }
 
 .podio-xp {
@@ -542,31 +596,39 @@ header svg {
     display: flex;
     align-items: center;
     gap: 4px;
+    font-family: "Poppins", sans-serif;
 }
 
 .podio-sequencia {
     font-size: 10px;
     color: #888;
     margin-top: 4px;
+    font-family: "Inter", sans-serif;
 }
 
 /* LISTA */
-.lista {
+.lista-ranking {
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 1.5rem;
+    margin: auto;
+    position: relative;
 }
 
-.item {
+.item-ranking {
     background: white;
     border-radius: 16px;
     padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.item-ranking.proprio {
+    border: 2px solid #f5c518;
 }
 
 .item-pos {
@@ -574,9 +636,10 @@ header svg {
     font-weight: 700;
     color: #888;
     min-width: 24px;
+    font-family: "Poppins", sans-serif;
 }
 
-.item-avatar {
+.item-avatar-ranking {
     width: 42px;
     height: 42px;
     border-radius: 50%;
@@ -589,76 +652,158 @@ header svg {
     flex-shrink: 0;
 }
 
-.item-info {
+.item-info-ranking {
     flex: 1;
 }
 
-.item-nome {
+.item-nome-ranking {
     font-size: 14px;
     font-weight: 700;
     color: #1a1a2e;
+    font-family: "Poppins", sans-serif;
 }
 
-.item-detalhes {
+.item-detalhes-ranking {
     font-size: 11px;
     color: #888;
     margin-top: 2px;
     display: flex;
-    gap: 8px;
+    gap: 6px;
+    font-family: "Inter", sans-serif;
 }
 
-.item-xp {
+.item-xp-ranking {
     font-size: 14px;
     font-weight: 800;
     color: #f5c518;
     text-align: right;
     white-space: nowrap;
+    font-family: "Poppins", sans-serif;
 }
 
-.item-xp span {
+.item-xp-ranking span {
     display: block;
     font-size: 10px;
     font-weight: 400;
     color: #aaa;
     text-align: right;
+    font-family: "Inter", sans-serif;
 }
 
-/* DIVISOR SUA POSIÇÃO */
-.divisor {
+/* DIVISOR */
+.divisor-ranking {
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin: auto;
+    position: relative;
 }
 
-.divisor hr {
+.divisor-ranking hr {
     flex: 1;
     border: none;
     border-top: 1px solid #b0dce8;
 }
 
-.divisor p {
+.divisor-ranking p {
     font-size: 12px;
     color: #4ab3cc;
     white-space: nowrap;
+    font-family: "Inter", sans-serif;
 }
 
-/* CARD PRÓPRIO */
-.item.proprio {
-    border: 2px solid #f5c518;
+
+
+
+/*POSIÇÃO NO SITE*/
+.posicao_site-macete {
+    width: 185px;
+    height: 28px;
+    background-color: #ABDDF0;
+    color: #3890B1;
+    font-family: "Idiqlat";
+    border-radius: 45px;
+    display: flex;
+    gap: 15px;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    margin: auto;
+    margin-top: 100px;
+    padding-left: 15px;
 }
 
-.medalha.primeiro {
-background:
-    radial-gradient(
-        circle at 0% 50%,
-        rgba(97, 202, 248, 0.9) 0%,
-        rgba(97, 202, 248, 0.5) 35%,
-        rgba(97, 202, 248, 0.2) 65%,
-        rgba(97, 202, 248, 0.05) 100%
+.posicao_site-macete p {
+    padding-right: 15px;
+}
+
+/*BIBLIOTECA*/
+/*TÍTULO*/
+.macetes h1 {
+    color: #000000;
+    font-size: 40px;
+    font-family: "Fredoka";
+    margin-top: 7px;
+    text-align: center;
+    z-index: 100;
+}
+
+.macetes h2 {
+    color: #000000;
+    font-size: 20px;
+    font-family: "Jacques Francois";
+    margin-top: 6px;
+    text-align: center;
+    font-weight: normal;
+    z-index: 100;
+}
+
+.botoes-container {
+    display: flex;
+    gap: 55px;
+    margin-top: 40px;
+    position: relative;
+    justify-content: center;
+}
+
+.botoes-container button {
+    background:
+        linear-gradient(to right,
+        rgba(105, 171, 194, 1) 0%,
+        rgba(226, 247, 255, 1) 100%
     );
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid #6B9BAD;
+    border-radius: 30px;
+    font-family: "Coustard", serif;
+}
 
+/* Quadro escondido inicialmente */
+.quadro-info {
+    display: none;
+    border: 2px solid #333;
+    padding: 20px;
+    width: 300px;
+    min-height: 100px;
+    background-color: #f9f9f9;
+}
 
+/* Mostra o quadro */
+.quadro-info.ativo {
+    display: block;
+}
+
+/* Conteúdos escondidos */
+.conteudo {
+    display: none;
+}
+
+/* Conteúdo selecionado */
+.conteudo.ativo {
+    display: block;
 }
