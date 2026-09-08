@@ -50,17 +50,6 @@ header img{
     text-decoration: none;
 }
 
-.pesquisa {
-    width: 25px;
-    height: auto;
-    align-items: center; 
-    justify-content: center;
-    background-color: #E8F9FF;
-    padding-left: 8px;
-    border-radius: 45px;
-    padding-top: 1px;
-}
-
 .perfil {
     min-width: auto;
     height: auto;
@@ -77,6 +66,19 @@ header img{
 .nivel {
     min-width: auto;
     height: auto;
+    background-color: #E8F9FF;
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
+}
+
+.pesquisa {
+    min-width: auto;
+    height: auto;
     background-color: #8BC0D4;
     border-radius: 45px;
     align-items: center; 
@@ -87,7 +89,7 @@ header img{
     font-family: "Jacques Francois";
 }
 
-.nivel a {
+.pesquisa a {
     color: #E8F9FF;
 }
 

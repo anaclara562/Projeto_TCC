@@ -86,12 +86,14 @@ header svg {
 
 .abas {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     align-items: center; 
     justify-content: center;
 }
 
 .abas svg {
+    stroke: #8BC0D4;
+    fill: #8BC0D4;
     padding: 8px;
 }
 
@@ -103,29 +105,32 @@ header svg {
 
 .abas a:hover {
     color: #E8F9FF;
-    font-weight: 900;
     background-color: rgba(96, 170, 197, 0.584);
 }
 
 .abas a:hover svg {
+    stroke: #E8F9FF;
     fill: #E8F9FF;
 }
 
 .pesquisa {
-    width: 25px;
-    height: auto;
+    width: 20px;
+    height: 48px;
     align-items: center; 
     justify-content: center;
     background-color: #E8F9FF;
-    padding-left: 8px;
+    padding-left: 5px;
     border-radius: 45px;
-    padding-top: 1px;
+}
+
+.pesquisa svg {
+    margin-top: 3px;
 }
 
 .nivel,
 .perfil {
     min-width: auto;
-    height: auto;
+    height: 48px;
     background-color: #E8F9FF;
     border-radius: 45px;
     align-items: center; 
@@ -134,6 +139,11 @@ header svg {
     gap: 5px;
     font-size: 24px;
     font-family: "Jacques Francois";
+}
+
+.nivel svg,
+.perfil svg {
+    margin-left: 10px;
 }
 
 /*POSIÇÃO NO SITE*/
@@ -458,7 +468,7 @@ header svg {
 
 /*POSIÇÃO NO SITE*/
 .posicao_site-ranking {
-    width: 165px;
+    width: 115px;
     height: 28px;
     background-color: #ABDDF0;
     color: #3890B1;
@@ -519,7 +529,8 @@ header svg {
 }
 
 .podio-card {
-    background: white;
+    width: 400px;
+    background-color: white;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -806,4 +817,54 @@ header svg {
 /* Conteúdo selecionado */
 .conteudo.ativo {
     display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RODAPÉ */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    height: 97px;
+    background-color: #8BC0D4;
+}
+
+footer p {
+    font-family: "Open Sans";
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 105px;
 }

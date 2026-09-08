@@ -1,11 +1,61 @@
 /* CONFIG GERAL */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #6DD6FE;
+    background-color: #E2F7FF;
+    overflow-x: hidden;
+}
+
+
+
+/*RADIAIS*/
+.luz-direita {
+    position: absolute;
+
+    top: 0px;
+    left: 0;
+
+    width: 1164px;
+    height: 548px;
+
+    background:
+    radial-gradient( circle at 0% 50%,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.luz-esquerda {
+    position: absolute;
+
+    top: 500px;
+    left: 348px;
+
+    width: 1164px;
+    height: 887px;
+
+    background:
+    radial-gradient( circle at right center,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+    z-index: 0;
+    filter: blur(40px);
 }
 
 
@@ -212,7 +262,11 @@ footer p {
     font-weight: bold;
 }
 
-.redes_sociais {
+footer a {
+    text-decoration: none;
+}
+
+.redes-sociais {
     display: flex;
-    gap: 85px;
+    gap: 105px;
 }

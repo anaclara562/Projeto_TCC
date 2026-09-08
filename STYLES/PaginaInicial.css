@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* CONFIG GERAL */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #E2F7FF;
+    overflow-x: hidden;
+}
+
+
+
+/*RADIAIS*/
+.luz-direita {
+    position: absolute;
+
+    top: 0px;
+    left: 0;
+
+    width: 1164px;
+    height: 548px;
+
+    background:
+    radial-gradient( circle at 0% 50%,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.luz-esquerda {
+    position: absolute;
+
+    top: 500px;
+    left: 348px;
+
+    width: 1164px;
+    height: 887px;
+
+    background:
+    radial-gradient( circle at right center,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+    z-index: 0;
+    filter: blur(40px);
+}
+
+
+
+/*HEADER*/
+header {
+    background-color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    gap: 820px;
+    height: 80px;
+    z-index: 1000;
+    position: relative;
+    border-bottom: 6px solid #8BC0D4;
+}
+
+header img{
+    margin-left: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+header svg {
+    fill: currentColor;
+}
+
+.abas {
+    display: flex;
+    gap: 50px;
+    align-items: center; 
+    justify-content: center;
+}
+
+.abas svg {
+    padding: 8px;
+}
+
+.abas a {
+    padding-right: 25px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.abas a:hover {
+    color: #E8F9FF;
+    font-weight: 900;
+    background-color: rgba(96, 170, 197, 0.584);
+}
+
+.abas a:hover svg {
+    fill: #E8F9FF;
+}
+
+.pesquisa {
+    width: 25px;
+    height: auto;
+    align-items: center; 
+    justify-content: center;
+    background-color: #E8F9FF;
+    padding-left: 8px;
+    border-radius: 45px;
+    padding-top: 1px;
+}
+
+.nivel,
+.perfil {
+    min-width: auto;
+    height: auto;
+    background-color: #E8F9FF;
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
+}
+
+
+
+
+.hero{
+    flex:1;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:transparent;
+}
+
+.texto{
+    width: 30%;
+    margin-left: 200px;
+}
+
+.texto h1{
+    font-family:"Fredoka", sans-serif;
+    font-size:65px;
+    font-weight:650;
+    color:#357AA0;
+    line-height:75px;
+    margin-left: 25px;
+}
+
+.texto p{
+    width:350px;
+    margin-top:55px;
+    font-family:"Jacques Francois";
+    font-size:26px;
+    text-align:center;
+}
+
+.livro{ 
+    width: 50%;
+    margin-right: 100px;
+    display:flex;
+    justify-content:center;
+}
+
+.livro img{
+    max-width:100%;
+    max-height:75vh;
+    object-fit:contain;
+}
+
+/* RODAPÉ */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    height: 97px;
+    background-color: #8BC0D4;
+}
+
+footer p {
+    font-family: "Open Sans";
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 105px;
+}

@@ -35,7 +35,7 @@ header img{
 
 .abas {
     display: flex;
-    gap: 20px;
+    gap: 50px;
     align-items: center; 
     justify-content: center;
 }
@@ -61,7 +61,7 @@ header img{
     padding-top: 1px;
 }
 
-.perfil {
+.nivel {
     min-width: auto;
     height: auto;
     background-color: #E8F9FF;
@@ -74,7 +74,7 @@ header img{
     font-family: "Jacques Francois";
 }
 
-.nivel {
+.perfil {
     min-width: auto;
     height: auto;
     background-color: #8BC0D4;
@@ -87,7 +87,7 @@ header img{
     font-family: "Jacques Francois";
 }
 
-.nivel a {
+.perfil a {
     color: #E8F9FF;
 }
 
