@@ -67,7 +67,7 @@ header {
     background-color: #FFFFFF;
     width: 100%;
     display: flex;
-    gap: 820px;
+    gap: 920px;
     height: 80px;
     z-index: 1000;
     position: relative;
@@ -80,66 +80,48 @@ header img{
     margin-bottom: 5px;
 }
 
-header svg {
-    fill: currentColor;
-}
-
 .abas {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     align-items: center; 
     justify-content: center;
 }
 
-.abas svg {
-    padding: 8px;
-}
-
 .abas a {
-    padding-right: 25px;
     color: #000000;
     text-decoration: none;
 }
 
 .abas a:hover {
     color: #E8F9FF;
-    font-weight: 900;
     background-color: rgba(96, 170, 197, 0.584);
 }
 
-.abas a:hover svg {
-    fill: #E8F9FF;
-}
-
-.pesquisa {
-    width: 25px;
-    height: auto;
-    align-items: center; 
-    justify-content: center;
-    background-color: #E8F9FF;
-    padding-left: 8px;
-    border-radius: 45px;
-    padding-top: 1px;
-}
-
-.nivel,
-.perfil {
-    min-width: auto;
-    height: auto;
+.login,
+.cadastro {
+    height: 48px;
     background-color: #E8F9FF;
     border-radius: 45px;
-    align-items: center; 
-    justify-content: center;
-    display: flex;
-    gap: 5px;
     font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Jacques Francois";
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.login {
+    width: 134px;
+}
+
+.cadastro {
+    width: 190px;
 }
 
 
 
-
-.hero{
+.hero {
     flex:1;
     display:flex;
     justify-content:space-around;
