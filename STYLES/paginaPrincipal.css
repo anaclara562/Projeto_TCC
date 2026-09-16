@@ -67,7 +67,7 @@ header {
     background-color: #FFFFFF;
     width: 100%;
     display: flex;
-    gap: 820px;
+    gap: 920px;
     height: 80px;
     z-index: 1000;
     position: relative;
@@ -76,7 +76,7 @@ header {
 
 header img{
     margin-left: 50px;
-    margin-top: 5px;
+    margin-top: 9px;
     margin-bottom: 5px;
 }
 
@@ -449,22 +449,16 @@ header svg {
 .primeira-linha,
 .segunda-linha {
     display: flex;
-    justify-content: center; /* Centraliza os cards dentro da própria linha */
+    justify-content: center; 
     align-items: center;
-    gap: 110px; /* Reduzido de 90px para caber melhor na maioria das telas */
+    gap: 110px; 
     width: 100%;
-    max-width: 1200px; /* Evita que espalhe demais em telas ultra-wide */
+    max-width: 1200px; 
 }
 
 .segunda-linha {
     margin-top: 60px;
 }
-
-
-
-
-
-
 
 
 
@@ -491,8 +485,10 @@ header svg {
     padding-right: 15px;
 }
 
-/*BIBLIOTECA*/
-/*TÍTULO*/
+
+
+/* RANKING */
+/* TÍTULO */
 .ranking h1 {
     color: #000000;
     font-size: 40px;
@@ -512,191 +508,264 @@ header svg {
     z-index: 100;
 }
 
+
+
+
+
+/* PÓDIO */
 .ranking-frame {
     position: relative;
     margin: auto;
-    margin-top: 90px;
+    margin-top: 77px;
 }
 
-/* PÓDIO */
 .podio {
     display: flex;
-    align-items: flex-end;
     justify-content: center;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 18px;
     margin: auto;
-    width: 100%;
-    max-width: 440px;
     position: relative;
+    margin-bottom: 48px;
 }
 
 .podio-card {
-    width: 400px;
-    background-color: white;
-    border-radius: 20px;
+    background-color: #FFFFFF;
+    border-radius: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 12px 16px;
+    justify-content: flex-start;
     position: relative;
-    flex: 1;
-    border: 3px solid transparent;
+    box-sizing: border-box;
+    width: 255px;
+    height: 263px;
+    flex: none;
+    border: 4px solid;
 }
 
-.podio-card.primeiro {
-    border-color: #f5c518;
-    transform: translateY(-24px);
+/* PRIMEIRO LUGAR */
+.primeiro {
+    border-color: #FACC15;
+    height: 285px;
 }
 
-.podio-card.segundo { border-color: #c0c0c0; }
-.podio-card.terceiro { border-color: #f5a623; }
+/* SEGUNDO LUGAR */
+.segundo {
+    border-color: #9CA3AF;
+    margin-top: 100px;
+}
 
+/* TERCEIRO LUGAR */
+.terceiro {
+    border-color: #FB923C;
+    margin-top: 100px;
+}
+
+/* MEDALHAS */
 .medalha {
     position: absolute;
-    top: -18px;
-    width: 36px;
-    height: 36px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    border: 3px solid #f5c518;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    border: 5px solid white;
+    z-index: 2;
 }
 
-.segundo .medalha { border-color: #c0c0c0; }
-.terceiro .medalha { border-color: #f5a623; }
+/* MEDALHA DO PRIMEIRO */
+.primeiro .medalha {
+    top: -39px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        #D25E00 0%, 
+        #FACC15 100%
+    );
+}
+
+/* CORES DAS MEDALHAS */
+.segundo .medalha {
+    top: -32px;
+    background: linear-gradient(135deg, 
+        #9CA3AF 0%, 
+        #DBDBDB 100%
+    );
+}
+
+.terceiro .medalha {
+    top: -32px;
+    background: linear-gradient(135deg, 
+        #FB923C 0%, 
+        #FFAF6F 100%
+    );
+}
+
 
 .avatar-ranking {
-    width: 54px;
-    height: 54px;
+    margin-top: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 40px;
     font-weight: bold;
     color: white;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    font-family: "Inter";
+    font-weight: bold;
 }
 
-.avatar-ranking.ouro   { background: linear-gradient(135deg, #f5c518, #e6a800); }
-.avatar-ranking.prata  { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); }
-.avatar-ranking.bronze { background: linear-gradient(135deg, #f5a623, #d4821a); }
+.ouro { 
+    background: linear-gradient(135deg, 
+        #D25E00 0%, 
+        #FACC15 100%
+    );
+    border: 5px solid #FFEC9F;
+}
+
+.prata { 
+    background: linear-gradient(135deg, 
+        #9CA3AF 0%, 
+        #DBDBDB 100%
+    );
+    border: 5px solid #EAEAEA;
+}
+
+.bronze { 
+    background: linear-gradient(135deg, 
+        #FB923C 0%, 
+        #FFAF6F 100%
+    );
+    border: 5px solid #FFD2AD;
+}
 
 .podio-nome {
-    font-size: 13px;
+    margin-top: 8px;
+    font-size: 18px;
     font-weight: 700;
     color: #1a1a2e;
     text-align: center;
-    font-family: "Poppins", sans-serif;
+    font-family: "Fredoka";
 }
 
 .podio-nivel {
-    font-size: 11px;
-    color: #888;
-    margin-bottom: 6px;
+    font-size: 13px;
+    color: #9F9F9F;
+    margin-top: 5px;
     font-family: "Inter", sans-serif;
 }
 
 .podio-xp {
-    font-size: 13px;
-    font-weight: 800;
-    color: #f5c518;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FACC15;
     display: flex;
     align-items: center;
-    gap: 4px;
-    font-family: "Poppins", sans-serif;
-}
-
-.podio-sequencia {
-    font-size: 10px;
-    color: #888;
-    margin-top: 4px;
+    gap: 10px;
     font-family: "Inter", sans-serif;
 }
 
+.podio-sequencia {
+    font-size: 12px;
+    color: #9F9F9F;
+    margin-top: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+
+
 /* LISTA */
 .lista-ranking {
-    width: 100%;
-    max-width: 440px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    margin-top: 400px;
+    gap: 14px;
     margin: auto;
     position: relative;
 }
 
 .item-ranking {
+    width: 780px;
+    height: 50px;
+    margin: auto;
     background: white;
-    border-radius: 16px;
-    padding: 12px 16px;
+    border-radius: 30px;
+    padding: 13px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    gap: 15px;
+    border: 3px solid rgba(139, 192, 212, 0.5);
 }
 
-.item-ranking.proprio {
-    border: 2px solid #f5c518;
+.proprio {
+    border: 4px solid #8BC0D4;
 }
 
 .item-pos {
-    font-size: 13px;
-    font-weight: 700;
-    color: #888;
-    min-width: 24px;
-    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #9F9F9F;
+    font-family: "Inter";
+    margin-left: 12px;
 }
 
 .item-avatar-ranking {
-    width: 42px;
-    height: 42px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: bold;
     color: white;
     flex-shrink: 0;
+    font-family: "Inter";
 }
 
 .item-info-ranking {
     flex: 1;
+    margin-left: 15px;
 }
 
 .item-nome-ranking {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
-    color: #1a1a2e;
-    font-family: "Poppins", sans-serif;
+    color: #000000;
+    font-family: "Fredoka", sans-serif;
 }
 
 .item-detalhes-ranking {
-    font-size: 11px;
-    color: #888;
-    margin-top: 2px;
+    font-size: 13px;
+    color: #9F9F9F;
+    margin-top: 10px;
     display: flex;
     gap: 6px;
     font-family: "Inter", sans-serif;
 }
 
 .item-xp-ranking {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 800;
-    color: #f5c518;
+    color: #FACC15;
     text-align: right;
+    margin-right: 10px;
     white-space: nowrap;
     font-family: "Poppins", sans-serif;
 }
 
 .item-xp-ranking span {
     display: block;
-    font-size: 10px;
+    margin-top: 3px;
+    font-size: 15px;
     font-weight: 400;
     color: #aaa;
     text-align: right;
@@ -705,27 +774,29 @@ header svg {
 
 /* DIVISOR */
 .divisor-ranking {
-    width: 100%;
-    max-width: 440px;
     display: flex;
     align-items: center;
     gap: 10px;
     margin: auto;
+    justify-content: center;
     position: relative;
+    margin-top: 18px;
+    margin-bottom: 18px;
 }
 
 .divisor-ranking hr {
     flex: 1;
-    border: none;
-    border-top: 1px solid #b0dce8;
+    max-width: 328px;
+    border: 2px solid rgba(56, 144, 177, 0.3);
 }
 
 .divisor-ranking p {
-    font-size: 12px;
+    font-size: 17px;
     color: #4ab3cc;
     white-space: nowrap;
-    font-family: "Inter", sans-serif;
+    font-family: "Idiqlat";
 }
+
 
 
 
@@ -753,7 +824,7 @@ header svg {
     padding-right: 15px;
 }
 
-/*BIBLIOTECA*/
+/*REDAÇÃO*/
 /*TÍTULO*/
 .macetes h1 {
     color: #000000;
@@ -801,11 +872,30 @@ header svg {
 .quadro-info {
     display: none;
     border: 1px solid #6B9BAD;
+    border-radius: 40px;
     padding: 20px;
     width: 800px;
     min-height: 100px;
     background-color: #f9f9f9;
     margin: auto;
+}
+
+.quadro-info h2,
+.quadro-info h3 {
+    font-family: "Fredoka";
+}
+
+.quadro-info p {
+    font-family: "Inter";
+}
+
+.quadro {
+    border: 1px solid black;
+    width: 100px;
+}
+
+.quadro li {
+    font-size: 12px;
 }
 
 /* Mostra o quadro */

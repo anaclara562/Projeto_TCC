@@ -20,27 +20,30 @@ header {
     background-color: #FFFFFF;
     width: 100%;
     display: flex;
-    gap: 800px;
-    border-bottom: 6px solid #8BC0D4;
+    gap: 920px;
     height: 80px;
     z-index: 1000;
     position: relative;
+    border-bottom: 6px solid #8BC0D4;
 }
 
 header img{
     margin-left: 50px;
-    margin-top: 5px;
+    margin-top: 9px;
     margin-bottom: 5px;
 }
 
 .abas {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: center; 
     justify-content: center;
 }
 
-.abas svg {
+.nivel svg,
+.perfil svg {
+    stroke: #8BC0D4;
+    fill: #8BC0D4;
     padding: 8px;
 }
 
@@ -50,9 +53,35 @@ header img{
     text-decoration: none;
 }
 
+.abas a:hover {
+    color: #E8F9FF;
+    background-color: rgba(96, 170, 197, 0.584);
+}
+
+.abas a:hover svg {
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
+}
+
+.pesquisa {
+    width: 20px;
+    height: 48px;
+    align-items: center; 
+    justify-content: center;
+    padding-left: 5px;
+    border-radius: 45px;
+    background-color: rgba(96, 170, 197, 0.584);
+}
+
+.pesquisa svg {
+    margin-top: 3px;
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
+}
+
 .perfil {
     min-width: auto;
-    height: auto;
+    height: 48px;
     background-color: #E8F9FF;
     border-radius: 45px;
     align-items: center; 
@@ -65,7 +94,7 @@ header img{
 
 .nivel {
     min-width: auto;
-    height: auto;
+    height: 48px;
     background-color: #E8F9FF;
     border-radius: 45px;
     align-items: center; 
@@ -76,38 +105,32 @@ header img{
     font-family: "Jacques Francois";
 }
 
-.pesquisa {
-    min-width: auto;
-    height: auto;
-    background-color: #8BC0D4;
-    border-radius: 45px;
-    align-items: center; 
-    justify-content: center;
-    display: flex;
-    gap: 5px;
-    font-size: 24px;
-    font-family: "Jacques Francois";
+.pesquisa svg {
+    padding: 8px;
 }
 
-.pesquisa a {
-    color: #E8F9FF;
+.nivel svg,
+.perfil svg {
+    margin-left: 10px;
 }
+
 
 
 /* RODAPÉ */
 footer {
+    margin-top: 74px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 250px;
-    height: 97px;
+    height: 70px;
     background-color: #8BC0D4;
 }
 
 footer p {
     font-family: "Open Sans";
     color: #FFFFFF;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -117,5 +140,5 @@ footer a {
 
 .redes-sociais {
     display: flex;
-    gap: 105px;
+    gap: 200px;
 }
