@@ -236,18 +236,19 @@ hr {
 
 /* RODAPÉ */
 footer {
+    margin-top: 74px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 250px;
-    height: 97px;
+    height: 70px;
     background-color: #8BC0D4;
 }
 
 footer p {
     font-family: "Open Sans";
     color: #FFFFFF;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -257,5 +258,5 @@ footer a {
 
 .redes-sociais {
     display: flex;
-    gap: 105px;
+    gap: 200px;
 }

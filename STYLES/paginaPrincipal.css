@@ -20,13 +20,10 @@ body {
 /*RADIAIS*/
 .luz-direita {
     position: absolute;
-
     top: 0px;
     left: 0;
-
     width: 1164px;
     height: 548px;
-
     background:
     radial-gradient( circle at 0% 50%,
         rgba(97, 202, 248, 0.9) 0%,
@@ -34,20 +31,16 @@ body {
         rgba(97, 202, 248, 0.2) 65%,
         rgba(97, 202, 248, 0.05) 100%
     );
-
     z-index: 0;
     filter: blur(40px);
 }
 
 .luz-esquerda {
     position: absolute;
-
     top: 500px;
     left: 348px;
-
     width: 1164px;
     height: 887px;
-
     background:
     radial-gradient( circle at right center,
         rgba(97, 202, 248, 0.9) 0%,
@@ -55,7 +48,6 @@ body {
         rgba(97, 202, 248, 0.2) 65%,
         rgba(97, 202, 248, 0.05) 100%
     );
-
     z-index: 0;
     filter: blur(40px);
 }
@@ -171,6 +163,8 @@ header svg {
     padding-right: 15px;
 }
 
+
+
 /*BIBLIOTECA*/
 /*TÍTULO*/
 .biblioteca h1 {
@@ -285,7 +279,6 @@ header svg {
     background-color: #5e5743;
 }
 
-/* XP */
 .badge-xp {
     width: 124px;
     height: 40px;
@@ -317,7 +310,6 @@ header svg {
     margin-top: 7px;
 }
 
-/* PARTE INFERIOR DO CARD */
 .card-body {
     color: #ffffff;
     padding: 18px 16px 16px 16px;
@@ -328,7 +320,6 @@ header svg {
     height: 208px;
 }
 
-/* TÍTULO E ANO */
 .title-row {
     display: flex;
     justify-content: space-between;
@@ -355,7 +346,6 @@ header svg {
     opacity: 0.95;
 }
 
-/* DIFICULDADE */
 .difficulty {
     font-size: 13px;
     display: flex;
@@ -371,7 +361,6 @@ header svg {
     height: 14px;
 }
 
-/* BARRA DE PROGRESSO */
 .progress-container {
     margin-top: 10px;
     margin-bottom: 12px;
@@ -407,7 +396,6 @@ header svg {
     transition: width 0.4s ease-out;
 }
 
-/* BOTÃO CONTINUAR */
 .btn-continue {
     text-align: center;
     text-decoration: none;
@@ -431,8 +419,6 @@ header svg {
     background-color: #29748b;
 }
 
-
-
 .card img {
     z-index: 0;
 }
@@ -445,7 +431,6 @@ header svg {
     margin-top: 60px;
 }
 
-/* LINHAS DE CARDS */
 .primeira-linha,
 .segunda-linha {
     display: flex;
@@ -508,11 +493,6 @@ header svg {
     z-index: 100;
 }
 
-
-
-
-
-/* PÓDIO */
 .ranking-frame {
     position: relative;
     margin: auto;
@@ -544,25 +524,21 @@ header svg {
     border: 4px solid;
 }
 
-/* PRIMEIRO LUGAR */
 .primeiro {
     border-color: #FACC15;
     height: 285px;
 }
 
-/* SEGUNDO LUGAR */
 .segundo {
     border-color: #9CA3AF;
     margin-top: 100px;
 }
 
-/* TERCEIRO LUGAR */
 .terceiro {
     border-color: #FB923C;
     margin-top: 100px;
 }
 
-/* MEDALHAS */
 .medalha {
     position: absolute;
     width: 55px;
@@ -577,7 +553,6 @@ header svg {
     z-index: 2;
 }
 
-/* MEDALHA DO PRIMEIRO */
 .primeiro .medalha {
     top: -39px;
     width: 65px;
@@ -589,7 +564,6 @@ header svg {
     );
 }
 
-/* CORES DAS MEDALHAS */
 .segundo .medalha {
     top: -32px;
     background: linear-gradient(135deg, 
@@ -605,7 +579,6 @@ header svg {
         #FFAF6F 100%
     );
 }
-
 
 .avatar-ranking {
     margin-top: 50px;
@@ -680,9 +653,6 @@ header svg {
     font-family: "Inter", sans-serif;
 }
 
-
-
-/* LISTA */
 .lista-ranking {
     display: flex;
     flex-direction: column;
@@ -772,7 +742,6 @@ header svg {
     font-family: "Inter", sans-serif;
 }
 
-/* DIVISOR */
 .divisor-ranking {
     display: flex;
     align-items: center;
@@ -799,8 +768,6 @@ header svg {
 
 
 
-
-
 /*POSIÇÃO NO SITE*/
 .posicao_site-macete {
     width: 185px;
@@ -823,6 +790,8 @@ header svg {
 .posicao_site-macete p {
     padding-right: 15px;
 }
+
+
 
 /*REDAÇÃO*/
 /*TÍTULO*/
@@ -868,7 +837,6 @@ header svg {
     margin-bottom: 30px;
 }
 
-/* Quadro escondido inicialmente */
 .quadro-info {
     display: none;
     border: 1px solid #6B9BAD;
@@ -898,17 +866,14 @@ header svg {
     font-size: 12px;
 }
 
-/* Mostra o quadro */
 .quadro-info.ativo {
     display: block;
 }
 
-/* Conteúdos escondidos */
 .conteudo {
     display: none;
 }
 
-/* Conteúdo selecionado */
 .conteudo.ativo {
     display: block;
 }

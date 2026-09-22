@@ -127,6 +127,7 @@ header img{
     justify-content:space-around;
     align-items:center;
     background:transparent;
+    margin-top: 40px;
 }
 
 .texto{
@@ -160,13 +161,15 @@ header img{
 
 .livro img{
     max-width:100%;
-    max-height:75vh;
+    max-height:60%;
     object-fit:contain;
 }
 
+
+
 /* RODAPÉ */
 footer {
-    margin-top: 74px;
+    margin-top: 39px;
     display: flex;
     justify-content: center;
     align-items: center;

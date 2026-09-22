@@ -10,7 +10,7 @@
 <body>
     <header>
         <a href="/PAGES/paginaPrincipal.html">
-            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="61px">
+            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
         </a>
         <div class="abas">
             <a class="pesquisa" href="pesquisa.html">
@@ -33,23 +33,146 @@
         </div>
     </header>
 
+    <main class="main-container">
+        <section class="progresso-section">
+            <h1 class="titulo-principal">Seu Progresso</h1>
+            <p class="subtitulo">Continue evoluindo na sua jornada literária!</p>
 
+            <div class="card-progresso">
+                <div class="card-header">
+                    <div class="nivel-atual-box">
+                        <div class="trofeu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FACC15">
+                                <path d="M290.41-110.91v-75.76h151.71v-131.79q-52.49-11.55-93.52-45.31-41.03-33.75-58.74-84.02-79.11-5.62-133.65-62.04-54.54-56.42-54.54-135.5V-688q0-31.73 22.09-53.82t53.82-22.09h96v-85.34h413v85.34h96q31.49 0 53.62 22.09T858.33-688v42.67q0 79.08-54.54 135.5t-133.65 62.04q-17.71 50.27-58.74 84.02-41.03 33.76-93.52 45.31v131.79h151.71v75.76H290.41Zm-16.83-415.76V-688h-96v42.67q0 42.66 27 75.16t69 43.5Zm299.09 98.34q38-38.34 38-93v-252H349.33v252q0 54.66 38 93Q425.33-390 480-390t92.67-38.33Zm113.91-98.34q41.84-11 68.92-43.5t27.08-75.16V-688h-96v161.33ZM480-582Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="lbl-sub">Nível Atual</span>
+                            <h2 class="num-nivel" id="numNivelAtual">12</h2>
+                        </div>
+                    </div>
+                    <div class="proximo-nivel-box">
+                        <span class="lbl-sub">Próximo Nível</span>
+                        <h2 class="num-nivel" id="numProximoNivel">13</h2>
+                    </div>
+                </div>
 
+                <div class="bar-info-row">
+                    <span>Progresso de XP</span>
+                    <span class="xp-val" id="textXP">2.450 / 5.000 XP</span>
+                </div>
+                <div class="barra-xp-container">
+                    <div class="barra-xp-fill" id="barraXP" style="width: 49%;"></div>
+                </div>
 
+                <div class="card-footer-info">
+                    <span id="textFaltamXP">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FACC15">
+                            <path d="m440.59-254.02 178.45-226.46H472.43l25.05-214.06-168.94 263.02h144.33l-32.28 177.5ZM328.83-86.91l48-264H180.04l336.68-522.18H599l-36 312h222.46L410.87-86.91h-82.04Zm145.08-387.37Z"/>
+                        </svg> 
+                        Faltam 2.550 XP para o próximo nível
+                    </span>
+                    <span id="textSequencia">🔥 7 dias de sequência</span>
+                </div>
+            </div>
+        </section>
 
+        <section class="desafios-section">
+            <h2 class="titulo-secundario">Desafios Diários</h2>
+            <p class="subtitulo">Complete 3 desafios</p>
 
+            <div class="card-desafio">
+                <div class="desafio-icon icon-blue">
+                    <svg height="28" viewBox="0 -960 960 960" width="28" fill="#FFF">
+                        <path d="M560-120v-520q39-16 80-28t80-12v560q-39 0-80 12t-80 28ZM240-120q39-16 80-28t80-12v-560q-39 0-80 12t-80 28v560Zm240-568q-36-18-75.5-29T320-728q-32 0-64.5 7.5T192-698v-114q32-15 64-21.5t64-6.5q47 0 91.5 12.5T480-790q39-25 83.5-37.5T655-840q32 0 64 6.5t64 21.5v114q-31-15-63.5-22.5T655-728q-39 0-78.5 11T501-688l-21 12-21-12ZM120-80v-620q0-23 12.5-42.5T168-772q52-25 106.5-36.5T385-820q41 0 81.5 9t78.5 25q38-16 78.5-25t81.5-9q56 0 110.5 11.5T922-772q23 11 35.5 30.5T970-700v620q0 18-12 29t-28 11q-10 0-19.5-3.5T892-49q-52-21-105-31t-107-10q-41 0-80.5 9T520-56v-560l-40-22-40 22v560q-39-16-78.5-25T281-90q-54 0-107 10T69-49q-9 5-18.5 8.5T31-40q-16 0-28-11T120-80Z"/>
+                    </svg>
+                </div>
+                <div class="desafio-conteudo">
+                    <div class="desafio-header">
+                        <div>
+                            <h3 class="desafio-titulo">Leitura Diária</h3>
+                            <p class="desafio-desc">Leia 20 páginas de qualquer livro</p>
+                        </div>
+                        <div class="recompensa">★ + 100</div>
+                    </div>
+                    <div class="progresso-linha">
+                        <span>Progresso</span>
+                        <span id="numLeitura">15/20</span>
+                    </div>
+                    <div class="barra-desafio-bg">
+                        <div class="barra-desafio-fill" id="barraLeitura" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card-desafio">
+                <div class="desafio-icon icon-green">
+                    <svg height="28" viewBox="0 -960 960 960" width="28" fill="#FFF">
+                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                    </svg>
+                </div>
+                <div class="desafio-conteudo">
+                    <div class="desafio-header">
+                        <div>
+                            <h3 class="desafio-titulo">Sequência de Fogo</h3>
+                            <p class="desafio-desc">Mantenha sua sequência de 7 dias</p>
+                        </div>
+                        <div class="recompensa">★ + 200</div>
+                    </div>
+                    <div class="concluido-text">Concluído!</div>
+                </div>
+            </div>
+
+            <div class="card-desafio">
+                <div class="desafio-icon icon-red">
+                    <svg height="28" viewBox="0 -960 960 960" width="28" fill="#FFF">
+                        <path d="M240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 33-23.5 56.5T720-80H240Zm0-80h480v-640H240v640Zm0 0v-640v640Z"/>
+                    </svg>
+                </div>
+                <div class="desafio-conteudo">
+                    <div class="desafio-header">
+                        <div>
+                            <h3 class="desafio-titulo">Explorador</h3>
+                            <p class="desafio-desc">Inicie a leitura de um novo livro</p>
+                        </div>
+                        <div class="recompensa">★ + 120</div>
+                    </div>
+                    <div class="progresso-linha">
+                        <span>Progresso</span>
+                        <span id="numExplorador">0/1</span>
+                    </div>
+                    <div class="barra-desafio-bg">
+                        <div class="barra-desafio-fill" id="barraExplorador" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-bonus">
+                <div class="bonus-header">
+                    <div class="bonus-icon">🎁</div>
+                    <div class="bonus-info">
+                        <h3 class="bonus-titulo">Desafio Bônus</h3>
+                        <p class="bonus-desc">Complete todos os desafios diários e ganhe <strong>+500 XP extras!</strong></p>
+                    </div>
+                    <div class="bonus-status" id="statusBonus">1/3</div>
+                </div>
+                <div class="barra-bonus-bg">
+                    <div class="barra-bonus-fill" id="barraBonus" style="width: 33.3%;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="redes-sociais">
             <a class="Instagram" href="https://www.instagram.com/">
-                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
             </a>
             <a class="Facebook" href="https://www.facebook.com/?locale=pt_BR">
-                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
             </a>
             <a class="Email" href="https://mail.google.com/">
-                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
             </a>
         </div>
         <p>© 2026 - lêBrasil</p>

@@ -10,7 +10,7 @@
 <body>
     <header>
         <a href="/PAGES/paginaPrincipal.html">
-            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="61px">
+            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
         </a>
         <div class="abas">
             <a class="pesquisa" href="pesquisa.html">
@@ -33,26 +33,166 @@
         </div>
     </header>
 
+    <div class="cabecalho">
+        <h1>Seu Perfil</h1>
+    </div>
 
+    <main>
+        <section id="perfil">
+            <div id="avatar">
+                E
+                <div id="avatar-icone" title="Editar Nome">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#3B84A0">
+                        <path d="M216-216h51l375-375-51-51-375 375v51Zm-72 72v-153l498-498q11-11 23.84-16 12.83-5 27-5 14.16 0 27.16 5t24 16l51 51q11 11 16 24t5 26.54q0 14.45-5.02 27.54T795-642L297-144H144Zm600-549-51-51 51 51Zm-127.95 76.95L591-642l51 51-25.95-25.05Z"/>
+                    </svg>
+                </div>
+            </div>
 
+            <div id="info">
+                <h2 id="nome">Emilia </h2>
+                <p id="bio">
+                    Eu amo vc 
+                    <svg id="editar" title="Editar Descrição" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#8BC0D4">
+                        <path d="M216-216h51l375-375-51-51-375 375v51Zm-72 72v-153l498-498q11-11 23.84-16 12.83-5 27-5 14.16 0 27.16 5t24 16l51 51q11 11 16 24t5 26.54q0 14.45-5.02 27.54T795-642L297-144H144Zm600-549-51-51 51 51Zm-127.95 76.95L591-642l51 51-25.95-25.05Z"/>
+                    </svg>
+                </p>
 
+                <div id="metricas">
+                    <div class="metrica azul">
+                        <span class="valor">4</span>
+                        <span class="label">Livros Lidos</span>
+                    </div>
+                    <div class="metrica ouro">
+                        <span class="valor">2.450</span>
+                        <span class="label">XP Total</span>
+                    </div>
+                    <div class="metrica verde">
+                        <span class="valor">7</span>
+                        <span class="label">Dias Sequência</span>
+                    </div>
+                    <div class="metrica cinza">
+                        <span class="valor">12º</span>
+                        <span class="label">Ranking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <div id="grade">
+            <section id="progresso">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#33A8F0">
+                        <path d="m135.76-232.83-63.89-63.65L377.2-603.57l160 160 196.04-194.52H631.87v-91h256.26v256.02h-91v-101.36L537.2-314.26l-160-160-241.44 241.43Z"/>
+                    </svg>
+                    Progresso Mensal
+                </h2>
+                <div class="barra">
+                    <div class="barra-topo">
+                        <span>Mar</span>
+                        <span class="xp">2.100 XP</span>
+                    </div>
+                    <div class="trilha">
+                        <div class="preenchimento" style="width:50%"></div>
+                    </div>
+                </div>
+                <div class="barra">
+                    <div class="barra-topo">
+                        <span>Abr</span>
+                        <span class="xp">2.800 XP</span>
+                    </div>
+                    <div class="trilha">
+                        <div class="preenchimento" style="width:65%"></div>
+                    </div>
+                </div>
+            </section>
 
+            <section id="estatisticas">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                        <path d="M480-400q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Z"/>
+                    </svg>
+                    Estatísticas Gerais
+                </h2>
+                    <div class="linha">
+                        <span class="chave">Membro desde</span>
+                        <span class="dado">Jan 2025</span>
+                    </div>
+                    <div class="linha">
+                        <span class="chave">Tempo de leitura</span>
+                        <span class="dado">40h</span>
+                    </div>
+            </section>
+        </div>
+
+        <section id="atividades">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                    <path d="M479.52-111.87q-141.35 0-246.24-93.77Q128.39-299.41 113.63-440h92.76q14.24 102.8 91.78 169.97 77.55 67.16 181.35 67.16 115.81 0 196.47-80.66Q756.65-364.2 756.65-480t-80.66-196.47q-80.66-80.66-196.47-80.66-66.13 0-124.22 29.97-58.08 29.96-98.37 83.09h103.31V-560H113.78v-245.98h83.59v90.41q52.2-63.52 125.93-98.04 73.74-34.52 156.22-34.52 76.44 0 143.49 29.1 67.06 29.1 116.75 78.79 49.7 49.7 78.79 116.75 29.1 67.06 29.1 143.49t-29.1 143.49q-29.09 67.05-78.79 116.75-49.69 49.69-116.75 78.79-67.05 29.1-143.49 29.1Zm110.81-198.22-152-152V-680h83.58v184L649.2-368.96l-58.87 58.87Z"/>
+                </svg>
+                Atividades Recentes
+            </h2>
+
+            <div class="item livro">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
+                    <path d="M480.72-146.37q-48.24-37.76-104.24-59.6-56-21.83-116.48-21.83-41.18 0-80.9 11-39.71 11-76.23 30.52-24.35 12.67-47.32-1.16-22.96-13.83-22.96-40.34V-709.3q0-14.35 6.81-27.13 6.82-12.77 20.45-19.16 46.48-23.76 96.72-35.4 50.23-11.64 102.69-11.64 58.5 0 114.24 15 55.74 15 106.5 45.72v491.89q51-32 107-48.6t113-16.6q36 0 70.5 6.36T840-290.5v-489.57q15.48 5 30.7 10.86 15.21 5.86 29.93 13.62 13.87 5.96 20.33 18.97 6.45 13.01 6.45 27.32v485.1q0 25.64-22.84 38.23-22.85 12.6-47.44-.31-36.52-19.52-76.23-30.52-39.72-11-80.9-11-60 0-115.64 21.95-55.64 21.96-103.64 59.48ZM560-353.78v-388.13l200-201.68v407.89L560-353.78Zm-167.41 61.41v-395.76q-31.33-13.28-64.8-20.19-33.46-6.9-67.79-6.9-37 0-72 6.7t-68 20.11v398.43q35-13 69.5-19.12 34.5-6.12 70.5-6.12 34.33 0 67.03 5.4 32.71 5.41 65.56 17.45Zm0 0v-396 396Z"/>
+                </svg>
+                <div class="texto">
+                    <span class="titulo">Completou "A Hora da Estrela"</span>
+                    <span class="tempo">2 dias atrás</span>
+                </div>
+                <span class="pontos">★ + 600</span>
+            </div>
+
+            <div class="item quiz">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
+                    <path d="m425.59-237.02 202.45-243.46H470.43l28.05-220.06-180.94 261.02h137.33l-29.28 202.5ZM312.83-70.91l40-280H148.04l372.68-538.18H611l-40 320h246.46L402.87-70.91h-90.04Zm160.08-398.37Z"/>
+                </svg>
+                <div class="texto">
+                    <span class="titulo">Quiz: "A Hora da Estrela" - 95% de acertos</span>
+                    <span class="tempo">4 dias atrás</span>
+                </div>
+                <span class="pontos">★ + 200</span>
+            </div>
+
+            <div class="item next_nivel">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
+                    <path d="M618.09-518.09q25.95 0 43.93-17.98Q680-554.04 680-580t-17.98-43.93q-17.98-17.98-43.93-17.98-25.72 0-43.7 18.09-17.98 18.1-17.98 43.82t17.98 43.82q17.98 18.09 43.7 18.09Zm-276.18 0q25.72 0 43.7-18.09 17.98-18.1 17.98-43.82t-17.98-43.82q-17.98-18.09-43.7-18.09-25.95 0-43.93 17.98Q280-605.96 280-580t17.98 43.93q17.98 17.98 43.93 17.98Zm262.91 218.75q55.85-39.33 80.38-103.53H274.8q24.53 64.2 80.38 103.53Q411.04-260 480-260t124.82-39.34ZM320.89-103.97q-74.43-32.1-129.63-87.29-55.19-55.2-87.29-129.63-32.1-74.44-32.1-159.11 0-84.67 32.1-159.11 32.1-74.43 87.29-129.63 55.2-55.19 129.63-87.29 74.44-32.1 159.11-32.1 84.67 0 159.11 32.1 74.43 32.1 129.63 87.29 55.19 55.2 87.29 129.63 32.1 74.44 32.1 159.11 0 84.67-32.1 159.11-32.1 74.43-87.29 129.63-55.2 55.19-129.63 87.29-74.44 32.1-159.11 32.1-84.67 0-159.11-32.1ZM480-480Zm224.85 224.85q92.28-92.28 92.28-224.85t-92.28-224.85Q612.57-797.13 480-797.13t-224.85 92.28Q162.87-612.57 162.87-480t92.28 224.85q92.28 92.28 224.85 92.28t224.85-92.28Z"/>
+                </svg>
+                <div class="texto">
+                    <span class="titulo">Subiu para o Nível 12!</span>
+                    <span class="tempo">5 dias atrás</span>
+                </div>
+                <span class="pontos">★ + 30</span>
+            </div>
+
+            <div class="item inicio">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
+                    <path d="M358.54-293.46 480-366.59l121.46 74.13-32.05-138.5 107.18-92.65-140.74-12.52L480-667.11l-55.85 130.22-140.74 12.28 107.18 93.41-32.05 137.74ZM221.04-103.5l68.35-294.63L60.63-596.46l301.87-25.95L480-900.33l117.5 277.92 301.87 25.95-228.76 198.33 68.35 294.63L480-259.91 221.04-103.5ZM480-469.28Z"/>
+                </svg>
+                <div class="texto">
+                    <span class="titulo">Iniciou "Dom Casmurro"</span>
+                    <span class="tempo">1 semana atrás</span>
+                </div>
+                <span class="pontos">★ + 50</span>
+            </div>
+        </section>
+    </main>
 
 
     <footer>
         <div class="redes-sociais">
             <a class="Instagram" href="https://www.instagram.com/">
-                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
             </a>
             <a class="Facebook" href="https://www.facebook.com/?locale=pt_BR">
-                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
             </a>
             <a class="Email" href="https://mail.google.com/">
-                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="40px" height="40px">
+                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
             </a>
         </div>
         <p>© 2026 - lêBrasil</p>
     </footer>
+    <script src="/SCRIPTS/script.js"></script>
 </body>
 </html>
