@@ -846,11 +846,16 @@ header svg {
     min-height: 100px;
     background-color: #f9f9f9;
     margin: auto;
+    text-align: justify;
 }
 
 .quadro-info h2,
 .quadro-info h3 {
     font-family: "Fredoka";
+}
+
+.quadro-info h2 {
+    text-align: center;
 }
 
 .quadro-info p {
@@ -859,11 +864,22 @@ header svg {
 
 .quadro {
     border: 1px solid black;
-    width: 100px;
+    width: auto;
+    height: auto;
+    font-family: "Inter";
+    padding: 10px 10px 10px 10px;    
 }
 
-.quadro li {
-    font-size: 12px;
+.quadro-ul {
+    list-style: none;
+}
+
+.quadro-ol {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    font-family: "Inter";
+    padding: 10px 10px 10px 10px;    
 }
 
 .quadro-info.ativo {

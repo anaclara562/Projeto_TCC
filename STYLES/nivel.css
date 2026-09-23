@@ -246,7 +246,9 @@ header img{
 
 .card-footer-info { 
     font-size: 13px; 
-    color: #E0F4FF; 
+    color: #E0F4FF;
+    display: flex;
+    flex-direction:row;
 }
 
 .barra-xp-container,
@@ -273,7 +275,7 @@ header img{
     transition: width 0.8s ease;
 }
 
-/* SEÇÃO 2: DESAFIOS DIÁRIOS */
+/* DESAFIOS DIÁRIOS */
 .titulo-secundario {
     font-family: "Fredoka";
     font-weight: bold;
