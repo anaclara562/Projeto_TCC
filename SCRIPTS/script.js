@@ -103,3 +103,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   carregarDados();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  function configurarSenha(idInput, idBotao) {
+
+    const input = document.getElementById(idInput);
+    const botao = document.getElementById(idBotao);
+
+    if (!input || !botao) {
+      console.log("Elemento não encontrado:", idInput, idBotao);
+      return;
+    }
+
+    const olhoFechado = botao.querySelector(".olho-visivel");
+    const olhoAberto = botao.querySelector(".olho-escondido");
+
+    botao.addEventListener("click", function () {
+
+      if (input.type === "password") {
+        input.type = "text";
+        olhoFechado.style.display = "none";
+        olhoAberto.style.display = "block";
+      } else {
+        input.type = "password";
+        olhoFechado.style.display = "block";
+        olhoAberto.style.display = "none";
+      }
+
+    });
+  }
+
+  configurarSenha("senha", "mostrarSenha");
+  configurarSenha("senha1", "mostrarSenha1");
+  configurarSenha("senha2", "mostrarSenha2");
+  
+});

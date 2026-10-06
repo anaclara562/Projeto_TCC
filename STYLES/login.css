@@ -15,16 +15,23 @@ body {
     overflow-x: hidden;
 }
 
+header,
+form,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
 
 /*RADIAIS*/
-.luz-direita {
+.luz-esquerda1 {
     position: absolute;
 
-    top: 0px;
-    left: 0;
+    top: -100px;
+    left: -100px;
 
-    width: 1164px;
-    height: 548px;
+    width: 800px;
+    height: 500px;
 
     background:
     radial-gradient( circle at 0% 50%,
@@ -38,17 +45,48 @@ body {
     filter: blur(40px);
 }
 
-.luz-esquerda {
+.luz-direita1 {
     position: absolute;
 
-    top: 500px;
-    left: 348px;
+    top: 300px;
+    left: 900px;
 
-    width: 1164px;
-    height: 887px;
+    width: 800px;
+    height: 500px;
 
     background:
     radial-gradient( circle at right center,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.container-radial {
+    position: absolute;
+    top: 662px;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+}
+
+.luz-esquerda2 {
+    position: absolute;
+
+    top: 180px;
+    left: -100px;
+
+    width: 800px;
+    height: 500px;
+
+    background:
+    radial-gradient(
+        circle at 0% 50%,
         rgba(97, 202, 248, 0.9) 0%,
         rgba(97, 202, 248, 0.5) 35%,
         rgba(97, 202, 248, 0.2) 65%,
@@ -132,14 +170,14 @@ form h4 {
     display: flex;
     flex-direction: column;
     gap: 11px;
-    width: fit-content;
+    width: 750px;
 }
 
 .campo2 {
     display: flex;
     flex-direction: column;
     gap: 11px;
-    width: fit-content;
+    width: 750px;
     margin: 0 auto 20px auto;
 }
 
@@ -155,10 +193,18 @@ form h4 {
     padding: 0 23px;
 }
 
+.campo2 .input-wrapper .cadeado{
+    margin-left: 5px;
+}
+
+.campo2 .input-wrapper input {
+    margin-left: -7px;
+}
+
 .input-wrapper input {
     border: none;
     height: 45px;
-    width: 690px;
+    width: 670px;
     background-color: #FFFFFF;
     font-size: 16px;
     font-family: "Inter";
@@ -170,13 +216,35 @@ form h4 {
   box-shadow: none;
 }
 
+#mostrarSenha {
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+}
+
+#mostrarSenha .olho-visivel {
+    display: block;
+}
+
+#mostrarSenha .olho-escondido {
+    display: none;
+}
+
 .grade {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-button {
+.confirmar {
     background-color: #0C4F68;
     width: 343px;
     height: 59px;

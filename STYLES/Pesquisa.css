@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 
-
 /* CONFIG GERAL */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -116,16 +119,24 @@ header img{
 
 
 
-
+```css
 .app-container {
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
+    box-sizing: border-box;
 }
 
+/* =========================
+   PESQUISA
+========================= */
+
 .search-section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
@@ -144,18 +155,25 @@ header img{
     color: #ffffff;
     font-size: 1.1rem;
     pointer-events: none;
+    z-index: 1;
 }
 
 .search-input {
     width: 100%;
+    height: 52px;
     padding: 0.95rem 1rem 0.95rem 3.4rem;
+    box-sizing: border-box;
+
     background-color: #71b9e0;
     border: 2px solid #3da5dc;
     border-radius: 14px;
+
     color: #ffffff;
     font-size: 1rem;
     font-weight: 500;
+
     outline: none;
+
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     transition: all 0.2s ease;
 }
@@ -169,12 +187,19 @@ header img{
     box-shadow: 0 0 0 3px rgba(61, 165, 220, 0.3);
 }
 
+/* =========================
+   FILTROS
+========================= */
+
 .filter-pills {
+    width: 100%;
     display: flex;
     gap: 0.6rem;
     overflow-x: auto;
     padding-bottom: 0.2rem;
+
     scrollbar-width: none;
+    box-sizing: border-box;
 }
 
 .filter-pills::-webkit-scrollbar {
@@ -182,21 +207,34 @@ header img{
 }
 
 .pill {
+    flex-shrink: 0;
+
     background-color: #8cc6e4;
     color: #ffffff;
+
     border: none;
     padding: 0.55rem 1.25rem;
     border-radius: 50px;
+
     font-size: 0.9rem;
     font-weight: 600;
+
     cursor: pointer;
     white-space: nowrap;
+
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
 }
 
 .pill:hover {
     background-color: #78bcde;
+}
+
+.pill:active {
+    transform: scale(0.97);
 }
 
 .pill.active {
@@ -204,7 +242,12 @@ header img{
     color: #ffffff;
 }
 
+/* =========================
+   SEÇÕES
+========================= */
+
 .section-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -214,6 +257,7 @@ header img{
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
     color: #3b7694;
     font-size: 0.75rem;
     font-weight: 700;
@@ -224,6 +268,10 @@ header img{
     font-size: 0.85rem;
 }
 
+/* =========================
+   TAGS RECENTES
+========================= */
+
 .recent-tags {
     display: flex;
     flex-wrap: wrap;
@@ -233,12 +281,17 @@ header img{
 .recent-tag {
     background-color: #a3d4ec;
     color: #1a4f6d;
+
     padding: 0.5rem 1.15rem;
     border-radius: 50px;
+
     font-size: 0.875rem;
     font-weight: 600;
+
     cursor: pointer;
+
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
     transition: background-color 0.2s ease;
 }
 
@@ -246,21 +299,41 @@ header img{
     background-color: #92cce7;
 }
 
+/* =========================
+   LISTA DE LIVROS
+========================= */
+
 .books-list {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.95rem;
 }
 
+/* =========================
+   CARD DO LIVRO
+========================= */
+
 .book-card {
+    width: 100%;
+    min-width: 0;
+
     background-color: #ffffff;
     border-radius: 16px;
+
     padding: 1.15rem 1.25rem;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    box-sizing: border-box;
+
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .book-card:hover {
@@ -268,7 +341,13 @@ header img{
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* =========================
+   LADO ESQUERDO
+========================= */
+
 .book-left {
+    min-width: 0;
+
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -277,18 +356,30 @@ header img{
 .book-icon {
     width: 4.2rem;
     height: 4.2rem;
+
+    flex-shrink: 0;
+
     background-color: #88c1de;
     border-radius: 14px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     color: #ffffff;
     font-size: 1.5rem;
-    flex-shrink: 0;
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
+/* =========================
+   INFORMAÇÕES
+========================= */
+
 .book-info {
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -298,19 +389,34 @@ header img{
     font-size: 1rem;
     font-weight: 700;
     color: #1e293b;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .book-author {
     font-size: 0.85rem;
     font-weight: 500;
     color: #64748b;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
+/* =========================
+   METADADOS
+========================= */
 
 .book-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     gap: 0.85rem;
     margin-top: 0.25rem;
+
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -319,11 +425,12 @@ header img{
     display: flex;
     align-items: center;
     gap: 0.25rem;
+
     color: #334155;
 }
 
 .meta-rating i {
-    color: #facc15; 
+    color: #facc15;
     font-size: 0.85rem;
 }
 
@@ -331,6 +438,7 @@ header img{
     display: flex;
     align-items: center;
     gap: 0.25rem;
+
     color: #475569;
 }
 
@@ -340,20 +448,100 @@ header img{
 }
 
 .meta-xp {
-    color: #10b981; 
+    color: #10b981;
     font-weight: 700;
 }
 
+/* =========================
+   TAG DE GÊNERO
+========================= */
+
 .genre-tag {
+    flex-shrink: 0;
+
     background-color: #e0f2fe;
     color: #0284c7;
+
     padding: 0.4rem 1rem;
     border-radius: 50px;
+
     font-size: 0.8rem;
     font-weight: 700;
+
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+
     white-space: nowrap;
 }
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 600px) {
+
+    .app-container {
+        padding: 1.5rem 0.85rem;
+    }
+
+    .book-card {
+        padding: 1rem;
+    }
+
+    .book-left {
+        gap: 0.75rem;
+    }
+
+    .book-icon {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 1.3rem;
+    }
+
+    .genre-tag {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .book-card {
+        align-items: flex-start;
+    }
+
+    .genre-tag {
+        display: none;
+    }
+
+    .book-title {
+        white-space: normal;
+    }
+
+    .book-author {
+        white-space: normal;
+    }
+
+    .book-meta {
+        gap: 0.5rem;
+    }
+}
+```
+
+### O que eu corrigi
+
+* `margin: 0 auto` → centraliza o `.app-container`.
+* `box-sizing: border-box` → evita a barra de pesquisa/card ultrapassar a tela.
+* `width: 100%` nas seções principais → mantém tudo alinhado.
+* `flex-shrink: 0` nos elementos que não devem esmagar.
+* `min-width: 0` nas informações do livro → evita textos estourando o card.
+* Adicionei **responsividade para celular**.
+* O `.genre-tag` desaparece em telas muito pequenas para não apertar o conteúdo.
+* Títulos e autores longos agora não quebram o layout.
+* Mantive **todas as suas cores e o estilo original**.
+
+
+
+
 
 @media (max-width: 480px) {
     body {
@@ -380,9 +568,6 @@ header img{
         font-size: 0.75rem;
     }
 }
-
-
-
 
 
 /* RODAPÉ */

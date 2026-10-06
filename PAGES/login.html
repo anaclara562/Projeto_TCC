@@ -11,59 +11,69 @@
     </style>
 </head>
 <body>
-    <main>
-        <div class="info">
-            <a href="/PAGES/PaginaInicial.html">
-            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
-            </a>
-            <header>
-                <h1>Bem-vindo!</h1>
-                <h2>Continue sua jornada pela literatura brasileira e conquiste novos conhecimentos</h2>
-            </header>
+    <div class="luz-esquerda1"></div>
+
+    <div class="info">
+        <a href="/PAGES/PaginaInicial.html">
+        <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="200px">
+        </a>
+        <header>
+            <h1>Bem-vindo!</h1>
+            <h2>Continue sua jornada pela literatura brasileira e conquiste novos conhecimentos</h2>
+        </header>
+    </div>
+
+    <div class="luz-direita1"></div>
+
+    <form class="forms-login" action="/login" method="post" autocomplete="on">
+        <h3>Entre na sua conta</h3>
+        <h4>Continue explorando a literatura brasileira</h4>
+        <div class="campo1">
+            <label>Email</label>
+            <div class="input-wrapper">
+                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H2ZM10 9L2 4V14H18V4L10 9ZM10 7L18 2H2L10 7ZM2 4V2V14V4Z" fill="#8BC0D4"/>
+                </svg>
+                <input id="email" type="email" placeholder="seu@email.com">
+            </div>
         </div>
-
-        <form class="forms-login" action="/login" method="post" autocomplete="on">
-            <h3>Entre na sua conta</h3>
-            <h4>Continue explorando a literatura brasileira</h4>
-            <div class="campo1">
-                <label>Email</label>
-                <div class="input-wrapper">
-                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H2ZM10 9L2 4V14H18V4L10 9ZM10 7L18 2H2L10 7ZM2 4V2V14V4Z" fill="#8BC0D4"/>
+        <div class="campo2">
+            <label>Senha</label>
+            <div class="input-wrapper">
+                <svg class="cadeado" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 21C1.45 21 0.979167 20.8042 0.5875 20.4125C0.195833 20.0208 0 19.55 0 19V9C0 8.45 0.195833 7.97917 0.5875 7.5875C0.979167 7.19583 1.45 7 2 7H3V5C3 3.61667 3.4875 2.4375 4.4625 1.4625C5.4375 0.4875 6.61667 0 8 0C9.38333 0 10.5625 0.4875 11.5375 1.4625C12.5125 2.4375 13 3.61667 13 5V7H14C14.55 7 15.0208 7.19583 15.4125 7.5875C15.8042 7.97917 16 8.45 16 9V19C16 19.55 15.8042 20.0208 15.4125 20.4125C15.0208 20.8042 14.55 21 14 21H2ZM2 19H14V9H2V19ZM9.4125 15.4125C9.80417 15.0208 10 14.55 10 14C10 13.45 9.80417 12.9792 9.4125 12.5875C9.02083 12.1958 8.55 12 8 12C7.45 12 6.97917 12.1958 6.5875 12.5875C6.19583 12.9792 6 13.45 6 14C6 14.55 6.19583 15.0208 6.5875 15.4125C6.97917 15.8042 7.45 16 8 16C8.55 16 9.02083 15.8042 9.4125 15.4125ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#8BC0D4"/>
+                </svg>
+                <input id="senha" type="password" placeholder="••••••••">
+                <button type="button" id="mostrarSenha">
+                    <svg id="olhoFechado" class="olho-visivel" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                        <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"/>
                     </svg>
-                    <input id="email" type="email" placeholder="seu@email.com">
-                </div>
-            </div>
-            <div class="campo2">
-                <label>Senha</label>
-                <div class="input-wrapper">
-                    <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 21C1.45 21 0.979167 20.8042 0.5875 20.4125C0.195833 20.0208 0 19.55 0 19V9C0 8.45 0.195833 7.97917 0.5875 7.5875C0.979167 7.19583 1.45 7 2 7H3V5C3 3.61667 3.4875 2.4375 4.4625 1.4625C5.4375 0.4875 6.61667 0 8 0C9.38333 0 10.5625 0.4875 11.5375 1.4625C12.5125 2.4375 13 3.61667 13 5V7H14C14.55 7 15.0208 7.19583 15.4125 7.5875C15.8042 7.97917 16 8.45 16 9V19C16 19.55 15.8042 20.0208 15.4125 20.4125C15.0208 20.8042 14.55 21 14 21H2ZM2 19H14V9H2V19ZM9.4125 15.4125C9.80417 15.0208 10 14.55 10 14C10 13.45 9.80417 12.9792 9.4125 12.5875C9.02083 12.1958 8.55 12 8 12C7.45 12 6.97917 12.1958 6.5875 12.5875C6.19583 12.9792 6 13.45 6 14C6 14.55 6.19583 15.0208 6.5875 15.4125C6.97917 15.8042 7.45 16 8 16C8.55 16 9.02083 15.8042 9.4125 15.4125ZM5 7H11V5C11 4.16667 10.7083 3.45833 10.125 2.875C9.54167 2.29167 8.83333 2 8 2C7.16667 2 6.45833 2.29167 5.875 2.875C5.29167 3.45833 5 4.16667 5 5V7Z" fill="#8BC0D4"/>
+
+                    <svg id="olhoAberto" class="olho-escondido" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                        <path d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z"/>
                     </svg>
-                    <input id="senha" type="password" placeholder="••••••••">
-                </div>
+                </button>
             </div>
-            <br>
-            <div class="grade">
-                <button type="button" onclick="LogarConta()">Entrar</button>
-                <div class="quebra">
-                    <hr>
-                    <p>ou</p>
-                    <hr>
-                </div>
-                <div class="cadastro">
-                    <p>Não tem uma conta?
-                        <a href="cadastro.html">Cadastre-se gratuitamente</a>
-                    </p>
-                </div>
+        </div>
+        <br>
+        <div class="grade">
+            <button class="confirmar" type="button" onclick="LogarConta()">Entrar</button>
+            <div class="quebra">
+                <hr>
+                <p>ou</p>
+                <hr>
             </div>
-        </form>
-    </main>
-        
-
-
+            <div class="cadastro">
+                <p>Não tem uma conta?
+                    <a href="cadastro.html">Cadastre-se gratuitamente</a>
+                </p>
+            </div>
+        </div>
+    </form>
     
-
+    <div class="container-radial">
+        <div class="luz-esquerda2"></div>
+    </div>
 
     <footer>
         <div class="redes-sociais">
