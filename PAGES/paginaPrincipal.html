@@ -30,6 +30,11 @@
                 </svg>
                 <p>Perfil</p>
             </a>
+            <button class="sair" type="button" onclick="cadastrarConta()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#8BC0D4">
+                    <path d="M189.06-113.3q-31 0-53.38-22.38-22.38-22.38-22.38-53.38v-581.88q0-31.06 22.38-53.49 22.38-22.43 53.38-22.43h291.87v75.92H189.06v581.88h291.87v75.76H189.06ZM654.7-287.1l-53.45-54.14 100.72-100.88H358.41v-75.76h342.23L599.91-618.76l53.46-54.14 193.49 193.57L654.7-287.1Z"/>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -80,7 +85,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/Dom_Casmurro/Dom_Casmurro.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/Dom_Casmurro/Dom_Casmurro.html">
                         Continuar
                     </a>
                 </div>
@@ -117,7 +122,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/Iracema/Iracema.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/Iracema/Iracema.html">
                         Continuar
                     </a>
                 </div>
@@ -154,7 +159,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/O_Cortiço/O_Cortiço.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/O_Cortiço/O_Cortiço.html">
                         Continuar
                     </a>
                 </div>
@@ -193,7 +198,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/O_Guarani/O_Guarani.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/O_Guarani/O_Guarani.html">
                         Continuar
                     </a>
                 </div>
@@ -230,7 +235,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/Vidas_Secas/Vidas_Secas.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/Vidas_Secas/Vidas_Secas.html">
                         Continuar
                     </a>
                 </div>
@@ -247,7 +252,7 @@
                 <div class="card-body O_Primo">
                     <div class="title-row">
                         <div class="title-author">
-                            <h2>O Primo Brasílio</h2>
+                            <h2>O Primo Basílio</h2>
                             <p class="author">Eça de Queirós</p>
                         </div>
                         <span class="year">1971</span>
@@ -267,7 +272,7 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" href="/PAGES/Livros/O_Primo_Basílio/O_Primo_Basílio.html">
+                    <a class="btn-continue" id="btnFullscreen" href="/PAGES/Livros/O_Primo_Basílio/O_Primo_Basílio.html">
                         Continuar
                     </a>
                 </div>
@@ -387,7 +392,6 @@
             <button onclick="mostrarInfo('info1')">Introdução</button>
             <button onclick="mostrarInfo('info2')">Desenvolvimento</button>
             <button onclick="mostrarInfo('info3')">Proposta de Intervenção</button>
-            <button onclick="mostrarInfo('info4')">Conectivos</button>
         </div>
 
         <div class="quadro-info">
@@ -584,14 +588,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-
-
-
-            <div id="info4" class="conteudo">
-                <h3>Informação 4</h3>
-                <p>Texto final referente ao quarto botão.</p>
             </div>
         </div>
     </div>

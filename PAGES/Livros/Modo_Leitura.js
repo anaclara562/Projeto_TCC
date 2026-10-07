@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //Fonte Ajustavel
-
 function mudarFonte(valor) {
   const html = document.documentElement;
 
@@ -56,3 +55,36 @@ function mudarFonte(valor) {
     html.style.fontSize = novoTamanho + 'px';
   }
 }
+
+//Tela Cheia
+const fullscreen = document.getElementById("fullscreen");
+
+fullscreen.addEventListener("click", async () => {
+
+    try {
+
+        await document.documentElement.requestFullscreen();
+
+        // Esconde o botão
+        fullscreen.style.display = "none";
+
+    } catch (erro) {
+
+        console.log("Não foi possível entrar em tela cheia:", erro);
+
+    }
+
+});
+
+
+// Quando sair da tela cheia, inclusive apertando ESC
+document.addEventListener("fullscreenchange", () => {
+
+    if (!document.fullscreenElement) {
+
+        // Mostra o botão novamente
+        fullscreen.style.display = "flex";
+
+    }
+
+});

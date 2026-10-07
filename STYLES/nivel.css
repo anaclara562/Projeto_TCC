@@ -26,14 +26,14 @@ footer {
 
 /*HEADER*/
 header {
-    background-color: #FFFFFF;
-    width: 100%;
-    display: flex;
-    gap: 920px;
-    height: 80px;
-    z-index: 1000;
-    position: relative;
-    border-bottom: 6px solid #8BC0D4;
+  background-color: #FFFFFF;
+  width: 100%;
+  display: flex;
+  gap: 870px;
+  height: 80px;
+  z-index: 1000;
+  position: relative;
+  border-bottom: 6px solid #8BC0D4;
 }
 
 header img{
@@ -47,6 +47,15 @@ header img{
     gap: 40px;
     align-items: center; 
     justify-content: center;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  margin-top: 4px;
+  margin-left: 8px;
 }
 
 .pesquisa svg,
@@ -160,13 +169,6 @@ header img{
     font-family: 'Fredoka';
     font-weight: bold;
     font-size: 55px; 
-    margin-bottom: 6px; 
-}
-
-.subtitulo {
-    font-family: 'Jacques Francois', serif;
-    font-size: 20px;
-    color: #000;
     margin-bottom: 60px;
 }
 
@@ -379,6 +381,14 @@ header img{
     font-family: "Fredoka";
     font-weight: bold;
     font-size: 36px; 
+    color: #000; 
+}
+
+.subtitulo {
+    font-family: "Jacques Francois";
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 40px; 
     color: #000; 
 }
 

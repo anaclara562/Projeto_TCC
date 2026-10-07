@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Martel:wght@200;300;400;600;700;800;900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parastoo:wght@400..700&family=Rampart+One&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 /* CONFIG GERAL */
 ::-webkit-scrollbar { 
@@ -14,6 +14,90 @@ body {
   background-color: #E2F7FF;
   overflow-x: hidden;
 }
+
+header,
+section,
+div,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/*RADIAIS*/
+.luz-esquerda1 {
+  position: absolute;
+
+  top: 270px;
+  left: -100px;
+
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient( circle at 0% 50%,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-direita1 {
+  position: absolute;
+
+  top: 560px;
+  left: 900px;
+
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient( circle at right center,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.container-radial {
+  position: absolute;    
+  top: 625px;
+  left: 0;
+  width: 100%;
+  height: 680px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.luz-esquerda2 {
+  position: absolute;
+
+  top: 268px;
+  left: -100px;
+
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient(
+    circle at 0% 50%,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
 
 /* ==========================================================================
    1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
@@ -41,7 +125,7 @@ body {
   background-color: #FFFFFF;
   width: 100%;
   display: flex;
-  gap: 920px;
+  gap: 870px;
   height: 80px;
   z-index: 1000;
   position: relative;
@@ -59,6 +143,15 @@ body {
   gap: 40px;
   align-items: center; 
   justify-content: center;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  margin-top: 4px;
+  margin-left: 8px;
 }
 
 .perfil svg,
@@ -136,62 +229,74 @@ body {
 }
 
 /* ==========================================================================
-   3. CONTEÚDO PRINCIPAL (MAIN CONTAINER)
-   ========================================================================== */
+  3. CONTEÚDO PRINCIPAL (MAIN CONTAINER)
+========================================================================== */
 
 .main-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 }
 
 
 /* 3.1. BARRA DE PESQUISA E FILTROS */
 .search-section {
-    width: 100%;
-    background: linear-gradient( to bottom right, 
-        #0C4F68 0%, 
-        #189CCE 100%
-    );
-    padding: 40px 20px 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #FFF;
-    text-align: center;
+  width: 100%;
+  background: linear-gradient( to bottom right, 
+    #0C4F68 0%, 
+    #189CCE 100%
+  );
+  padding: 40px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+}
+
+.titulo-principal {
+  font-family: 'Fredoka';
+  font-weight: bold;
+  font-size: 55px; 
+  margin-bottom: 60px;
 }
 
 .search-bar-wrapper {
   position: relative;
-  width: 100%;
+  width: 70%;
+  background-color: #FFFFFF;
+  height: 50px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-radius: 30px;
+  border: 5px solid #8BC0D4;
+  padding: 0 23px;
 }
 
-.search-icon {
-  position: absolute;
-  left: 1.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 1.1rem;
-}
-
-.search-input {
+.search-bar-wrapper input {
+  border: none;
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  font-size: 1rem;
-  border: 2px solid transparent;
-  border-radius: var(--border-radius-md);
-  background-color: var(--bg-card);
-  box-shadow: var(--shadow-sm);
+  background-color: #FFFFFF;
+  font-size: 16px;
+  font-family: "Open Sans";
+  margin: auto;
   outline: none;
-  transition: var(--transition);
+
 }
 
-.search-input:focus {
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 4px rgba(139, 192, 212, 0.2);
+input::placeholder {
+  color: #8BC0D4;
+  font-size: 16px;
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: rgba(15, 150, 199, 0.7);
+  box-shadow: 0 0 0 4px rgba(15, 150, 199, 0.3);
 }
 
 /* Pílulas de Filtro */
@@ -200,6 +305,7 @@ body {
   gap: 0.6rem;
   overflow-x: auto;
   padding-bottom: 0.4rem;
+  margin-top: 30px;
 }
 
 .filter-pills::-webkit-scrollbar {
@@ -214,7 +320,7 @@ body {
 .pill {
   border: none;
   background-color: var(--bg-card);
-  color: var(--text-muted);
+  color: #8BC0D4;
   padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius-pill);
   font-size: 0.9rem;
@@ -226,60 +332,69 @@ body {
 }
 
 .pill:hover {
-  background-color: var(--accent-light);
-  color: var(--text-dark);
+  background-color: #8BC0D4;
+  color: #FFFFFF;
 }
 
 .pill.active {
-  background-color: var(--accent-blue);
+  background-color: #189CCE;
   color: #FFFFFF;
 }
 
 /* 3.2. SEÇÕES E TÍTULOS */
-.section-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.section-buscas {
+  margin-top: 51px;
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--text-dark);
-}
-
-.section-header i {
-  color: var(--accent-blue);
-  font-size: 1.1rem;
-}
-
-.section-header h2 {
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  font-weight: 700;
+.section-buscas h2 {
+  color: #000000;
+  font-size: 40px;
+  font-family: "Fredoka";
+  margin-top: 7px;
+  text-align: center;
+  z-index: 100;
+  margin-bottom: 20px;
 }
 
 /* Buscas Recentes */
 .recent-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 35px;
 }
 
 .recent-tag {
-  background-color: var(--tag-bg);
-  color: var(--text-dark);
-  padding: 0.4rem 0.9rem;
-  border-radius: var(--border-radius-sm);
-  font-size: 0.85rem;
+  background-color: rgba(139, 192, 212, 0.45);
+  color: rgba(12, 79, 104, 0.85);
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: "Open Sans";
   cursor: pointer;
+  font-weight: bold;
   transition: var(--transition);
 }
 
 .recent-tag:hover {
-  background-color: var(--accent-blue);
+  background-color: rgba(12, 79, 104, 0.85);
   color: #FFFFFF;
+}
+
+
+/* EM ALTA */
+.section-group {
+  margin-top: 97px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-group h2 {
+  color: #000000;
+  font-size: 40px;
+  font-family: "Fredoka";
+  text-align: center;
+  z-index: 100;
+  margin-bottom: 30px;
 }
 
 /* 3.3. LISTA DE LIVROS (CARDS) */
@@ -292,7 +407,8 @@ body {
 .book-card {
   background-color: var(--bg-card);
   border-radius: var(--border-radius-md);
-  padding: 1.2rem;
+  width: 869px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -303,20 +419,20 @@ body {
 
 .book-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(12, 79, 104, 0.332);
 }
 
 .book-left {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+  margin-left: 35px;
 }
 
 .book-icon {
-  width: 54px;
-  height: 54px;
-  background-color: var(--accent-light);
-  color: var(--accent-hover);
+  width: 68px;
+  height: 66px;
+  background-color: #8BC0D4;
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
@@ -329,16 +445,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  margin-left: 10px;
+  font-family: "Open Sans";
 }
 
 .book-title {
   font-size: 1.1rem;
+  font-family: "Open Sans";
   font-weight: 700;
 }
 
 .book-author {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
 }
 
 .book-meta {
@@ -350,57 +470,75 @@ body {
   color: var(--text-muted);
 }
 
-.meta-rating i {
-  color: var(--gold);
+.avaliacao {
+  font-weight: 700;
+  color: #000000;
+}
+
+.avaliacao span {
+  color: #F59E0B;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.meta-pages {
+  display: flex;
+  gap: 5px;
+  font-weight: 700;
+  color: #000000;
 }
 
 .meta-xp {
   background-color: rgba(139, 192, 212, 0.2);
-  color: #317894;
+  color: #0B8200;
   padding: 0.1rem 0.5rem;
   border-radius: var(--border-radius-sm);
   font-weight: 700;
 }
 
 .genre-tag {
-  background-color: var(--bg-primary);
-  color: var(--text-muted);
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius-pill);
   font-size: 0.8rem;
-  font-weight: 600;
 }
 
-/* ==========================================================================
-   4. RODAPÉ (FOOTER)
-   ========================================================================== */
+.book-right {
+  background-color: #c6eaf6;
+  color: rgba(12, 79, 104, 0.85);
+  padding: 0.4rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: "Open Sans";
+  cursor: pointer;
+  font-weight: bolder;
+  margin-right: 40px;
+}
+
+/* RODAPÉ */
 footer {
-  background-color: #FFFFFF;
-  padding: 1.5rem;
+  margin-top: 74px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.8rem;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.03);
-  margin-top: auto;
+  gap: 250px;
+  height: 70px;
+  background-color: #8BC0D4;
+}
+
+footer p {
+  font-family: "Open Sans";
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+footer a {
+  text-decoration: none;
 }
 
 .redes-sociais {
   display: flex;
-  gap: 1.2rem;
-}
-
-.redes-sociais img {
-  transition: var(--transition);
-}
-
-.redes-sociais img:hover {
-  transform: scale(1.15);
-}
-
-footer p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  gap: 200px;
 }
 
 /* ==========================================================================
