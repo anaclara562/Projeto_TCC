@@ -211,7 +211,7 @@ body.dark-mode .toggle-track {
 #fullscreen {
   position: fixed;
   bottom: 24px;
-  left: 24px;
+  left: 84px;
   z-index: 9999;
   background-color: #f6f8fa;
   display: flex;

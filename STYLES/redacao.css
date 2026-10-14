@@ -1,0 +1,740 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* CONFIG GERAL */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #E2F7FF;
+  overflow-x: hidden;
+}
+
+header,
+section,
+footer {
+    position: relative;
+    z-index: 100;
+}
+
+
+
+/*HEADER*/
+header {
+  background-color: #FFFFFF;
+  width: 100%;
+  display: flex;
+  gap: 655px;
+  height: 80px;
+  z-index: 1000;
+  position: relative;
+  border-bottom: 6px solid #8BC0D4;
+}
+
+header img{
+    margin-left: 50px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+}
+
+.abas {
+    display: flex;
+    gap: 40px;
+    align-items: center; 
+    justify-content: center;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  margin-top: 4px;
+  margin-left: 8px;
+}
+
+.pesquisa svg,
+.nivel svg,
+.perfil svg {
+    stroke: #8BC0D4;
+    fill: #8BC0D4;
+    padding: 8px;
+}
+
+.abas a {
+    padding-right: 25px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.abas a:hover {
+    color: #E8F9FF;
+    background-color: rgba(96, 170, 197, 0.584);
+}
+
+.abas a:hover svg {
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
+}
+
+.pesquisa {
+    width: 20px;
+    height: 48px;
+    align-items: center; 
+    justify-content: center;
+    background-color: #E8F9FF;
+    padding-left: 5px;
+    border-radius: 45px;
+}
+
+.pesquisa svg {
+    margin-top: 3px;
+}
+
+.nivel,
+.perfil {
+    min-width: auto;
+    height: 48px;
+    background-color: #E8F9FF;
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
+}
+
+.redacao {
+    min-width: auto;
+    height: 48px;
+    background-color: rgba(96, 170, 197, 0.584);
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
+}
+
+.redacao svg {
+    padding: 8px;
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
+}
+
+.redacao p {
+    color: #E8F9FF;
+}
+
+.nivel svg,
+.perfil svg,
+.redacao svg {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --card-bg: #ffffff;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+
+
+
+
+
+
+
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+
+/* HEADER */
+.redacao-section {
+  width: 100%;
+  background: linear-gradient( to bottom right, 
+    #0C4F68 0%, 
+    #189CCE 100%
+  );
+  padding: 40px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+}
+
+.titulo-principal {
+  font-family: 'Fredoka';
+  font-weight: bold;
+  font-size: 55px; 
+  margin-bottom: 40px;
+}
+
+.header-right {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.header-right span {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+/* STEPS NAVIGATION BAR (APENAS INDICADOR VISUAL) */
+#back-btn {
+    margin-top: 7px;
+    margin-right: 7px;
+}
+
+.steps-bar {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+.steps-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.steps-bar::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 4px;
+}
+
+.step-pill {
+  border: none;
+  background-color: #FFFFFF;
+  color: #8BC0D4;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-family: "Inter";
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.step-pill.active {
+  background-color: #189CCE;
+  color: #FFFFFF;
+}
+
+
+
+
+/* MAIN CONTAINER */
+
+
+.view-section {
+    display: none;
+    flex-direction: column;
+}
+
+.view-section.active {
+    display: flex;
+}
+
+#view-1 {
+    gap: 24px;
+}
+
+/* PAGE 1: TEMA */
+.titulo-secundario {
+    margin-top: 40px;
+    font-family: "Fredoka";
+    font-weight: bold;
+    font-size: 36px; 
+    color: #000; 
+    text-align: center;
+}
+
+.subtitulo {
+    font-family: "Jacques Francois";
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 30px; 
+    text-align: center;
+    color: #000; 
+}
+
+.theme-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.card-conteudo {
+    display: flex;
+    width: 100%;
+}
+
+.theme-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+}
+
+.card-header h3 {
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 6px;
+    color: #111827; 
+}
+
+.card-header p {
+    font-family: 'Inter', sans-serif; 
+    font-size: 14px; 
+    color: #9F9F9F; 
+    margin-top: 9px;
+}
+
+.theme-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: 10px;
+    gap: 8px;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Jacques Francois'; 
+    font-size: 14px; 
+    font-weight: 500;
+}
+
+.badge.medio { 
+    background: #fef3c7; 
+    color: #d97706; 
+}
+
+.badge.dificil { 
+    background: #fee2e2; 
+    color: #dc2626; 
+}
+
+.badge.facil { 
+    background: #d1fae5; 
+    color: #059669; 
+}
+
+.xp-text {
+    font-family: 'Inter', sans-serif; 
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFB800;
+}
+
+/* PAGE 2: ESCREVER */
+.topic-highlight-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.topic-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.topic-title-main {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.theme-meta-badges {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.xp-complete-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--success);
+}
+
+.chips-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    background: white;
+    border: 1px solid #bfdbfe;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.editor-container {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+textarea {
+    width: 100%;
+    height: 350px;
+    border: none;
+    resize: none;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-main);
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #94a3b8;
+}
+
+.editor-footer-stats {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    font-size: 12px;
+    color: #94a3b8;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
+
+.progress-section {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+}
+
+/* PAGE 3: RESULTADO */
+.score-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.score-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    border: 6px solid var(--primary);
+}
+
+.score-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.score-max {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.score-badge-status {
+    font-size: 16px;
+    font-weight: 700;
+    color: #d97706;
+}
+
+.xp-reward-pill {
+    background: #d1fae5;
+    color: #059669;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+}
+
+.comment-card, .criterion-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-header {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.comment-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.criterion-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.criterion-progress {
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.criterion-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.suggestion-box {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.suggestion-box.info { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.suggestion-box.warning { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.suggestion-box.tip { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+
+.actions-bottom {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-secondary {
+    flex: 1;
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RODAPÉ */
+footer {
+    margin-top: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    height: 70px;
+    background-color: #8BC0D4;
+}
+
+footer p {
+    font-family: "Open Sans";
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 200px;
+}

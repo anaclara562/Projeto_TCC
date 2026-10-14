@@ -30,18 +30,24 @@ header {
   background-color: #FFFFFF;
   width: 100%;
   display: flex;
-  gap: 870px;
+  gap: 655px;
   height: 80px;
   z-index: 1000;
   position: relative;
   border-bottom: 6px solid #8BC0D4;
-
 }
 
 header img{
-  margin-left: 50px;
-  margin-top: 9px;
-  margin-bottom: 5px;
+    margin-left: 50px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+}
+
+.abas {
+    display: flex;
+    gap: 40px;
+    align-items: center; 
+    justify-content: center;
 }
 
 button {
@@ -53,98 +59,87 @@ button {
   margin-left: 8px;
 }
 
-.abas {
-  display: flex;
-  gap: 40px;
-  align-items: center; 
-  justify-content: center;
-}
-
 .pesquisa svg,
-.nivel svg {
-  stroke: #8BC0D4;
-  fill: #8BC0D4;
-  padding: 8px;
+.nivel svg,
+.redacao svg {
+    stroke: #8BC0D4;
+    fill: #8BC0D4;
+    padding: 8px;
 }
 
 .abas a {
-  padding-right: 25px;
-  color: #000000;
-  text-decoration: none;
+    padding-right: 25px;
+    color: #000000;
+    text-decoration: none;
 }
 
 .abas a:hover {
-  color: #E8F9FF;
-  background-color: rgba(96, 170, 197, 0.584);
+    color: #E8F9FF;
+    background-color: rgba(96, 170, 197, 0.584);
 }
 
 .abas a:hover svg {
-  stroke: #E8F9FF;
-  fill: #E8F9FF;
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
 }
 
 .pesquisa {
-  width: 20px;
-  height: 48px;
-  align-items: center; 
-  justify-content: center;
-  background-color: #E8F9FF;
-  padding-left: 5px;
-  border-radius: 45px;
+    width: 20px;
+    height: 48px;
+    align-items: center; 
+    justify-content: center;
+    background-color: #E8F9FF;
+    padding-left: 5px;
+    border-radius: 45px;
 }
 
 .pesquisa svg {
-  margin-top: 3px;
+    margin-top: 3px;
 }
 
-.nivel {
-  min-width: auto;
-  height: 48px;
-  background-color: #E8F9FF;
-  border-radius: 45px;
-  align-items: center; 
-  justify-content: center;
-  display: flex;
-  gap: 5px;
-  font-size: 24px;
-  font-family: "Jacques Francois";
+.nivel,
+.redacao {
+    min-width: auto;
+    height: 48px;
+    background-color: #E8F9FF;
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
 }
 
 .perfil {
-  min-width: auto;
-  height: 48px;
-  background-color: rgba(96, 170, 197, 0.584);
-  border-radius: 45px;
-  align-items: center; 
-  justify-content: center;
-  display: flex;
-  gap: 5px;
-  font-size: 24px;
-  font-family: "Jacques Francois";
+    min-width: auto;
+    height: 48px;
+    background-color: rgba(96, 170, 197, 0.584);
+    border-radius: 45px;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    font-family: "Jacques Francois";
 }
 
 .perfil svg {
-  padding: 8px;
-  stroke: #E8F9FF;
-  fill: #E8F9FF;
+    padding: 8px;
+    stroke: #E8F9FF;
+    fill: #E8F9FF;
 }
 
 .perfil p {
-  color: #E8F9FF;
+    color: #E8F9FF;
 }
 
 .nivel svg,
-.perfil svg {
-  margin-left: 10px;
+.perfil svg,
+.redacao svg {
+    margin-left: 10px;
 }
 
-button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: #FFFFFF;
-  margin-top: 4px;
-}
 
 
 /* PRINCIPAL */

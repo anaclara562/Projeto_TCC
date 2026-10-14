@@ -125,7 +125,7 @@ footer {
   background-color: #FFFFFF;
   width: 100%;
   display: flex;
-  gap: 870px;
+  gap: 655px;
   height: 80px;
   z-index: 1000;
   position: relative;
@@ -155,7 +155,8 @@ button {
 }
 
 .perfil svg,
-.nivel svg {
+.nivel svg,
+.redacao svg {
   stroke: #8BC0D4;
   fill: #8BC0D4;
   padding: 8px;
@@ -191,20 +192,9 @@ button {
   margin-top: 3px;
 }
 
-.nivel {
-  min-width: auto;
-  height: 48px;
-  background-color: #E8F9FF;
-  border-radius: 45px;
-  align-items: center; 
-  justify-content: center;
-  display: flex;
-  gap: 5px;
-  font-size: 24px;
-  font-family: "Jacques Francois";
-}
-
-.perfil {
+.nivel,
+.perfil,
+.redacao {
   min-width: auto;
   height: 48px;
   background-color: #E8F9FF;
@@ -224,7 +214,8 @@ button {
 }
 
 .nivel svg,
-.perfil svg {
+.perfil svg,
+.redacao svg {
   margin-left: 10px;
 }
 

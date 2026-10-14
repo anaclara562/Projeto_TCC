@@ -29,7 +29,7 @@ header {
   background-color: #FFFFFF;
   width: 100%;
   display: flex;
-  gap: 870px;
+  gap: 655px;
   height: 80px;
   z-index: 1000;
   position: relative;
@@ -59,7 +59,8 @@ button {
 }
 
 .pesquisa svg,
-.perfil svg {
+.perfil svg,
+.redacao svg {
     stroke: #8BC0D4;
     fill: #8BC0D4;
     padding: 8px;
@@ -95,7 +96,8 @@ button {
     margin-top: 3px;
 }
 
-.perfil {
+.perfil,
+.redacao {
     min-width: auto;
     height: 48px;
     background-color: #E8F9FF;
@@ -130,14 +132,25 @@ button {
 }
 
 .nivel svg,
-.perfil svg {
+.perfil svg,
+.redacao svg {
     margin-left: 10px;
 }
 
-.nivel {
-    background-color: rgba(96, 170, 197, 0.58) !important;
-    color: #E8F9FF !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* PRINCIPAL */

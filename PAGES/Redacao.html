@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lêBrasil</title>
+    <link rel="stylesheet" href="/STYLES/redacao.css">
+    <link rel="icon" type="image/png" href="/IMAGES/Logos/Logo_Principal.png">
+</head>
+<body>
+    <header>
+        <a href="/PAGES/paginaPrincipal.html">
+            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
+        </a>
+        <div class="abas">
+            <a class="pesquisa" href="pesquisa.html">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+            </a>
+            <a class="redacao" href="Redacao.html">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                    <path d="M160-120v-170l527-526q12-12 27-18t30-6q16 0 30.5 6t25.5 18l56 56q12 11 18 25.5t6 30.5q0 15-6 30t-18 27L330-120H160Zm80-80h56l393-392-28-29-29-28-392 393v56Zm560-503-57-57 57 57Zm-139 82-29-28 57 57-28-29ZM560-120q74 0 137-37t63-103q0-36-19-62t-51-45l-59 59q23 10 36 22t13 26q0 23-36.5 41.5T560-200q-17 0-28.5 11.5T520-160q0 17 11.5 28.5T560-120ZM183-426l60-60q-20-8-31.5-16.5T200-520q0-12 18-24t76-37q88-38 117-69t29-70q0-55-44-87.5T280-840q-45 0-80.5 16T145-785q-11 13-9 29t15 26q13 11 29 9t27-13q14-14 31-20t42-6q41 0 60.5 12t19.5 28q0 14-17.5 25.5T262-654q-80 35-111 63.5T120-520q0 32 17 54.5t46 39.5Z"/>
+                </svg>
+                <p>Redação</p>
+            </a>
+            <a class="nivel" href="nivel.html">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8F9FF">
+                    <path d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm400 0q36-13 58-43.5t22-68.5v-40h-80v152Z"/>
+                </svg>
+                <p>Nível</p>
+            </a>
+            <a class="perfil" href="perfil.html">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8BC0D4">
+                    <path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                </svg>
+                <p>Perfil</p>
+            </a>
+            <button class="sair" type="button" onclick="sairSite()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#8BC0D4">
+                    <path d="M189.06-113.3q-31 0-53.38-22.38-22.38-22.38-22.38-53.38v-581.88q0-31.06 22.38-53.49 22.38-22.43 53.38-22.43h291.87v75.92H189.06v581.88h291.87v75.76H189.06ZM654.7-287.1l-53.45-54.14 100.72-100.88H358.41v-75.76h342.23L599.91-618.76l53.46-54.14 193.49 193.57L654.7-287.1Z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="redacao-section">
+            <h1 class="titulo-principal">Escrever Redação</h1>
+
+            <div class="steps-bar">
+                <svg id="back-btn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF" onclick="goBack()" style="display: none; cursor: pointer;">
+                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
+                </svg>
+                <div class="step-pill active" id="pill-step-1">
+                    <p>Tema</p> 
+                </div>
+                <div class="step-pill" id="pill-step-2">
+                    <p>Escrever</p> 
+                </div>
+                <div class="step-pill" id="pill-step-3">
+                    <p>Resultado</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ETAPA 1: TEMA -->
+        <section id="view-1" class="view-section active">
+            <div class="cabecalho-section">
+                <h2 class="titulo-secundario">Escolha o seu Tema</h2>
+                <p class="subtitulo">Escolha um tema para sua redação dissertativo-argumentativa. Após escrever, a IA irá corrigir e pontuar sua redação.</p>
+            </div>
+
+            <div class="theme-card" onclick="selectTheme('O papel da literatura na formação do cidadão brasileiro', 'Cultura', 'Médio', '+150 XP')">
+                <div class="card-conteudo">
+                    <div class="card-header">
+                        <h3>O papel da literatura na formação do cidadão brasileiro</h3>
+                        <p>Cultura</p>
+                    </div>
+                    <div class="theme-meta">
+                        <span class="badge medio">Médio</span>
+                        <span class="xp-text">★ + 150</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="selectTheme('Regionalismo versus universalismo na literatura brasileira', 'Literatura', 'Difícil', '+200 XP')">
+                <div class="card-conteudo">
+                    <div class="card-header">
+                        <div>
+                            <h3>Regionalismo versus universalismo na literatura brasileira</h3>
+                            <p>Literatura</p>
+                        </div>
+                    </div>
+                    <div class="theme-meta">
+                        <span class="badge dificil">Difícil</span>
+                        <span class="xp-text">★ + 200</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card" onclick="selectTheme('A influência das redes sociais na leitura entre jovens', 'Tecnologia', 'Fácil', '+100 XP')">
+                <div class="card-conteudo">
+                    <div class="card-header">
+                        <div>
+                            <h3>A influência das redes sociais na leitura entre jovens</h3>
+                            <p>Tecnologia</p>
+                        </div>
+                    </div>
+                    <div class="theme-meta">
+                        <span class="badge facil">Fácil</span>
+                        <span class="xp-text">★ + 100</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ETAPA 2: ESCREVER -->
+        <section id="view-2" class="view-section">
+            <div class="topic-highlight-card">
+                <div class="topic-header-row">
+                    <span>TEMA DA REDAÇÃO</span>
+                </div>
+                <div class="topic-title-main" id="selected-theme-title">O papel da literatura na formação do cidadão brasileiro</div>
+                <div class="theme-meta-badges">
+                    <span class="badge medio" id="theme-level-badge">Médio</span>
+                    <span class="xp-complete-text" id="theme-xp-badge">+150 XP ao completar</span>
+                </div>
+            </div>
+
+            <div class="chips-row">
+                <div class="chip">Introdução clara</div>
+                <div class="chip">Tese definida</div>
+                <div class="chip">2 argumentos</div>
+                <div class="chip">Proposta de intervenção</div>
+            </div>
+
+            <div class="editor-container">
+                <textarea id="essay-input" placeholder="Escreva sua redação sobre o tema selecionado...&#10;&#10;Dica: Comece com uma introdução que apresente o tema e sua tese. Use pelo menos 2 parágrafos de desenvolvimento e finalize com uma conclusão e proposta de intervenção." oninput="updateEditorStats()"></textarea>
+                <div class="editor-footer-stats">
+                    <span id="chars-count">0 chars</span>
+                    <span id="words-count-footer">0 palavras</span>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-info-row">
+                    <span>Progresso mínimo</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+                <div style="font-size: 13px; color: var(--text-muted);" id="words-left-text">Faltam 150 palavras para poder enviar</div>
+            </div>
+
+            <button class="submit-btn" onclick="submitEssay()">
+                Enviar para Correção da IA
+            </button>
+        </section>
+
+        <!-- ETAPA 3: RESULTADO -->
+        <section id="view-3" class="view-section">
+            <div class="score-card">
+                <div class="score-title">NOTA FINAL</div>
+                <div class="score-circle">
+                    <div class="score-value">95</div>
+                    <div class="score-max">/ 100</div>
+                </div>
+                <div class="score-badge-status">
+                    Excelente
+                </div>
+                <div class="xp-reward-pill">
+                    +143 XP ganhos
+                </div>
+            </div>
+
+            <div class="comment-card">
+                <div class="comment-header">
+                    <span>Comentário Geral da IA</span>
+                </div>
+                <div class="comment-body">
+                    Redação bem estruturada! Você demonstrou boa argumentação e coesão textual. Continue desenvolvendo seu repertório cultural.
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">CRITÉRIOS DE AVALIAÇÃO</h3>
+
+            <div class="criterion-card">
+                <div class="criterion-row">
+                    <span>Adequação Linguística</span>
+                    <span style="color: var(--primary);">19/20</span>
+                </div>
+                <div class="criterion-progress">
+                    <div class="criterion-fill" style="width: 95%;"></div>
+                </div>
+            </div>
+
+            <div class="criterion-card">
+                <div class="criterion-row">
+                    <span>Pertinência ao Tema</span>
+                    <span style="color: var(--primary);">20/20</span>
+                </div>
+                <div class="criterion-progress">
+                    <div class="criterion-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">SUGESTÕES DA IA</h3>
+
+            <div class="suggestion-box tip">
+                <div>
+                    <strong>Sugestão de Melhoria</strong><br>
+                    Substitua "Primeiramente" por conectivos mais sofisticados como "Inicialmente" ou "Em um primeiro plano".
+                </div>
+            </div>
+
+            <div class="suggestion-box warning">
+                <div>
+                    <strong>Atenção</strong><br>
+                    Evite expressões vagas como "muito importante". Prefira especificar: "fundamental para...", "imprescindível no contexto de...".
+                </div>
+            </div>
+
+            <div class="suggestion-box info">
+                <div>
+                    <strong>Ponto Positivo</strong><br>
+                    Parágrafo bem desenvolvido com ideia central clara.
+                </div>
+            </div>
+
+            <div class="actions-bottom">
+                <button class="btn-secondary" onclick="navigateToStep(1)">Nova Redação</button>
+                <button class="submit-btn" style="flex: 1;" onclick="navigateToStep(2)">Reescrever</button>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="redes-sociais">
+            <a class="Instagram" href="https://www.instagram.com/">
+                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
+            </a>
+            <a class="Facebook" href="https://www.facebook.com/?locale=pt_BR">
+                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
+            </a>
+            <a class="Email" href="https://mail.google.com/">
+                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
+            </a>
+        </div>
+        <p>© 2026 - lêBrasil</p>
+    </footer>
+    <script src="/SCRIPTS/script.js"></script>
+</body>
+</html>
