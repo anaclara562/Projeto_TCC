@@ -481,6 +481,7 @@ function mostrarInfo(idDesejado) {
 
 
 
+<<<<<<< HEAD:SCRIPTS/script.js
 
 const 
 let currentStep = 1;
@@ -590,3 +591,5 @@ function submitEssay() {
     }
     navigateToStep(3);
 }
+=======
+>>>>>>> 8f834a8 (vigesimo quarto commit):FRONTEND/SCRIPTS/script.js
