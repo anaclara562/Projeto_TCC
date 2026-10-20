@@ -482,7 +482,7 @@ function mostrarInfo(idDesejado) {
 
 
 
-
+const 
 let currentStep = 1;
 let chosenTheme = "O papel da literatura na formação do cidadão brasileiro";
 
