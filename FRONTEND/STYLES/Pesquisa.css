@@ -10,6 +10,13 @@
   padding: 0;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
 body {
   background-color: #E2F7FF;
   overflow-x: hidden;
@@ -290,47 +297,69 @@ input::placeholder {
   box-shadow: 0 0 0 4px rgba(15, 150, 199, 0.3);
 }
 
-/* Pílulas de Filtro */
+
+
+/* Pílulas de filtro */
 .filter-pills {
-  display: flex;
-  gap: 0.6rem;
-  overflow-x: auto;
-  padding-bottom: 0.4rem;
-  margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    padding: 4px 2px 8px;
+    margin-top: 19px;
 }
 
 .filter-pills::-webkit-scrollbar {
-  height: 4px;
+    height: 4px;
 }
 
 .filter-pills::-webkit-scrollbar-thumb {
-  background: var(--accent-blue);
-  border-radius: 4px;
+    background: var(--accent-blue);
+    border-radius: 4px;
 }
 
-.pill {
-  border: none;
-  background-color: var(--bg-card);
-  color: #8BC0D4;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--border-radius-pill);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+/* Estado padrão */
+.filter-pills .pill {
+    border: 1px solid #8BC0D4;
+    background-color: #E8F9FF;
+    color: #3B84A0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
-.pill:hover {
-  background-color: #8BC0D4;
-  color: #FFFFFF;
+/* Ao passar o mouse */
+.filter-pills .pill:hover {
+    background-color: #D1EFF9;
+    color: #3B84A0;
+    transform: translateY(-2px);
 }
 
-.pill.active {
-  background-color: #189CCE;
-  color: #FFFFFF;
+/* Filtro selecionado */
+.filter-pills .pill.active {
+    background-color: #3B84A0;
+    border-color: #3B84A0;
+    color: #FFFFFF;
+    font-weight: bold;
 }
+
+/* Oculta os elementos marcados como hidden */
+.book-card[hidden],
+#resultados-pesquisa[hidden],
+#sem-resultados[hidden],
+.section-buscas[hidden] {
+    display: none !important;
+}
+
 
 /* 3.2. SEÇÕES E TÍTULOS */
 .section-buscas {
@@ -372,9 +401,14 @@ input::placeholder {
 }
 
 
+
+[hidden] {
+    display: none !important;
+}
+
 /* EM ALTA */
 .section-group {
-  margin-top: 97px;
+  margin-top: 51px;
   display: flex;
   flex-direction: column;
 }
@@ -384,8 +418,9 @@ input::placeholder {
   font-size: 40px;
   font-family: "Fredoka";
   text-align: center;
+  margin-top: 7px;
   z-index: 100;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* 3.3. LISTA DE LIVROS (CARDS) */
@@ -503,6 +538,46 @@ input::placeholder {
   cursor: pointer;
   font-weight: bolder;
   margin-right: 40px;
+}
+
+/* Botão para acessar a leitura */
+.btn-ler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+    border: 2px solid #3B84A0;
+    border-radius: 25px;
+
+    background-color: #3B84A0;
+    color: #FFFFFF;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-ler:hover {
+    background-color: #E8F9FF;
+    color: #3B84A0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(59, 132, 160, 0.2);
+}
+
+.btn-ler:focus-visible {
+    outline: 3px solid #189CCE;
+    outline-offset: 3px;
 }
 
 /* RODAPÉ */

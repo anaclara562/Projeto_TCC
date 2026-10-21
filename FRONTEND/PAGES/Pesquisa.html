@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lêBrasil - Página Principal</title>
-    <link rel="stylesheet" href="/STYLES/Pesquisa.css">
-    <link rel="icon" type="image/png" href="/IMAGES/Logos/Logo_Principal.png">
+    <link rel="stylesheet" href="/FRONTEND/STYLES/Pesquisa.css">
+    <link rel="icon" type="image/png" href="/FRONTEND/IMAGES/Logos/Logo_Principal.png">
 </head>
 <body>
     <header class="cabecalho">
-        <a href="/PAGES/paginaPrincipal.html">
-            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
+        <a href="/FRONTEND/PAGES/paginaPrincipal.html">
+            <img id="Logo" src="/FRONTEND/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
         </a>
         <div class="abas">
             <a class="pesquisa" href="pesquisa.html">
@@ -56,11 +56,11 @@
             </div>
 
             <nav class="filter-pills" aria-label="Filtros de categorias">
-                <button class="pill active">Todos</button>
-                <button class="pill">Romantismo</button>
-                <button class="pill">Realismo</button>
-                <button class="pill">Naturalismo</button>
-                <button class="pill">Modernismo</button>
+                <button type="button" class="pill active" aria-pressed="true">Todos</button>
+                <button type="button" class="pill" aria-pressed="false">Naturalismo</button>
+                <button type="button" class="pill" aria-pressed="false">Realismo</button>
+                <button type="button" class="pill" aria-pressed="false">Indianismo</button>
+                <button type="button" class="pill" aria-pressed="false">Regionalismo</button>
             </nav>
         </section>
 
@@ -73,8 +73,8 @@
             </div>
         </section>
 
-        <section class="section-group">
-            <h2>EM ALTA</h2>
+        <section class="section-group" id="resultados-pesquisa" hidden>
+            <h2>Resultados da pesquisa</h2>
 
             <div class="books-list">
                 <article class="book-card">
@@ -93,14 +93,18 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
                                         <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
                                     </svg>
-                                    <p>256 pág.</p>
+                                    <p>252 pág.</p>
                                 </span>
-                                <span class="meta-xp">+ 120 XP</span>
+                                <span class="meta-xp">+ 921 XP</span>
                             </div>
                         </div>
                     </div>
                     <div class="book-right">
                         <span class="genre-tag">Realismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/Dom_Casmurro/Dom_Casmurro.html" class="btn-ler">
+                            Ler livro
+                        </a>
                     </div>
                 </article>
 
@@ -115,19 +119,23 @@
                             <h3 class="book-title">Iracema</h3>
                             <p class="book-author">José de Alencar</p>
                             <div class="book-meta">
-                                <div class="avaliacao"><span>★</span>4.6</div>
+                                <div class="avaliacao"><span>★</span>3.9</div>
                                 <span class="meta-pages">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
                                         <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
                                     </svg>
-                                    <p>148 pág.</p>
+                                    <p>112 pág.</p>
                                 </span>
-                                <span class="meta-xp">+ 100 XP</span>
+                                <span class="meta-xp">+ 561 XP</span>
                             </div>
                         </div>
                     </div>
                     <div class="book-right">
-                        <span class="genre-tag">Romantismo</span>
+                        <span class="genre-tag">Indianismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/Iracema/Iracema.html" class="btn-ler">
+                            Ler livro
+                        </a>
                     </div>
                 </article>
 
@@ -135,54 +143,147 @@
                     <div class="book-left">
                         <div class="book-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
-                                <path d="M235.78-76.01v-171.28q-35.97-16.65-65.35-44.43-29.38-27.78-50.45-63.69-21.07-35.9-32.52-77.89-11.45-41.98-11.45-86.64 0-159.97 113.14-262.01 113.13-102.04 290.91-102.04 177.77 0 290.85 102.04 113.08 102.04 113.08 262.01 0 44.66-11.45 86.64-11.45 41.99-32.52 77.89-21.07 35.91-50.45 63.69-29.38 27.78-65.35 44.43v171.28H235.78Zm75.91-75.92h57.93v-93.33h68.73v93.33h83.3v-93.33h68.73v93.33h57.93v-141.42q37.26-11.61 66.76-33.52 29.5-21.91 50.25-51.55 20.75-29.64 31.83-65.56 11.08-35.92 11.08-75.92 0-128.86-90.8-208.6-90.79-79.73-237.39-79.73-146.59 0-237.35 79.74-90.76 79.74-90.76 208.62 0 39.99 11 75.9 11 35.91 31.75 65.55t50.38 51.55q29.63 21.91 66.63 33.52v141.42Zm104.32-200.58h127.98L480-480.48l-63.99 127.97Zm-75.92-98.91q31.28 0 53.3-22.13 22.02-22.13 22.02-53.2 0-31.29-22.06-53.3-22.06-22.02-53.27-22.02-31.21 0-53.27 22.05-22.06 22.06-22.06 53.27 0 31.21 22.13 53.27 22.13 22.06 53.21 22.06Zm280 0q31.28 0 53.3-22.13 22.02-22.13 22.02-53.2 0-31.29-22.06-53.3-22.06-22.02-53.27-22.02-31.21 0-53.27 22.05-22.06 22.06-22.06 53.27 0 31.21 22.13 53.27 22.13 22.06 53.21 22.06ZM480-151.93Z"/>
+                                <path d="M481-83.67Q346.33-219.33 266.83-302.33T145.83-440q-41.5-54.67-53.66-93.55Q80-572.43 80-620.28 80-712 144-776t156-64q45 0 87 16.5t75 47.5l-62 216h120.67l-42 367 122.66-407H480l71-212q25-14 52.5-21t56.5-7q92 0 156 64t64 156q0 46.75-12 85.71-12 38.96-53.33 94.12-41.34 55.17-120.34 138-79 82.84-213.33 218.5Zm-63.67-158 28.34-251.66H311.33l73.67-257q-20-10-41.17-16.5-21.16-6.5-43.83-6.5-63.52 0-108.43 44.9-44.9 44.91-44.9 108.43 0 32.11 12.16 64.22 12.17 32.11 42.67 74.61t83 99.67q52.5 57.17 132.83 139.83Zm153.34-28Q701-398 757.17-478.67q56.16-80.66 56.16-141.58 0-63.08-44.9-108.08-44.91-45-108.43-45-13.89 0-27.78 2.5t-26.89 7.16l-32 97H690l-119.33 397Zm119.33-397ZM311.33-493.33Z"/>
                             </svg>
                         </div>
                         <div class="book-info">
-                            <h3 class="book-title">Memórias Póstumas de Brás Cubas</h3>
-                            <p class="book-author">Machado de Assis</p>
+                            <h3 class="book-title">O Primo Basílio</h3>
+                            <p class="book-author">Eça de Queirós</p>
                             <div class="book-meta">
-                                <div class="avaliacao"><span>★</span>4.9</div>
+                                <div class="avaliacao"><span>★</span>4.6</div>
                                 <span class="meta-pages">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
                                         <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
                                     </svg>
-                                    <p>272 pág.</p>
+                                    <p>400 pág.</p>
+                                </span>
+                                <span class="meta-xp">+ 1.000 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-right">
+                        <span class="genre-tag">Realismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/O_Primo_Basílio/O_Primo_Basílio.html" class="btn-ler">
+                            Ler livro
+                        </a>
+                    </div>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-left">
+                        <div class="book-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
+                                <path d="M200.67-160v-383.33L80-451.33 40-504l440-336 172 131.33V-800h106.67v172.67L920-504l-40.67 52.67L758.67-544v384h-232v-240h-93.34v240H200.67Zm66.66-66.67h99.34v-240h226.66v240H692v-367.66l-212-162-212.67 162v367.66Zm129.34-339.66h166.66q0-32.67-25-53.84-25-21.16-58.33-21.16t-58.33 21.06q-25 21.06-25 53.94Zm-30 339.66v-240h226.66v240-240H366.67v240Z"/>
+                            </svg>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">O Cortiço</h3>
+                            <p class="book-author">Aluísio Azevedo</p>
+                            <div class="book-meta">
+                                <div class="avaliacao"><span>★</span>4.3</div>
+                                <span class="meta-pages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
+                                        <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
+                                    </svg>
+                                    <p>256 pág.</p>
                                 </span>
                                 <span class="meta-xp">+ 130 XP</span>
                             </div>
                         </div>
                     </div>
                     <div class="book-right">
-                        <span class="genre-tag">Realismo</span>
+                        <span class="genre-tag">Naturalismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/O_Cortiço/O_Cortiço.html" class="btn-ler">
+                            Ler livro
+                        </a>
                     </div>
                 </article>
+
+                <article class="book-card">
+                    <div class="book-left">
+                        <div class="book-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
+                                <path d="M544.67-80H416v-152.67H120l179.33-262.66h-90L480-880l270.67 384.67h-89.34L840-232.67H544.67V-80ZM247.33-299.33h179.34-85.34 277.34H534h179.33-466Zm0 0h466L534-562h84.67L480-759.33 341.33-562h85.34L247.33-299.33Z"/>
+                            </svg>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">O Guarani</h3>
+                            <p class="book-author">José de Alencar</p>
+                            <div class="book-meta">
+                                <div class="avaliacao"><span>★</span>4.7</div>
+                                <span class="meta-pages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
+                                        <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
+                                    </svg>
+                                    <p>288 pág.</p>
+                                </span>
+                                <span class="meta-xp">+ 130 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-right">
+                        <span class="genre-tag">Indianismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/O_Guarani/O_Guarani.html" class="btn-ler">
+                            Ler livro
+                        </a>
+                    </div>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-left">
+                        <div class="book-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF">
+                                <path d="M446.67-766.67V-920h66.66v153.33h-66.66ZM706-659.33l-46.33-46.34 108-109.66 46.66 47.66L706-659.33Zm60.67 212.66v-66.66H920v66.66H766.67ZM446.67-40v-153.33h66.66V-40h-66.66ZM253.33-660.67l-108-107 47-46.66L300.67-706l-47.34 45.33ZM768-145.33l-108.33-109L705-299.67l110 106-47 48.34ZM40-446.67v-66.66h153.33v66.66H40Zm153 301.34-47.33-47L253-299.67l24.33 22.34L301.67-254 193-145.33ZM310-310q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Zm292.67-47.33Q653.33-408 653.33-480t-50.66-122.67Q552-653.33 480-653.33t-122.67 50.66Q306.67-552 306.67-480t50.66 122.67Q408-306.67 480-306.67t122.67-50.66ZM480-480Z"/>
+                            </svg>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Vidas Secas</h3>
+                            <p class="book-author">Graciliano Ramos</p>
+                            <div class="book-meta">
+                                <div class="avaliacao"><span>★</span>4.5</div>
+                                <span class="meta-pages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
+                                        <path d="M264-279.15q47.35 0 92.17 12 44.83 12 87.83 30v-454q-42-22-87-33t-93.22-11q-36.94 0-73.36 6.5T120-707.15v452q35-13 70.81-18.5 35.82-5.5 73.19-5.5Zm252 42q43-20 87.83-31 44.82-11 92.17-11 37 0 73.5 4.5t70.5 19.5v-452q-35-13-71.19-20.5t-72.89-7.5q-47.92 0-92.92 11t-87 33v454ZM480.72-126.3q-49.24-31.76-103.24-52.72-54-20.96-113.48-20.96-37.18 0-74.4 7.62-37.21 7.62-71.73 22.14-27.35 11.68-52.32-3.69-24.96-15.36-24.96-44.81v-502.76q0-17.35 8.81-32.02 8.82-14.68 24.45-22.02 45.48-19.76 92.75-29.4 47.28-9.65 96.66-9.65 57.45 0 112.18 13.5 54.73 13.5 104.56 41.22 51-26.48 105.31-40.6 54.3-14.12 111.43-14.12 49.38 0 96.66 9.65 47.27 9.64 92.75 29.4 15.63 7.34 24.95 22.02 9.31 14.67 9.31 32.02v506.35q0 27.63-18.84 43.23-18.85 15.6-39.44 5.68-39.52-17.52-81.21-25.64-41.69-8.12-84.92-8.12-59 0-112.64 21.08-53.64 21.07-102.64 52.6ZM283-486.15Z"/>
+                                    </svg>
+                                    <p>144 pág.</p>
+                                </span>
+                                <span class="meta-xp">+ 130 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-right">
+                        <span class="genre-tag">Regionalismo</span>
+
+                        <a href="/FRONTEND/PAGES/Livros/Vidas_Secas/Vidas_Secas.html" class="btn-ler">
+                            Ler livro
+                        </a>
+                    </div>
+                </article>
+
+                <p id="sem-resultados" hidden>
+                    Nenhum livro encontrado.
+                </p>
             </div>
         </section>
     </main>
 
-    <div class="luz-esquerda1"></div>
-
-    <div class="luz-direita1"></div>
-
-    <div class="container-radial">
-        <div class="luz-esquerda2"></div>
-    </div>
-
     <footer>
         <div class="redes-sociais">
             <a class="Instagram" href="https://www.instagram.com/">
-                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
             </a>
             <a class="Facebook" href="https://www.facebook.com/?locale=pt_BR">
-                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
             </a>
             <a class="Email" href="https://mail.google.com/">
-                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
             </a>
         </div>
         <p>© 2026 - lêBrasil</p>
     </footer>
-<script src="/SCRIPTS/script.js"></script>
+<script src="/FRONTEND/SCRIPTS/script.js"></script>
 </body>
 </html>

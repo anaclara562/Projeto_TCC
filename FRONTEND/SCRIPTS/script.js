@@ -391,31 +391,48 @@ document.addEventListener("DOMContentLoaded", function () {
   ===================================================== */
 
 function mostrarInfo(idDesejado) {
-
   const quadro = document.querySelector(".quadro-info");
   const conteudoSelecionado = document.getElementById(idDesejado);
+  const botoes = document.querySelectorAll(".botoes-container button");
 
   if (!quadro || !conteudoSelecionado) {
       return;
   }
 
-  // Se o conteúdo já estiver aberto, fecha.
-  if (conteudoSelecionado.classList.contains("ativo")) {
+  // Localiza o botão correspondente ao conteúdo selecionado
+  const botaoSelecionado = document.querySelector(
+      `.botoes-container button[onclick*="${idDesejado}"]`
+  );
 
+  // Se o conteúdo já estiver aberto, fecha
+  if (conteudoSelecionado.classList.contains("ativo")) {
       conteudoSelecionado.classList.remove("ativo");
       quadro.classList.remove("ativo");
+
+      if (botaoSelecionado) {
+          botaoSelecionado.classList.remove("ativo");
+      }
 
       return;
   }
 
-  // Fecha os outros conteúdos.
+  // Fecha os outros conteúdos e remove o destaque dos botões
   document.querySelectorAll(".conteudo").forEach(function (conteudo) {
       conteudo.classList.remove("ativo");
   });
 
-  // Abre o conteúdo escolhido.
+  botoes.forEach(function (botao) {
+      botao.classList.remove("ativo");
+  });
+
+  // Abre o conteúdo escolhido
   conteudoSelecionado.classList.add("ativo");
   quadro.classList.add("ativo");
+
+  // Destaca o botão selecionado
+  if (botaoSelecionado) {
+      botaoSelecionado.classList.add("ativo");
+  }
 }
 
 
@@ -425,6 +442,127 @@ function mostrarInfo(idDesejado) {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const campoPesquisa = document.querySelector(".search-input");
+    const secaoBuscas = document.querySelector(".section-buscas");
+    const resultados = document.querySelector("#resultados-pesquisa");
+    const mensagemVazia = document.querySelector("#sem-resultados");
+    const botoesFiltro = document.querySelectorAll(".filter-pills .pill");
+
+    if (!campoPesquisa || !resultados) {
+        console.warn("Elementos da pesquisa não encontrados.");
+        return;
+    }
+
+    const cards = resultados.querySelectorAll(".book-card");
+
+    // Nenhum filtro começa selecionado
+    let filtroAtivo = null;
+
+    function atualizarResultados() {
+        const pesquisa = campoPesquisa.value
+            .trim()
+            .toLocaleLowerCase("pt-BR");
+
+        let encontrados = 0;
+
+        cards.forEach(card => {
+            const titulo = card.querySelector(".book-title")
+                ?.textContent.trim().toLocaleLowerCase("pt-BR") || "";
+
+            const autor = card.querySelector(".book-author")
+                ?.textContent.trim().toLocaleLowerCase("pt-BR") || "";
+
+            const genero = card.querySelector(".genre-tag")
+                ?.textContent.trim().toLocaleLowerCase("pt-BR") || "";
+
+            // Pesquisa pelo título, autor ou gênero
+            const correspondePesquisa =
+                titulo.includes(pesquisa) ||
+                autor.includes(pesquisa) ||
+                genero.includes(pesquisa);
+
+            // Verifica se o livro pertence ao gênero selecionado
+            const correspondeFiltro =
+                filtroAtivo === null ||
+                filtroAtivo.toLocaleLowerCase("pt-BR") === "todos" ||
+                genero === filtroAtivo.toLocaleLowerCase("pt-BR");
+
+            const corresponde =
+                correspondePesquisa && correspondeFiltro;
+
+            card.hidden = !corresponde;
+
+            if (corresponde) {
+                encontrados++;
+            }
+        });
+
+        // Mostra resultados se houver pesquisa ou filtro ativo
+        const mostrarResultados =
+            pesquisa !== "" || filtroAtivo !== null;
+
+        resultados.hidden = !mostrarResultados;
+
+        // Mostra as buscas recentes quando não há pesquisa nem filtro
+        if (secaoBuscas) {
+            secaoBuscas.hidden = mostrarResultados;
+        }
+
+        // Exibe mensagem se nenhum livro for encontrado
+        if (mensagemVazia) {
+            mensagemVazia.hidden =
+                !mostrarResultados || encontrados > 0;
+        }
+    }
+
+    // Pesquisa enquanto o usuário digita
+    campoPesquisa.addEventListener("input", atualizarResultados);
+
+    // Clique nos filtros
+    botoesFiltro.forEach(botao => {
+        botao.addEventListener("click", () => {
+            const filtroSelecionado = botao.textContent.trim();
+
+            // Clicou novamente no mesmo filtro: desativa
+            if (botao.classList.contains("active")) {
+                filtroAtivo = null;
+
+                botoesFiltro.forEach(outroBotao => {
+                    outroBotao.classList.remove("active");
+                    outroBotao.setAttribute("aria-pressed", "false");
+                });
+
+                atualizarResultados();
+                return;
+            }
+
+            // Ativa o filtro clicado e desativa os demais
+            filtroAtivo = filtroSelecionado;
+
+            botoesFiltro.forEach(outroBotao => {
+                const ativo = outroBotao === botao;
+
+                outroBotao.classList.toggle("active", ativo);
+                outroBotao.setAttribute(
+                    "aria-pressed",
+                    String(ativo)
+                );
+            });
+
+            atualizarResultados();
+        });
+    });
+
+    // Estado inicial dos botões
+    botoesFiltro.forEach(botao => {
+        botao.classList.remove("active");
+        botao.setAttribute("aria-pressed", "false");
+    });
+
+    // Estado inicial da página
+    atualizarResultados();
+});
 
 
 
@@ -481,9 +619,15 @@ function mostrarInfo(idDesejado) {
 
 
 
-<<<<<<< HEAD:SCRIPTS/script.js
 
-const 
+
+
+
+
+
+
+
+
 let currentStep = 1;
 let chosenTheme = "O papel da literatura na formação do cidadão brasileiro";
 
@@ -591,5 +735,3 @@ function submitEssay() {
     }
     navigateToStep(3);
 }
-=======
->>>>>>> 8f834a8 (vigesimo quarto commit):FRONTEND/SCRIPTS/script.js

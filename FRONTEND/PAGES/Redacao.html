@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lêBrasil</title>
-    <link rel="stylesheet" href="/STYLES/redacao.css">
-    <link rel="icon" type="image/png" href="/IMAGES/Logos/Logo_Principal.png">
+    <link rel="stylesheet" href="/FRONTEND/STYLES/redacao.css">
+    <link rel="icon" type="image/png" href="/FRONTEND/IMAGES/Logos/Logo_Principal.png">
 </head>
 <body>
     <header>
-        <a href="/PAGES/paginaPrincipal.html">
-            <img id="Logo" src="/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
+        <a href="/FRONTEND/PAGES/paginaPrincipal.html">
+            <img id="Logo" src="/FRONTEND/IMAGES/Logos/Logo_Principal.png" alt="Logo do Site" width="70px">
         </a>
         <div class="abas">
             <a class="pesquisa" href="pesquisa.html">
@@ -52,13 +52,13 @@
                 <svg id="back-btn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF" onclick="goBack()" style="display: none; cursor: pointer;">
                     <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
                 </svg>
-                <div class="step-pill active" id="pill-step-1">
+                <div class="step-pill active" id="pill-step-1" disabled>
                     <p>Tema</p> 
                 </div>
-                <div class="step-pill" id="pill-step-2">
+                <div class="step-pill" id="pill-step-2" disabled>
                     <p>Escrever</p> 
                 </div>
-                <div class="step-pill" id="pill-step-3">
+                <div class="step-pill" id="pill-step-3" disabled>
                     <p>Resultado</p>
                 </div>
             </div>
@@ -110,6 +110,405 @@
                     <div class="theme-meta">
                         <span class="badge facil">Fácil</span>
                         <span class="xp-text">★ + 100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="macetes">
+                <div class="posicao_site-macete">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#3890B1">
+                        <path d="M288-288h288v-72H288v72Zm0-156h384v-72H288v72Zm0-156h384v-72H288v72Zm-72 456q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h528q29.7 0 50.85 21.15Q816-773.7 816-744v528q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm0-72h528v-528H216v528Zm0-528v528-528Z"/>
+                    </svg>
+                    <p>Dicas Exclusivas</p>
+                </div>
+                <h1>Macetes de Redação</h1>
+                <h2>Aprenda técnicas essenciais e aprimore cada vez mais sua escrita</h2>
+            </div>
+            <div class="macetes-frame">
+
+                <div class="botoes-container">
+                    <button onclick="mostrarInfo('info1')">Introdução</button>
+                    <button onclick="mostrarInfo('info2')">Desenvolvimento</button>
+                    <button onclick="mostrarInfo('info3')">Proposta de Intervenção</button>
+                </div>
+
+                <div class="quadro-info">
+
+                    <div id="info1" class="conteudo">
+                        <h2>Proposta de Intervenção</h2>
+                        <p>
+                            A prova de redação do <strong>ENEM</strong> exige a elaboração
+                            de uma proposta de intervenção para o problema apresentado
+                            no tema, respeitando os direitos humanos.
+                        </p>
+                        <p>
+                            A proposta deve apresentar cinco elementos fundamentais:
+                            agente, ação, modo ou meio, efeito e detalhamento.
+                        </p>
+
+                        <div class="dica-redacao">
+                            <h4>Dica importante</h4>
+                            <p>
+                                Construa uma solução completa, viável e relacionada à
+                                discussão desenvolvida em sua redação. A proposta deve
+                                respeitar os direitos humanos e apresentar informações
+                                suficientes para que a intervenção seja compreendida.
+                            </p>
+                        </div>
+
+                        <h3>Os cinco elementos da proposta</h3>
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>01. Agente</h4>
+                                <p>
+                                    <strong>Quem?</strong>
+                                    Identifique quem será responsável por realizar
+                                    a intervenção.
+                                </p>
+                                <p>
+                                    Exemplos: Governo Federal, escolas, Ministério da Educação
+                                    ou organizações sociais.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Ação</h4>
+                                <p>
+                                    <strong>O quê?</strong>
+                                    Apresente a medida que deverá ser realizada para
+                                    enfrentar o problema discutido.
+                                </p>
+                                <p>
+                                    Exemplos: promover campanhas, ampliar projetos
+                                    educacionais ou desenvolver programas sociais.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>03. Modo ou meio</h4>
+                                <p>
+                                    <strong>Como?</strong>
+                                    Explique de que maneira a ação será executada.
+                                </p>
+                                <p>
+                                    Exemplos: por meio de palestras, campanhas informativas,
+                                    plataformas digitais ou parcerias institucionais.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>04. Efeito</h4>
+                                <p>
+                                    <strong>Para quê?</strong>
+                                    Indique o resultado esperado com a realização
+                                    da intervenção.
+                                </p>
+                                <p>
+                                    Exemplos: conscientizar a população, reduzir desigualdades
+                                    ou ampliar o acesso à educação.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>05. Detalhamento</h4>
+                                <p>
+                                    <strong>Que informação adicional?</strong>
+                                    Acrescente uma explicação que torne um dos elementos
+                                    da proposta mais específico.
+                                </p>
+                                <p>
+                                    Exemplo: esclarecer o público-alvo de uma campanha,
+                                    explicar a responsabilidade do agente ou especificar
+                                    como uma ação será desenvolvida.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>Exemplo de proposta de intervenção completa</h3>
+                        <div class="dica-redacao">
+                            <p>
+                                <strong>Agente:</strong> o Ministério da Educação
+                            </p>
+                            <p>
+                                <strong>Ação:</strong> deve promover campanhas de incentivo
+                                à leitura entre os jovens
+                            </p>
+                            <p>
+                                <strong>Modo ou meio:</strong> por meio de projetos
+                                de leitura nas escolas públicas
+                            </p>
+                            <p>
+                                <strong>Efeito:</strong> a fim de ampliar o hábito da leitura
+                                e o acesso à literatura brasileira
+                            </p>
+                            <p>
+                                <strong>Detalhamento:</strong> com atividades semanais
+                                de interpretação e discussão de obras literárias adequadas
+                                às diferentes etapas de ensino.
+                            </p>
+                        </div>
+
+                        <h3>Estrutura para montar sua proposta</h3>
+                        <div class="elemento-macete">
+                            <p>
+                                <strong>Modelo:</strong>
+                            </p>
+                            <p>
+                                Portanto, <strong>[agente]</strong> deve
+                                <strong>[ação]</strong>, por meio de
+                                <strong>[modo ou meio]</strong>, a fim de
+                                <strong>[efeito]</strong>. Essa medida deverá incluir
+                                <strong>[detalhamento]</strong>.
+                            </p>
+                            <p>
+                                <strong>Atenção:</strong> adapte a estrutura ao tema
+                                da redação e desenvolva uma proposta coerente com
+                                os argumentos apresentados.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div id="info2" class="conteudo">
+                        <h2>Desenvolvimento</h2>
+                        <p>
+                            Como o próprio nome sugere, é nesses parágrafos que iremos dar
+                            sequência ao que foi exposto na introdução. O desenvolvimento tem
+                            como objetivo argumentar e defender as teses.
+                        </p>
+
+                        <h3>Possibilidades de desenvolvimento</h3>
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>01. Causa 1 e causa 2</h4>
+                                <p>
+                                    D1: desenvolva a primeira causa.
+                                    D2: desenvolva a segunda causa.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Causa e consequência</h4>
+                                <p>
+                                    D1: desenvolva a causa.
+                                    D2: desenvolva a consequência.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>03. Teses sem causa ou consequência explícita</h4>
+                                <p>
+                                    Essa estrutura pode ser utilizada em redações da VUNESP.
+                                    Nesse caso, deixe cada tese clara no início do respectivo
+                                    parágrafo de desenvolvimento.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3>Esquema 1: Teses — causa 1 e causa 2</h3>
+                        <p>
+                            Nesse modelo, cada parágrafo de desenvolvimento apresenta
+                            uma das causas defendidas na introdução.
+                        </p>
+
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>01. Tópico-frasal</h4>
+                                <p>
+                                    É a frase que vem no início de cada parágrafo de
+                                    desenvolvimento. O tópico-frasal é uma sinopse do que será
+                                    discutido ao longo do parágrafo, ou seja, um resumo.
+                                    <strong>Ele está lá para organizar o pensamento de quem lê.</strong>
+                                    Quando as teses são causas, são elas que devem aparecer
+                                    no tópico-frasal.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Explicação</h4>
+                                <p>
+                                    É aqui que precisamos provar ao leitor o motivo de termos
+                                    escolhido aquela tese. O modo mais simples de iniciar essa
+                                    parte é com elementos de coesão causais.
+                                </p>
+                                <p>
+                                    Exemplos: “Isso ocorre porque...”, “Isso porque...”,
+                                    “Isso acontece graças a...” e “Isso acontece pois...”.
+                                </p>
+                                <p>
+                                    Caso queira, é aqui que o pensador ou a pensadora pode
+                                    aparecer, já que a ideia poderá ser desdobrada em poucas
+                                    palavras.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>03. Exemplo</h4>
+                                <p>
+                                    O exemplo não é obrigatório, mas pode ser fundamental
+                                    para trazer concretude ao argumento. Pense que é preciso
+                                    fazer o leitor visualizar o que você está querendo dizer,
+                                    utilizando algo que apareça no cotidiano.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>04. Consequência</h4>
+                                <p>
+                                    A consequência no final do parágrafo de desenvolvimento
+                                    é essencial para fechar a argumentação, pois transmite
+                                    a noção de discussão encerrada.
+                                </p>
+                                <p>
+                                    Depois de apresentar a tese, explicar por que determinado
+                                    fator contribui para o problema e expor um exemplo,
+                                    apresente uma consequência que conclua o raciocínio.
+                                    Use conectivos que expressem essa ideia.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>05. O pulo do gato: consequência da consequência</h4>
+                                <p>
+                                    Para deixar o texto sem lacunas, opte por detalhar duas
+                                    consequências. Não se trata de duas ideias diferentes,
+                                    mas de uma complementando a outra. Use conectivos
+                                    consecutivos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="dica-redacao">
+                            <h4>Como usar a referência externa?</h4>
+                            <p>
+                                Não é uma regra, mas os textos de nota máxima costumam utilizar
+                                ideias de pensadores e pensadoras por meio de paráfrases.
+                                Ou seja, o conceito aparece com as suas palavras e, por isso,
+                                já é uma interpretação.
+                            </p>
+                        </div>
+
+                        <h3>Esquema 2: Teses — causa e consequência</h3>
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>Desenvolvimento 1: causa</h4>
+                                <p>
+                                    Use o mesmo esquema apresentado anteriormente para
+                                    desenvolver argumentos de causa.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>Desenvolvimento 2: consequência</h4>
+                                <p>
+                                    Desenvolva a consequência relacionada à causa apresentada
+                                    na introdução.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>01. Tópico-frasal</h4>
+                                <p>
+                                    Explique qual é a consequência atrelada à causa exposta
+                                    na introdução. Deve haver uma frase que resuma o que será
+                                    desenvolvido no restante do parágrafo.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Explicação da consequência</h4>
+                                <p>
+                                    Desdobre os motivos para que essa consequência aconteça.
+                                    Pergunte-se: “Por que isso acontece?”.
+                                </p>
+                                <p>
+                                    Use conectivos como “Isso ocorre porque...”,
+                                    “Nesse sentido...” e “Nesse aspecto...”.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>03. Consequência da consequência</h4>
+                                <p>
+                                    A tese está no tópico-frasal e é ela que deve ser explicada.
+                                    Apresente os outros desdobramentos a partir da ideia
+                                    principal do parágrafo.
+                                </p>
+                                <p>
+                                    Use expressões como “Sendo assim...” e “Desse modo...”.
+                                </p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>04. Exemplo</h4>
+                                <p>
+                                    Traga um ponto de concretude. Pode ser algo do mundo real
+                                    ou ficcional, desde que seja realista. Não se esqueça de
+                                    terminar com uma interpretação do exemplo que apoie o tema.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="dica-redacao">
+                            <h4>Como usar a referência externa?</h4>
+                            <p>
+                                Não é uma regra, mas os textos de nota máxima costumam utilizar
+                                ideias de pensadores e pensadoras por meio de paráfrases.
+                                O conceito aparece com as suas palavras e, por isso,
+                                já é uma interpretação.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div id="info3" class="conteudo">
+                        <h2>Proposta de Intervenção</h2>
+                        <p>
+                            A prova de redação do <strong>ENEM</strong>
+                            exige a elaboração de uma proposta de intervenção
+                            para o problema apresentado no tema, respeitando
+                            os direitos humanos.
+                        </p>
+                        <p>
+                            A proposta deve apresentar cinco elementos:
+                            agente, ação, modo ou meio, efeito e detalhamento.
+                        </p>
+                        <div class="dica-redacao">
+                            <strong>Dica importante:</strong>
+                            construa uma solução completa, viável e relacionada
+                            à discussão desenvolvida em sua redação.
+                        </div>
+
+                        <h3>Os cinco elementos da proposta</h3>
+                        <div class="elementos-macetes">
+                            <div class="elemento-macete">
+                                <h4>01. Agente</h4>
+                                <p>Quem será responsável por realizar a ação?</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Ação</h4>
+                                <p>Qual medida deverá ser realizada?</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>03. Modo ou meio</h4>
+                                <p>De que maneira a ação será executada?</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>04. Efeito</h4>
+                                <p>Qual resultado se pretende alcançar?</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>05. Detalhamento</h4>
+                                <p>Que informação adicional explica melhor
+                                um dos elementos da proposta?</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -254,17 +653,17 @@
     <footer>
         <div class="redes-sociais">
             <a class="Instagram" href="https://www.instagram.com/">
-                <img src="/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/instagram.png" alt="Logo do Aplicativo Instagram" width="30px" height="30px">
             </a>
             <a class="Facebook" href="https://www.facebook.com/?locale=pt_BR">
-                <img src="/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/facebook.png" alt="Logo do Aplicativo Facebook" width="30px" height="30px">
             </a>
             <a class="Email" href="https://mail.google.com/">
-                <img src="/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
+                <img src="/FRONTEND/IMAGES/images_social-media/google.png" alt="Logo do Aplicativo Google" width="30px" height="30px">
             </a>
         </div>
         <p>© 2026 - lêBrasil</p>
     </footer>
-    <script src="/SCRIPTS/script.js"></script>
+<script src="/FRONTEND/SCRIPTS/script.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ header {
   background-color: #FFFFFF;
   width: 100%;
   display: flex;
-  gap: 650px;
+  gap: 655px;
   height: 80px;
   z-index: 1000;
   position: relative;
@@ -126,18 +126,18 @@ button {
     font-family: "Idiqlat";
     border-radius: 45px;
     display: flex;
-    gap: 15px;
+    gap: 9px;
     align-items: center; 
     justify-content: center;
     position: relative;
     z-index: 100;
     margin: auto;
     margin-top: 100px;
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
 .posicao_site p {
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 
@@ -185,7 +185,7 @@ button {
 }
 
 .DC {
-    background-image: url('/IMAGES/Capas_livros/Dom\ Casmurro.png');
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/Dom\ Casmurro.png');
 }
 
 .Dom_C {
@@ -197,7 +197,7 @@ button {
 }
 
 .I {
-    background-image: url('/IMAGES/Capas_livros/Iracema.png'); 
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/Iracema.png'); 
 }
 
 .Irace {
@@ -209,7 +209,7 @@ button {
 }
 
 .OC {
-    background-image: url('/IMAGES/Capas_livros/O\ Cortiço.png'); 
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/O\ Cortiço.png'); 
 }
 
 .O_Cort {
@@ -221,7 +221,7 @@ button {
 }
 
 .OG {
-    background-image: url('/IMAGES/Capas_livros/O\ Guarani.png'); 
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/O\ Guarani.png'); 
 }
 
 .O_Guar {
@@ -233,7 +233,7 @@ button {
 }
 
 .VS {
-    background-image: url('/IMAGES/Capas_livros/Vidas\ Secas.png'); 
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/Vidas\ Secas.png'); 
 }
 
 .Vidas_S {
@@ -245,7 +245,7 @@ button {
 }
 
 .OPB {
-    background-image: url('/IMAGES/Capas_livros/O\ Primo\ Basílio.png'); 
+    background-image: url('/FRONTEND/IMAGES/Capas_livros/O\ Primo\ Basílio.png'); 
 }
 
 .O_Primo {
@@ -433,18 +433,18 @@ button {
     font-family: "Idiqlat";
     border-radius: 45px;
     display: flex;
-    gap: 15px;
+    gap: 9px;
     align-items: center; 
     justify-content: center;
     position: relative;
     z-index: 100;
     margin: auto;
     margin-top: 100px;
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
 .posicao_site-ranking p {
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 
@@ -474,6 +474,7 @@ button {
     position: relative;
     margin: auto;
     margin-top: 77px;
+    margin-bottom: 100px;
 }
 
 .podio {
@@ -742,158 +743,6 @@ button {
     white-space: nowrap;
     font-family: "Idiqlat";
 }
-
-
-
-/*POSIÇÃO NO SITE*/
-.posicao_site-macete {
-    width: 185px;
-    height: 28px;
-    background-color: #ABDDF0;
-    color: #3890B1;
-    font-family: "Idiqlat";
-    border-radius: 45px;
-    display: flex;
-    gap: 15px;
-    align-items: center; 
-    justify-content: center;
-    position: relative;
-    z-index: 100;
-    margin: auto;
-    margin-top: 100px;
-    padding-left: 15px;
-}
-
-.posicao_site-macete p {
-    padding-right: 15px;
-}
-
-
-
-/*REDAÇÃO*/
-/*TÍTULO*/
-.macetes h1 {
-    color: #000000;
-    font-size: 40px;
-    font-family: "Fredoka";
-    margin-top: 7px;
-    text-align: center;
-    z-index: 100;
-}
-
-.macetes h2 {
-    color: #000000;
-    font-size: 20px;
-    font-family: "Jacques Francois";
-    margin-top: 6px;
-    text-align: center;
-    font-weight: normal;
-    z-index: 100;
-}
-
-.botoes-container {
-    display: flex;
-    gap: 55px;
-    margin-top: 40px;
-    position: relative;
-    justify-content: center;
-}
-
-.botoes-container button {
-    background:
-        linear-gradient(to right,
-        rgba(105, 171, 194, 1) 0%,
-        rgba(226, 247, 255, 1) 100%
-    );
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border: 1px solid #6B9BAD;
-    border-radius: 30px;
-    font-family: "Coustard", serif;
-    margin-bottom: 30px;
-}
-
-.quadro-info {
-    display: none;
-    border: 1px solid #6B9BAD;
-    border-radius: 40px;
-    padding: 20px;
-    width: 800px;
-    min-height: 100px;
-    background-color: #f9f9f9;
-    margin: auto;
-    text-align: justify;
-}
-
-.quadro-info h2,
-.quadro-info h3 {
-    font-family: "Fredoka";
-}
-
-.quadro-info h2 {
-    text-align: center;
-}
-
-.quadro-info p {
-    font-family: "Inter";
-}
-
-.quadro {
-    border: 1px solid black;
-    width: auto;
-    height: auto;
-    font-family: "Inter";
-    padding: 10px 10px 10px 10px;    
-}
-
-.quadro-ul {
-    list-style: none;
-}
-
-.quadro-ol {
-    border: 1px solid black;
-    width: auto;
-    height: auto;
-    font-family: "Inter";
-    padding: 10px 10px 10px 10px;    
-}
-
-.quadro-info.ativo {
-    display: block;
-}
-
-.conteudo {
-    display: none;
-}
-
-.conteudo.ativo {
-    display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* RODAPÉ */
