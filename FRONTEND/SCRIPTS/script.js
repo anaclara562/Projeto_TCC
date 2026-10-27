@@ -565,11 +565,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
-
-
+function setScore(score, max = 1000) {
+    const pct = Math.min(Number(score) / max, 1) * 100;
+    document.getElementById('score-ring-fill').style.strokeDashoffset = 100 - pct;
+    document.getElementById('score-value').textContent = score;
+}
 
 
 
@@ -726,12 +726,6 @@ function updateEditorStats() {
 }
 
 function submitEssay() {
-    const text = document.getElementById('essay-input').value.trim();
-    const words = text === "" ? 0 : text.split(/\s+/).length;
-    
-    if (words < 5) {
-        alert("Escreva um pouco mais antes de enviar para correção.");
-        return;
-    }
     navigateToStep(3);
+    setScore(500);   // nota de teste
 }

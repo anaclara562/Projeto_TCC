@@ -13,11 +13,171 @@
 body {
     background-color: #E2F7FF;
     overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+/* CONFIGURAÇÃO GERAL */
+body {
+    background-color: #E2F7FF;
+    overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+/* TODOS OS RADIAIS */
+.luz-esquerda1,
+.luz-direita1,
+.luz-esquerda2,
+.luz-direita2,
+.luz-esquerda3,
+.luz-esquerda4,
+.luz-direita4,
+.container-radial,
+.container-radial2 {
+    pointer-events: none;
+}
+
+/* CONTEÚDO ACIMA DOS RADIAIS */
+header,
+main,
+footer {
+    position: relative;
+    z-index: 1;
 }
 
 
-
 /*RADIAIS*/
+.luz-esquerda1 {
+  position: absolute;
+
+  top: -100px;
+  left: -100px;
+
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient( circle at 0% 50%,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-direita1 {
+  position: absolute;
+  top: 350px;
+  left: 900px;
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient( circle at right center,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-esquerda2 {
+  position: absolute;
+
+  top: 750px;
+  left: -100px;
+
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient(
+    circle at 0% 50%,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-direita2 {
+  position: absolute;
+  top: 1200px;
+  left: 900px;
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient( circle at right center,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-esquerda3 {
+  position: absolute;
+  top: 1600px;
+  left: -100px;
+  width: 800px;
+  height: 500px;
+
+  background:
+  radial-gradient(
+    circle at 0% 50%,
+    rgba(97, 202, 248, 0.9) 0%,
+    rgba(97, 202, 248, 0.5) 35%,
+    rgba(97, 202, 248, 0.2) 65%,
+    rgba(97, 202, 248, 0.05) 100%
+  );
+
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.luz-direita3 {
+    position: absolute;
+    top: 300px;
+    left: 900px;
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(
+        circle at center,
+        rgba(97, 202, 248, 0.9) 0%,
+        rgba(97, 202, 248, 0.5) 35%,
+        rgba(97, 202, 248, 0.2) 65%,
+        rgba(97, 202, 248, 0.05) 100%
+    );
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container-radial {
+    position: absolute;
+    top: 1710px;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
 
 
 
@@ -475,6 +635,7 @@ button {
     margin: auto;
     margin-top: 77px;
     margin-bottom: 100px;
+    z-index: 100;
 }
 
 .podio {
