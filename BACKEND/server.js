@@ -170,7 +170,7 @@ app.post('/api/auth/login', loginLimiter, async (req, res, next) => {
     const [rows] = await pool.execute(
       `SELECT u.idcadastro, u.usuario_idusuario, u.nome_do_usuario, u.email,
               u.senha1, u.nivel_idnivel, u.nivel_ranking_idranking, l.senha AS login_senha
-       FROM usuario u JOIN login l ON l.usuario_idcadastro = u.idcadastro
+       FROM usuario u LEFT JOIN login l ON l.usuario_idcadastro = u.idcadastro
        WHERE u.email = ? LIMIT 1`,
       [email]
     );
@@ -218,14 +218,30 @@ app.get('/api/me', auth, async (req, res, next) => {
 });
 
 app.get('/api/books', auth, async (req, res, next) => {
-  try {
-    const [rows] = await pool.execute(
-      `SELECT idlivros AS id, titulo, genero, autor, progresso_do_livro AS progresso
-       FROM livros WHERE usuario_idusuario = ? ORDER BY titulo`,
-      [Number(req.auth.sub)]
-    );
-    res.json({ livros: rows });
-  } catch (error) { next(error); }
+    try {
+        console.log("ID do usuário autenticado:", req.auth?.sub);
+
+        const [rows] = await pool.execute(
+            `SELECT
+                l.idlivros AS id,
+                l.titulo,
+                l.genero,
+                l.autor,
+                COALESCE(p.progresso, 0) AS progresso
+             FROM livros l
+             LEFT JOIN progresso_leitura p
+                ON p.idlivros = l.idlivros
+                AND p.usuario_idcadastro = ?
+             ORDER BY l.titulo`,
+            [Number(req.auth.sub)]
+        );
+
+        res.json({ livros: rows });
+
+    } catch (error) {
+        console.error("ERRO AO BUSCAR LIVROS:", error);
+        next(error);
+    }
 });
 
 app.post('/api/books', auth, async (req, res, next) => {
@@ -287,28 +303,21 @@ app.get('/api/ranking', auth, async (req, res, next) => {
 // Compatibiliza links legados que apontam para subpastas não incluídas no ZIP:
  // os HTML enviados estão na raiz deste pacote.
 const pageAliases = new Map([
-  ['/', '/PaginaInicial.html'],
-  ['/cadastro.html', '/Cadastro.html'],
-  ['/login.html', '/Login.html'],
-  ['/pesquisa.html', '/Pesquisa.html'],
-  ['/redacao.html', '/Redacao.html'],
-  ['/nivel.html', '/Nivel.html'],
-  ['/perfil.html', '/Perfil.html'],
-  ['/PAGES/PaginaInicial.html', '/PaginaInicial.html'],
-  ['/PAGES/Login.html', '/Login.html'],
-  ['/PAGES/Cadastro.html', '/Cadastro.html'],
-  ['/FRONTEND/PAGES/paginaPrincipal.html', '/paginaPrincipal.html'],
-  ['/FRONTEND/PAGES/Pesquisa.html', '/Pesquisa.html'],
-  ['/FRONTEND/PAGES/Redacao.html', '/Redacao.html'],
-  ['/FRONTEND/PAGES/Nivel.html', '/Nivel.html'],
-  ['/FRONTEND/PAGES/Perfil.html', '/Perfil.html'],
-  ['/PAGES/Livros/Dom_Casmurro/Dom_Casmurro.html', '/Dom_Casmurro.html'],
-  ['/PAGES/Livros/Iracema/Iracema.html', '/Iracema.html'],
-  ['/PAGES/Livros/O_Cortiço/O_Cortiço.html', '/O_Cortiço.html'],
-  ['/PAGES/Livros/O_Guarani/O_Guarani.html', '/O_Guarani.html'],
-  ['/PAGES/Livros/O_Primo_Basílio/O_Primo_Basílio.html', '/O_Primo_Basílio.html'],
-  ['/PAGES/Livros/Vidas_Secas/Vidas_Secas.html', '/Vidas_Secas.html']
+    ['/', '/FRONTEND/PAGES/paginaPrincipal.html'],
+
+    ['/cadastro.html', '/FRONTEND/PAGES/Cadastro.html'],
+    ['/login.html', '/FRONTEND/PAGES/Login.html'],
+
+    ['/Pesquisa.html', '/FRONTEND/PAGES/Pesquisa.html'],
+    ['/Redacao.html', '/FRONTEND/PAGES/Redacao.html'],
+    ['/Nivel.html', '/FRONTEND/PAGES/Nivel.html'],
+    ['/Perfil.html', '/FRONTEND/PAGES/Perfil.html'],
+
+    ['/PAGES/PaginaInicial.html', '/FRONTEND/PAGES/PaginaInicial.html'],
+    ['/PAGES/Login.html', '/FRONTEND/PAGES/Login.html'],
+    ['/PAGES/Cadastro.html', '/FRONTEND/PAGES/Cadastro.html']
 ]);
+
 app.use((req, res, next) => {
   const alias = pageAliases.get(decodeURI(req.path));
   if (alias) req.url = alias + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '');
@@ -329,7 +338,9 @@ app.use((req, res, next) => {
 });
 
 // Serve as páginas e os recursos públicos do projeto.
-app.use(express.static(path.resolve(__dirname, '..'), { index: false, dotfiles: 'ignore' }));
+app.use(express.static(path.resolve(__dirname, '..'), { 
+  index: false, dotfiles: 'ignore' }
+));
 
 app.use((req, res) => fail(res, 404, 'Rota não encontrada.'));
 app.use((error, req, res, next) => {
