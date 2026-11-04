@@ -217,27 +217,226 @@ app.get('/api/me', auth, async (req, res, next) => {
   } catch (error) { next(error); }
 });
 
-app.get('/api/books', auth, async (req, res, next) => {
+
+// ==========================================
+// SALVAR PROGRESSO DE LEITURA
+// ==========================================
+app.put('/api/progresso-leitura', auth, async (req, res, next) => {
     try {
-        console.log("ID do usuário autenticado:", req.auth?.sub);
+        const cadastroId = Number(req.auth.cadastroId);
+        const idlivros = Number(req.body.idlivros);
+        const progresso = Number(req.body.progresso);
+
+        if (!cadastroId || !idlivros || !Number.isFinite(progresso) ||
+            progresso < 0 || progresso > 100) {
+            return res.status(400).json({
+                erro: 'Dados de progresso inválidos.'
+            });
+        }
+
+        await pool.execute(
+            `INSERT INTO progresso_leitura
+                (usuario_idcadastro, idlivros, progresso)
+             VALUES (?, ?, ?)
+             ON DUPLICATE KEY UPDATE
+              progresso = VALUES(progresso)`,
+            [cadastroId, idlivros, progresso]
+        );
+
+        return res.json({
+            mensagem: 'Progresso salvo com sucesso!',
+            progresso
+        });
+
+    } catch (erro) {
+        next(erro);
+    }
+});
+
+
+// ==========================================
+// BUSCAR PROGRESSO DE LEITURA
+// ==========================================
+
+app.get('/api/progresso-leitura/:idlivros', auth, async (req, res, next) => {
+    try {
+        const cadastroId = Number(req.auth.cadastroId);
+        const idlivros = Number(req.params.idlivros);
+
+        if (!Number.isInteger(idlivros) || idlivros <= 0) {
+            return fail(res, 400, 'ID do livro inválido.');
+        }
 
         const [rows] = await pool.execute(
+            `SELECT progresso
+             FROM progresso_leitura
+             WHERE usuario_idcadastro = ?
+             AND idlivros = ?
+             LIMIT 1`,
+            [cadastroId, idlivros]
+        );
+
+        const progresso = rows.length
+            ? Number(rows[0].progresso)
+            : 0;
+
+        return res.json({ progresso });
+
+    } catch (error) {
+        next(error);
+    }
+});
+
+
+// ==========================================
+// SALVAR REDAÇÃO CORRIGIDA
+// ==========================================
+
+app.post('/api/redacoes', auth, async (req, res, next) => {
+    try {
+        const {
+            tema,
+            categoria,
+            nivel,
+            texto,
+            nota_final,
+            status_nota,
+            comentario_geral,
+            xp_ganhos
+        } = req.body;
+
+        // Verifica os dados obrigatórios
+        if (
+            typeof tema !== 'string' ||
+            typeof texto !== 'string' ||
+            !tema.trim() ||
+            !texto.trim()
+        ) {
+            return fail(res, 400, 'Tema e texto são obrigatórios.');
+        }
+
+        if (
+            !Number.isInteger(Number(nota_final)) ||
+            Number(nota_final) < 0 ||
+            Number(nota_final) > 1000
+        ) {
+            return fail(res, 400, 'Nota inválida.');
+        }
+
+        const cadastroId = req.auth.cadastroId;
+
+        if (!cadastroId) {
+            return fail(res, 401, 'Usuário não identificado.');
+        }
+
+        const [resultado] = await pool.execute(
+            `INSERT INTO redacao
+            (
+                tema,
+                categoria,
+                nivel,
+                texto,
+                nota_final,
+                status_nota,
+                comentario_geral,
+                xp_ganhos,
+                usuario_idcadastro
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [
+                tema.trim(),
+                categoria || null,
+                nivel || null,
+                texto.trim(),
+                Number(nota_final),
+                status_nota || null,
+                comentario_geral || null,
+                Number(xp_ganhos) || 0,
+                cadastroId
+            ]
+        );
+
+        return res.status(201).json({
+            mensagem: 'Redação salva com sucesso!',
+            idredacao: resultado.insertId
+        });
+
+    } catch (error) {
+        next(error);
+    }
+});
+
+// ==========================================
+// BUSCAR REDAÇÕES DO USUÁRIO
+// ==========================================
+
+app.get('/api/redacoes', auth, async (req, res, next) => {
+    try {
+        const cadastroId = req.auth.cadastroId;
+
+        const [redacoes] = await pool.execute(
+            `SELECT
+                idredacao,
+                tema,
+                categoria,
+                nivel,
+                texto,
+                nota_final,
+                status_nota,
+                comentario_geral,
+                xp_ganhos,
+                data_envio
+            FROM redacao
+            WHERE usuario_idcadastro = ?
+            ORDER BY data_envio DESC`,
+            [cadastroId]
+        );
+
+        return res.json({ redacoes });
+
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get('/api/books', auth, async (req, res, next) => {
+
+    try {
+
+        const idUsuario = Number(req.auth.cadastroId);
+
+        if (!Number.isInteger(idUsuario) || idUsuario <= 0) {
+            return res.status(401).json({
+                erro: "Usuário não autenticado."
+            });
+        }
+
+        const [rows] = await pool.execute(
+
             `SELECT
                 l.idlivros AS id,
                 l.titulo,
                 l.genero,
                 l.autor,
                 COALESCE(p.progresso, 0) AS progresso
-             FROM livros l
-             LEFT JOIN progresso_leitura p
+
+            FROM buscar_livro bl
+
+            INNER JOIN livros l
+                ON l.idlivros = bl.livros_idlivros
+
+            LEFT JOIN progresso_leitura p
                 ON p.idlivros = l.idlivros
                 AND p.usuario_idcadastro = ?
-             ORDER BY l.titulo`,
-            [Number(req.auth.sub)]
+
+            ORDER BY l.titulo`,
+
+            [idUsuario]
+
         );
-
-        res.json({ livros: rows });
-
+        res.json({
+            livros: rows
+        });
     } catch (error) {
         console.error("ERRO AO BUSCAR LIVROS:", error);
         next(error);
