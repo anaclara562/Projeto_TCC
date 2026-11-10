@@ -36,7 +36,7 @@
                 </svg>
                 <p>Perfil</p>
             </a>
-            <button class="sair" type="button" onclick="sairSite()">
+            <button class="sair" type="button" id="btn-sair">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#8BC0D4">
                     <path d="M189.06-113.3q-31 0-53.38-22.38-22.38-22.38-22.38-53.38v-581.88q0-31.06 22.38-53.49 22.38-22.43 53.38-22.43h291.87v75.92H189.06v581.88h291.87v75.76H189.06ZM654.7-287.1l-53.45-54.14 100.72-100.88H358.41v-75.76h342.23L599.91-618.76l53.46-54.14 193.49 193.57L654.7-287.1Z"/>
                 </svg>
@@ -55,7 +55,7 @@
     </div>
     <div class="card-section">
         <div class="primeira-linha">
-            <div class="card">
+            <div class="card" data-livro-id="1">
                 <div class="card-header DC">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -81,19 +81,19 @@
                     <div class="progress-container">
                         <div class="progress-text">
                             <span>Progresso</span>
-                            <span id="progresso-texto">20%</span>
+                            <span id="progresso-texto">0%</span>
                         </div>
                         <div class="progress-bar">
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Dom_Casmurro/Dom_Casmurro.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Dom_Casmurro.html">
+                        Começar
                     </a>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-livro-id="2">
                 <div class="card-header I">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -119,19 +119,19 @@
                     <div class="progress-container">
                         <div class="progress-text">
                             <span>Progresso</span>
-                            <span id="progresso-texto">75%</span>
+                            <span id="progresso-texto">0%</span>
                         </div>
                         <div class="progress-bar">
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Iracema/Iracema.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Iracema.html">
+                        Começar
                     </a>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-livro-id="3">
                 <div class="card-header OC">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -163,14 +163,16 @@
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Cortiço/O_Cortiço.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Cortiço.html">
+                        Começar
                     </a>
                 </div>
             </div>
         </div>
+
         <div class="segunda-linha">
-            <div class="card">
+
+            <div class="card" data-livro-id="11">
                 <div class="card-header OG">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -196,18 +198,19 @@
                     <div class="progress-container">
                         <div class="progress-text">
                             <span>Progresso</span>
-                            <span id="progresso-texto">30%</span>
+                            <span id="progresso-texto">0%</span>
                         </div>
                         <div class="progress-bar">
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Guarani/O_Guarani.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Guarani.html">
+                        Começar
                     </a>
                 </div>
             </div>
-            <div class="card">
+
+            <div class="card" data-livro-id="4">
                 <div class="card-header VS">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -233,18 +236,19 @@
                     <div class="progress-container">
                         <div class="progress-text">
                             <span>Progresso</span>
-                            <span id="progresso-texto">30%</span>
+                            <span id="progresso-texto">0%</span>
                         </div>
                         <div class="progress-bar">
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Vidas_Secas/Vidas_Secas.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/Vidas_Secas.html">
+                        Começar
                     </a>
                 </div>
             </div>
-            <div class="card">
+
+            <div class="card" data-livro-id="12">
                 <div class="card-header OPB">
                     <div class="badge-xp">
                         <div class="pontuacao">
@@ -270,14 +274,14 @@
                     <div class="progress-container">
                         <div class="progress-text">
                             <span>Progresso</span>
-                            <span id="progresso-texto">30%</span>
+                            <span id="progresso-texto">0%</span>
                         </div>
                         <div class="progress-bar">
                             <div id="progresso-barra" class="progress-fill"></div>
                         </div>
                     </div>
-                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Primo_Basílio/O_Primo_Basílio.html">
-                        Continuar
+                    <a class="btn-continue" id="btnFullscreen" href="/FRONTEND/PAGES/Livros/O_Primo_Basílio.html">
+                        Começar
                     </a>
                 </div>
             </div>
@@ -411,6 +415,8 @@
         </div>
         <p>© 2026 - lêBrasil</p>
     </footer>
+
+<script src="/FRONTEND/SCRIPTS/biblioteca-progresso.js"></script>
 <script src="/FRONTEND/SCRIPTS/script.js"></script>
 </body>
 </html>

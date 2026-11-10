@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lêBrasil</title>
+    <title>lêBrasil - Redação</title>
     <link rel="stylesheet" href="/FRONTEND/STYLES/redacao.css">
     <link rel="icon" type="image/png" href="/FRONTEND/IMAGES/Logos/Logo_Principal.png">
 </head>
@@ -36,7 +36,7 @@
                 </svg>
                 <p>Perfil</p>
             </a>
-            <button class="sair" type="button" onclick="sairSite()">
+            <button class="sair" type="button" id="btn-sair">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#8BC0D4">
                     <path d="M189.06-113.3q-31 0-53.38-22.38-22.38-22.38-22.38-53.38v-581.88q0-31.06 22.38-53.49 22.38-22.43 53.38-22.43h291.87v75.92H189.06v581.88h291.87v75.76H189.06ZM654.7-287.1l-53.45-54.14 100.72-100.88H358.41v-75.76h342.23L599.91-618.76l53.46-54.14 193.49 193.57L654.7-287.1Z"/>
                 </svg>
@@ -71,7 +71,7 @@
                 <p class="subtitulo">Escolha um tema para sua redação dissertativo-argumentativa. Após escrever, a IA irá corrigir e pontuar sua redação.</p>
             </div>
 
-            <div class="theme-card" onclick="selectTheme('O papel da literatura na formação do cidadão brasileiro', 'Cultura', 'Médio', '+150 XP')">
+            <div class="theme-card">
                 <div class="card-conteudo">
                     <div class="card-header">
                         <h3>O papel da literatura na formação do cidadão brasileiro</h3>
@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="theme-card" onclick="selectTheme('Regionalismo versus universalismo na literatura brasileira', 'Literatura', 'Difícil', '+200 XP')">
+            <div class="theme-card">
                 <div class="card-conteudo">
                     <div class="card-header">
                         <div>
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="theme-card" onclick="selectTheme('A influência das redes sociais na leitura entre jovens', 'Tecnologia', 'Fácil', '+100 XP')">
+            <div class="theme-card">
                 <div class="card-conteudo">
                     <div class="card-header">
                         <div>
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="theme-card" onclick="selectTheme('Identidade nacional na obra de Guimarães Rosa', 'Literatura', 'Difícil', '+220 XP')">
+            <div class="theme-card">
                 <div class="card-conteudo">
                     <div class="card-header">
                         <div>
@@ -129,7 +129,7 @@
                 </div>
             </div>
 
-            <div class="theme-card" onclick="selectTheme('A mulher na literatura realista brasileira do século XIX', 'História', 'Médio', '+160 XP')">
+            <div class="theme-card">
                 <div class="card-conteudo">
                     <div class="card-header">
                         <h3>A mulher na literatura realista brasileira do século XIX</h3>
@@ -155,144 +155,134 @@
             <div class="macetes-frame">
 
                 <div class="botoes-container">
-                    <button onclick="mostrarInfo('info1')">Introdução</button>
-                    <button onclick="mostrarInfo('info2')">Desenvolvimento</button>
-                    <button onclick="mostrarInfo('info3')">Proposta de Intervenção</button>
+                    <button type="button" data-info="info1">Introdução</button>
+                    <button type="button" data-info="info2">Desenvolvimento</button>
+                    <button type="button" data-info="info3">Proposta de Intervenção</button>
                 </div>
 
                 <div class="quadro-info">
 
                     <div id="info1" class="conteudo">
-                        <h2>Proposta de Intervenção</h2>
+                        <h2>Introdução</h2>
                         <p>
-                            A prova de redação do <strong>ENEM</strong> exige a elaboração
-                            de uma proposta de intervenção para o problema apresentado
-                            no tema, respeitando os direitos humanos.
+                            A introdução tem por objetivo situar o leitor sobre o tema que
+                            será discutido com uma breve <strong>contextualização</strong> e
+                            informá-lo sobre o <strong>posicionamento</strong> que se
+                            defenderá, ou seja, a tese. Portanto, uma boa introdução deve
+                            cumprir essas duas tarefas.
                         </p>
                         <p>
-                            A proposta deve apresentar cinco elementos fundamentais:
-                            agente, ação, modo ou meio, efeito e detalhamento.
+                            <u>Se o leitor não identificar o tema proposto ou o ponto de
+                            vista do autor logo na introdução, pode-se dizer que esse
+                            parágrafo está inadequado.</u> Ele não está apto a criar uma
+                            expectativa que conduzirá toda a leitura. Lembre-se de que
+                            você deve facilitar a leitura do seu texto, e a introdução é
+                            fundamental para que isso ocorra.
                         </p>
 
                         <div class="dica-redacao">
-                            <h4>Dica importante</h4>
+                            <h4>O que é uma tese?</h4>
                             <p>
-                                Construa uma solução completa, viável e relacionada à
-                                discussão desenvolvida em sua redação. A proposta deve
-                                respeitar os direitos humanos e apresentar informações
-                                suficientes para que a intervenção seja compreendida.
+                                Segundo o dicionário: “proposição que se apresenta ou expõe
+                                para ser defendida em caso de contestação.”
+                            </p>
+                            <p>
+                                <strong>A fim de organizar melhor nosso vocabulário,
+                                vamos separar o conceito de tese baseando-nos nas bancas:</strong>
+                            </p>
+                            <p>
+                                <strong>ENEM:</strong> chamaremos de teses as causas do problema
+                                e, caso queira, a causa e a consequência.
+                            </p>
+                            <p>
+                                <strong>VUNESP:</strong> a tese será o posicionamento do autor
+                                acerca da pergunta feita na frase temática.
                             </p>
                         </div>
 
-                        <h3>Os cinco elementos da proposta</h3>
+                        <p>
+                            Este material se concentrará em temas problema, como os do ENEM,
+                            mas pode ser usado em qualquer prova que tenha esse tipo de tema.
+                        </p>
+
+                        <h3>Introdução com duas teses (causa 1 + causa 2 ou causa + consequência)</h3>
+
                         <div class="elementos-macetes">
+
                             <div class="elemento-macete">
-                                <h4>01. Agente</h4>
+                                <h4>01. Contextualização</h4>
                                 <p>
-                                    <strong>Quem?</strong>
-                                    Identifique quem será responsável por realizar
-                                    a intervenção.
+                                    Parte muito importante da introdução. É a primeira impressão
+                                    para o corretor, que pode estar cansado. Alusões históricas,
+                                    teorias de filósofas e sociólogas, dados estatísticos ou
+                                    trechos de filmes, séries e músicas são ótimas maneiras de
+                                    fazer uma contextualização chamativa.
+                                </p>
+                                <p>O tema não precisa estar necessariamente nesse trecho.</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Problematização</h4>
+                                <p>
+                                    Por mais que a problemática esteja explícita na frase temática,
+                                    você deve deixar claro na sua redação qual problema será
+                                    discutido ao longo de seu texto. Caso não esteja explícito,
+                                    você deverá criar um.
                                 </p>
                                 <p>
-                                    Exemplos: Governo Federal, escolas, Ministério da Educação
-                                    ou organizações sociais.
+                                    Não esqueça de ser simples e objetivo. O leitor precisa saber
+                                    que o que você está apresentando é um problema, o assunto
+                                    central do texto, aquilo que será solucionado.
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>02. Ação</h4>
+                                <h4>03. Plano de texto – apresentação das teses</h4>
                                 <p>
-                                    <strong>O quê?</strong>
-                                    Apresente a medida que deverá ser realizada para
-                                    enfrentar o problema discutido.
+                                    A tese é uma opinião que será defendida. Nesse caso, tese é
+                                    o que ou quem você acha que causa essa problemática, ou seja,
+                                    continua sendo uma opinião; mas agora mais direcionada à
+                                    origem da problemática.
                                 </p>
                                 <p>
-                                    Exemplos: promover campanhas, ampliar projetos
-                                    educacionais ou desenvolver programas sociais.
-                                </p>
-                            </div>
-
-                            <div class="elemento-macete">
-                                <h4>03. Modo ou meio</h4>
-                                <p>
-                                    <strong>Como?</strong>
-                                    Explique de que maneira a ação será executada.
-                                </p>
-                                <p>
-                                    Exemplos: por meio de palestras, campanhas informativas,
-                                    plataformas digitais ou parcerias institucionais.
+                                    Afinal, se existem problemas, existem agentes que causam
+                                    o problema. É importante explicitar o plano de texto para
+                                    organizar o pensamento de quem lê.
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>04. Efeito</h4>
+                                <h4>04. Causa e consequência</h4>
                                 <p>
-                                    <strong>Para quê?</strong>
-                                    Indique o resultado esperado com a realização
-                                    da intervenção.
+                                    Também há possibilidade de discutir uma causa e uma
+                                    consequência.
+                                </p>
+                            </div>
+
+                            </div>
+
+                            <h3>Sugestões de como apresentar a tese em tema problema</h3>
+
+                            <div class="elementos-macetes">
+
+                            <div class="elemento-macete">
+                                <h4>Causa 1 + Causa 2</h4>
+                                <p>
+                                    “Dessa forma, é fundamental compreender como a TESE 1
+                                    e a TESE 2 intensificam esse cenário.”
                                 </p>
                                 <p>
-                                    Exemplos: conscientizar a população, reduzir desigualdades
-                                    ou ampliar o acesso à educação.
+                                    “Esse quadro é fruto da TESE 1 e da TESE 2.”
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>05. Detalhamento</h4>
+                                <h4>Causa + Consequência</h4>
                                 <p>
-                                    <strong>Que informação adicional?</strong>
-                                    Acrescente uma explicação que torne um dos elementos
-                                    da proposta mais específico.
-                                </p>
-                                <p>
-                                    Exemplo: esclarecer o público-alvo de uma campanha,
-                                    explicar a responsabilidade do agente ou especificar
-                                    como uma ação será desenvolvida.
+                                    “Este cenário é causado pela TESE 1 e tem como
+                                    consequência a TESE 2.”
                                 </p>
                             </div>
-                        </div>
-
-                        <h3>Exemplo de proposta de intervenção completa</h3>
-                        <div class="dica-redacao">
-                            <p>
-                                <strong>Agente:</strong> o Ministério da Educação
-                            </p>
-                            <p>
-                                <strong>Ação:</strong> deve promover campanhas de incentivo
-                                à leitura entre os jovens
-                            </p>
-                            <p>
-                                <strong>Modo ou meio:</strong> por meio de projetos
-                                de leitura nas escolas públicas
-                            </p>
-                            <p>
-                                <strong>Efeito:</strong> a fim de ampliar o hábito da leitura
-                                e o acesso à literatura brasileira
-                            </p>
-                            <p>
-                                <strong>Detalhamento:</strong> com atividades semanais
-                                de interpretação e discussão de obras literárias adequadas
-                                às diferentes etapas de ensino.
-                            </p>
-                        </div>
-
-                        <h3>Estrutura para montar sua proposta</h3>
-                        <div class="elemento-macete">
-                            <p>
-                                <strong>Modelo:</strong>
-                            </p>
-                            <p>
-                                Portanto, <strong>[agente]</strong> deve
-                                <strong>[ação]</strong>, por meio de
-                                <strong>[modo ou meio]</strong>, a fim de
-                                <strong>[efeito]</strong>. Essa medida deverá incluir
-                                <strong>[detalhamento]</strong>.
-                            </p>
-                            <p>
-                                <strong>Atenção:</strong> adapte a estrutura ao tema
-                                da redação e desenvolva uma proposta coerente com
-                                os argumentos apresentados.
-                            </p>
                         </div>
                     </div>
 
@@ -563,7 +553,7 @@
             </div>
 
             <div class="editor-container">
-                <textarea id="essay-input" placeholder="Escreva sua redação sobre o tema selecionado...&#10;&#10;Dica: Comece com uma introdução que apresente o tema e sua tese. Use pelo menos 2 parágrafos de desenvolvimento e finalize com uma conclusão e proposta de intervenção." oninput="updateEditorStats()"></textarea>
+                <textarea id="essay-input" placeholder="Escreva sua redação sobre o tema selecionado...&#10;&#10;Dica: Comece com uma introdução que apresente o tema e sua tese. Use pelo menos 2 parágrafos de desenvolvimento e finalize com uma conclusão e proposta de intervenção."></textarea>
                 <div class="editor-footer-stats">
                     <span id="chars-count">0 chars</span>
                     <span id="words-count-footer">0 palavras</span>
@@ -581,7 +571,7 @@
                 <div id="words-left-text">Faltam 150 palavras para poder enviar</div>
             </div>
 
-            <button class="submit-btn" onclick="submitEssay()">
+            <button type="button" class="submit-btn">
                 Enviar para Correção da IA
             </button>
 
@@ -599,144 +589,134 @@
             <div class="macetes-frame">
 
                 <div class="botoes-container">
-                    <button onclick="mostrarInfo('info1')">Introdução</button>
-                    <button onclick="mostrarInfo('info2')">Desenvolvimento</button>
-                    <button onclick="mostrarInfo('info3')">Proposta de Intervenção</button>
+                    <button type="button" data-info="info1">Introdução</button>
+                    <button type="button" data-info="info2">Desenvolvimento</button>
+                    <button type="button" data-info="info3">Proposta de Intervenção</button>
                 </div>
 
                 <div class="quadro-info">
 
                     <div id="info1" class="conteudo">
-                        <h2>Proposta de Intervenção</h2>
+                        <h2>Introdução</h2>
                         <p>
-                            A prova de redação do <strong>ENEM</strong> exige a elaboração
-                            de uma proposta de intervenção para o problema apresentado
-                            no tema, respeitando os direitos humanos.
+                            A introdução tem por objetivo situar o leitor sobre o tema que
+                            será discutido com uma breve <strong>contextualização</strong> e
+                            informá-lo sobre o <strong>posicionamento</strong> que se
+                            defenderá, ou seja, a tese. Portanto, uma boa introdução deve
+                            cumprir essas duas tarefas.
                         </p>
                         <p>
-                            A proposta deve apresentar cinco elementos fundamentais:
-                            agente, ação, modo ou meio, efeito e detalhamento.
+                            <u>Se o leitor não identificar o tema proposto ou o ponto de
+                            vista do autor logo na introdução, pode-se dizer que esse
+                            parágrafo está inadequado.</u> Ele não está apto a criar uma
+                            expectativa que conduzirá toda a leitura. Lembre-se de que
+                            você deve facilitar a leitura do seu texto, e a introdução é
+                            fundamental para que isso ocorra.
                         </p>
 
                         <div class="dica-redacao">
-                            <h4>Dica importante</h4>
+                            <h4>O que é uma tese?</h4>
                             <p>
-                                Construa uma solução completa, viável e relacionada à
-                                discussão desenvolvida em sua redação. A proposta deve
-                                respeitar os direitos humanos e apresentar informações
-                                suficientes para que a intervenção seja compreendida.
+                                Segundo o dicionário: “proposição que se apresenta ou expõe
+                                para ser defendida em caso de contestação.”
+                            </p>
+                            <p>
+                                <strong>A fim de organizar melhor nosso vocabulário,
+                                vamos separar o conceito de tese baseando-nos nas bancas:</strong>
+                            </p>
+                            <p>
+                                <strong>ENEM:</strong> chamaremos de teses as causas do problema
+                                e, caso queira, a causa e a consequência.
+                            </p>
+                            <p>
+                                <strong>VUNESP:</strong> a tese será o posicionamento do autor
+                                acerca da pergunta feita na frase temática.
                             </p>
                         </div>
 
-                        <h3>Os cinco elementos da proposta</h3>
+                        <p>
+                            Este material se concentrará em temas problema, como os do ENEM,
+                            mas pode ser usado em qualquer prova que tenha esse tipo de tema.
+                        </p>
+
+                        <h3>Introdução com duas teses (causa 1 + causa 2 ou causa + consequência)</h3>
+
                         <div class="elementos-macetes">
+
                             <div class="elemento-macete">
-                                <h4>01. Agente</h4>
+                                <h4>01. Contextualização</h4>
                                 <p>
-                                    <strong>Quem?</strong>
-                                    Identifique quem será responsável por realizar
-                                    a intervenção.
+                                    Parte muito importante da introdução. É a primeira impressão
+                                    para o corretor, que pode estar cansado. Alusões históricas,
+                                    teorias de filósofas e sociólogas, dados estatísticos ou
+                                    trechos de filmes, séries e músicas são ótimas maneiras de
+                                    fazer uma contextualização chamativa.
+                                </p>
+                                <p>O tema não precisa estar necessariamente nesse trecho.</p>
+                            </div>
+
+                            <div class="elemento-macete">
+                                <h4>02. Problematização</h4>
+                                <p>
+                                    Por mais que a problemática esteja explícita na frase temática,
+                                    você deve deixar claro na sua redação qual problema será
+                                    discutido ao longo de seu texto. Caso não esteja explícito,
+                                    você deverá criar um.
                                 </p>
                                 <p>
-                                    Exemplos: Governo Federal, escolas, Ministério da Educação
-                                    ou organizações sociais.
+                                    Não esqueça de ser simples e objetivo. O leitor precisa saber
+                                    que o que você está apresentando é um problema, o assunto
+                                    central do texto, aquilo que será solucionado.
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>02. Ação</h4>
+                                <h4>03. Plano de texto – apresentação das teses</h4>
                                 <p>
-                                    <strong>O quê?</strong>
-                                    Apresente a medida que deverá ser realizada para
-                                    enfrentar o problema discutido.
+                                    A tese é uma opinião que será defendida. Nesse caso, tese é
+                                    o que ou quem você acha que causa essa problemática, ou seja,
+                                    continua sendo uma opinião; mas agora mais direcionada à
+                                    origem da problemática.
                                 </p>
                                 <p>
-                                    Exemplos: promover campanhas, ampliar projetos
-                                    educacionais ou desenvolver programas sociais.
-                                </p>
-                            </div>
-
-                            <div class="elemento-macete">
-                                <h4>03. Modo ou meio</h4>
-                                <p>
-                                    <strong>Como?</strong>
-                                    Explique de que maneira a ação será executada.
-                                </p>
-                                <p>
-                                    Exemplos: por meio de palestras, campanhas informativas,
-                                    plataformas digitais ou parcerias institucionais.
+                                    Afinal, se existem problemas, existem agentes que causam
+                                    o problema. É importante explicitar o plano de texto para
+                                    organizar o pensamento de quem lê.
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>04. Efeito</h4>
+                                <h4>04. Causa e consequência</h4>
                                 <p>
-                                    <strong>Para quê?</strong>
-                                    Indique o resultado esperado com a realização
-                                    da intervenção.
+                                    Também há possibilidade de discutir uma causa e uma
+                                    consequência.
+                                </p>
+                            </div>
+
+                            </div>
+
+                            <h3>Sugestões de como apresentar a tese em tema problema</h3>
+
+                            <div class="elementos-macetes">
+
+                            <div class="elemento-macete">
+                                <h4>Causa 1 + Causa 2</h4>
+                                <p>
+                                    “Dessa forma, é fundamental compreender como a TESE 1
+                                    e a TESE 2 intensificam esse cenário.”
                                 </p>
                                 <p>
-                                    Exemplos: conscientizar a população, reduzir desigualdades
-                                    ou ampliar o acesso à educação.
+                                    “Esse quadro é fruto da TESE 1 e da TESE 2.”
                                 </p>
                             </div>
 
                             <div class="elemento-macete">
-                                <h4>05. Detalhamento</h4>
+                                <h4>Causa + Consequência</h4>
                                 <p>
-                                    <strong>Que informação adicional?</strong>
-                                    Acrescente uma explicação que torne um dos elementos
-                                    da proposta mais específico.
-                                </p>
-                                <p>
-                                    Exemplo: esclarecer o público-alvo de uma campanha,
-                                    explicar a responsabilidade do agente ou especificar
-                                    como uma ação será desenvolvida.
+                                    “Este cenário é causado pela TESE 1 e tem como
+                                    consequência a TESE 2.”
                                 </p>
                             </div>
-                        </div>
-
-                        <h3>Exemplo de proposta de intervenção completa</h3>
-                        <div class="dica-redacao">
-                            <p>
-                                <strong>Agente:</strong> o Ministério da Educação
-                            </p>
-                            <p>
-                                <strong>Ação:</strong> deve promover campanhas de incentivo
-                                à leitura entre os jovens
-                            </p>
-                            <p>
-                                <strong>Modo ou meio:</strong> por meio de projetos
-                                de leitura nas escolas públicas
-                            </p>
-                            <p>
-                                <strong>Efeito:</strong> a fim de ampliar o hábito da leitura
-                                e o acesso à literatura brasileira
-                            </p>
-                            <p>
-                                <strong>Detalhamento:</strong> com atividades semanais
-                                de interpretação e discussão de obras literárias adequadas
-                                às diferentes etapas de ensino.
-                            </p>
-                        </div>
-
-                        <h3>Estrutura para montar sua proposta</h3>
-                        <div class="elemento-macete">
-                            <p>
-                                <strong>Modelo:</strong>
-                            </p>
-                            <p>
-                                Portanto, <strong>[agente]</strong> deve
-                                <strong>[ação]</strong>, por meio de
-                                <strong>[modo ou meio]</strong>, a fim de
-                                <strong>[efeito]</strong>. Essa medida deverá incluir
-                                <strong>[detalhamento]</strong>.
-                            </p>
-                            <p>
-                                <strong>Atenção:</strong> adapte a estrutura ao tema
-                                da redação e desenvolva uma proposta coerente com
-                                os argumentos apresentados.
-                            </p>
                         </div>
                     </div>
 
@@ -1008,10 +988,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFB800">
                         <path d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm400 0q36-13 58-43.5t22-68.5v-40h-80v152Z"/>
                     </svg>
-                    <p>Excelente</p>
+                    <p id="score-status">Excelente</p>
                 </div>
                 <div class="xp-reward-pill">
-                    ★  +143 XP ganhos
+                    ★<span id="xp-reward">+143 XP ganhos</span>
                 </div>
             </div>
 
@@ -1019,7 +999,7 @@
                 <div class="comment-header">
                     <span>Comentário Geral da IA</span>
                 </div>
-                <div class="comment-body">
+                <div class="comment-body" id="comment-body">
                     Redação bem estruturada! Você demonstrou boa argumentação e coesão textual. Continue desenvolvendo seu repertório cultural.
                 </div>
             </div>

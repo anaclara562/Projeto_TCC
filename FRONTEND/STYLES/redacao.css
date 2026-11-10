@@ -379,9 +379,9 @@ button {
 /* Área principal */
 #view-2 {
     width: 100%;
-    max-width: 920px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 28px 0 50px;
+    padding: 28px 20px 50px;
     box-sizing: border-box;
     color: #263943;
     font-family: 'Inter', sans-serif;

@@ -1,40 +1,5 @@
 /* BARRA DE PROGRESSO */
 document.addEventListener('DOMContentLoaded', () => {
-  const barra = document.getElementById('barra-progresso');
-  const textPercent = document.querySelector('.progress-bar-inner');
-
-  function updateProgress() {
-    const html = document.documentElement;
-    const body = document.body;
-
-    const scrollTop = html.scrollTop || body.scrollTop;
-    const scrollHeight = html.scrollHeight || body.scrollHeight;
-    const clientHeight = html.clientHeight;
-
-    const maxScroll = scrollHeight - clientHeight;
-
-    const progress = maxScroll > 0
-      ? (scrollTop / maxScroll) * 100
-      : 0;
-
-    const roundedProgress = Math.min(
-      Math.max(Math.round(progress), 0),
-      100
-    );
-
-    if (barra) {
-      barra.style.width = roundedProgress + '%';
-    }
-
-    if (textPercent) {
-      textPercent.innerText = roundedProgress + '%';
-    }
-  }
-
-  window.addEventListener('scroll', updateProgress);
-  window.addEventListener('resize', updateProgress);
-  updateProgress();
-
 
   /* MODO CLARO / ESCURO */
   const toggleBtn = document.getElementById('theme-toggle');
@@ -92,6 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* 4. AJUSTE DO TAMANHO DA FONTE */
+document.querySelectorAll('[data-font-change]').forEach(botao => {
+    botao.addEventListener('click', () => {
+        const valor = Number(botao.dataset.fontChange);
+        mudarFonte(valor);
+    });
+});
+
 function mudarFonte(valor) {
   const html = document.documentElement;
   const tamanhoAtual = parseFloat(
@@ -102,4 +74,217 @@ function mudarFonte(valor) {
   if (novoTamanho >= 5 && novoTamanho <= 30) {
     html.style.fontSize = novoTamanho + 'px';
   }
+}
+
+
+// ==========================================
+// PROGRESSO DE LEITURA
+// ==========================================
+
+const API_URL = window.location.origin;
+const ID_LIVRO = Number(document.body.dataset.livroId);
+
+if (!ID_LIVRO) {
+    console.error("ID do livro não encontrado no HTML.");
+}
+const token = localStorage.getItem("authToken");
+
+let temporizador;
+let progressoRestaurado = false;
+
+
+// ==========================================
+// CALCULAR PROGRESSO ATUAL
+// ==========================================
+
+function calcularProgresso() {
+    const alturaDocumento = document.documentElement.scrollHeight;
+    const alturaJanela = window.innerHeight;
+    const distanciaTotal = alturaDocumento - alturaJanela;
+
+    if (distanciaTotal <= 0) return 100;
+
+    const distanciaPercorrida = window.scrollY + alturaJanela;
+
+    return Math.min(
+        100,
+        Math.max(0, Math.round((distanciaPercorrida / alturaDocumento) * 100))
+    );
+}
+
+// ==========================================
+// ATUALIZAR BARRA E PORCENTAGEM DO LIVRO
+// ==========================================
+
+function atualizarBarra(progresso) {
+
+    // Porcentagem exibida no topo
+    const texto =
+        document.getElementById("barra-progresso-texto") ||
+        document.querySelector(".progress-bar-inner");
+
+    // Barra visual exibida no topo
+    const barra =
+        document.getElementById("barra-progresso");
+
+    if (texto) {
+        texto.textContent = `${progresso}%`;
+    }
+
+    if (barra) {
+        barra.style.width = `${progresso}%`;
+    }
+}
+
+
+// ==========================================
+// BUSCAR PROGRESSO SALVO
+// ==========================================
+
+async function restaurarProgresso() {
+    if (!token) {
+        console.error("Usuário não autenticado.");
+        return;
+    }
+
+    try {
+        const resposta = await fetch(
+            `${API_URL}/api/progresso-leitura/${ID_LIVRO}`,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        );
+
+        const dados = await resposta.json();
+
+        console.log("DADOS RECEBIDOS DO BANCO:", dados);
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Erro ao buscar progresso.");
+        }
+
+        const progressoSalvo = Math.min(
+            100,
+            Math.max(0, Number(dados.progresso) || 0)
+        );
+
+        // Calcula a posição correspondente ao progresso salvo
+        const alturaDocumento = document.documentElement.scrollHeight;
+        const alturaJanela = window.innerHeight;
+        const distanciaTotal = alturaDocumento - alturaJanela;
+
+        if (distanciaTotal > 0 && progressoSalvo > 0) {
+            const posicao = (progressoSalvo / 100) * distanciaTotal;
+
+            window.scrollTo({
+                top: posicao,
+                behavior: "instant"
+            });
+        }
+
+        atualizarBarra(progressoSalvo);
+
+        console.log("Progresso restaurado:", progressoSalvo + "%");
+
+    } catch (erro) {
+        console.error("Erro ao restaurar progresso:", erro);
+    }
+
+    // Só permite salvar depois de terminar a restauração
+    progressoRestaurado = true;
+}
+
+
+
+// ==========================================
+// SALVAR PROGRESSO NO BANCO
+// ==========================================
+async function salvarProgresso(progresso) {
+    if (!token) {
+        console.error("Usuário não autenticado.");
+        return;
+    }
+
+    try {
+        const resposta = await fetch(
+            `${API_URL}/api/progresso-leitura`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idlivros: ID_LIVRO,
+                    progresso: progresso
+                })
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Erro ao salvar progresso.");
+        }
+
+        console.log("Posição atual:", dados.progressoAtual + "%");
+        console.log("Maior progresso:", dados.progresso + "%");
+
+        if (typeof window.iniciarDesafios === "function") {
+            await window.iniciarDesafios();
+        }
+
+        if (typeof window.atualizarXP === "function") {
+            await window.atualizarXP();
+        }
+
+    } catch (erro) {
+        console.error("Erro ao salvar progresso:", erro);
+    }
+}
+
+
+
+
+// ==========================================
+// ATUALIZAR PROGRESSO AO ROLAR A PÁGINA
+// ==========================================
+
+function atualizarProgresso() {
+    if (!progressoRestaurado) return;
+
+    const progresso = calcularProgresso();
+
+    atualizarBarra(progresso);
+
+    clearTimeout(temporizador);
+
+    temporizador = setTimeout(() => {
+        salvarProgresso(progresso);
+    }, 600);
+}
+
+
+
+
+// ==========================================
+// INICIAR LEITURA
+// ==========================================
+
+async function iniciarLeitura() {
+    await restaurarProgresso();
+
+    window.addEventListener("scroll", atualizarProgresso);
+    window.addEventListener("resize", atualizarProgresso);
+}
+
+
+// Espera a página e suas imagens carregarem
+if (document.readyState === "complete") {
+    iniciarLeitura();
+} else {
+    window.addEventListener("load", iniciarLeitura, { once: true });
 }

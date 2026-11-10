@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/FRONTEND/PAGES/Livros/Modo_Leitura.css">
   <link rel="icon" type="image/png" href="/IMAGES/Logos/Logo_Principal.png">
 </head>
-<body>
+<body data-livro-id="4">
 
   <div id="barra-progresso"></div>
   <div class="progress-bar-inner">0%</div>
@@ -50,8 +50,8 @@
   </div>
 
   <div id="controles">
-      <button onclick="mudarFonte(2)">+</button>
-      <button onclick="mudarFonte(-2)">-</button>
+        <button type="button" data-font-change="-2">-</button>
+        <button type="button" data-font-change="2">+</button>
   </div>
 
   <div class="post-wrap">

@@ -510,26 +510,82 @@ main {
 
 /* ATIVIDADES RECENTES */
 #atividades {
-  width: 998px;
-  height: auto;
-  background: #fff;
-  border-radius: 20px;
-  padding: 1.5rem;
-  margin: 30px auto 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  z-index: 2;
-  position: relative;
+    width: 998px;
+    height: auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 30px auto 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    z-index: 2;
+    position: relative;
+}
+/* Cabeçalho */
+
+.atividades-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    gap: 15px;
 }
 
-#atividades h2 {
-  font-family: "Open Sans";
-  font-size: 20px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 1.2rem;
+.atividades-header h2 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.atividades-header h2 svg {
+    flex-shrink: 0;
+}
+
+.atividades-header p {
+    font-family: "Open Sans";
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+#total-atividades {
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 700;
+    color: #3890B1;
+    white-space: nowrap;
+}
+
+/* Lista de redações */
+
+#lista-atividades {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lista-atividades-recentes p {
+  background: rgba(217, 217, 217, 0.2);
+  min-height: 45px;
+  border-radius: 12px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 13px;
+  justify-content: center;
+  font-family: "Open Sans";
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.48);
+}
+
+#detalhe-atividade[hidden] {
+    display: none !important;
+}
+
+#detalhe-atividade {
+    margin-top: 20px;
 }
 
 .item {
@@ -584,6 +640,223 @@ main {
   color: #FACC15;
   align-items: center;
   margin-right: 20px;
+}
+
+
+/* ATIVIDADES RECENTES */
+/* ========================================
+   HISTÓRICO DE REDAÇÕES
+======================================== */
+
+#redacoes {
+    width: 998px;
+    height: auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 30px auto 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    z-index: 2;
+    position: relative;
+}
+/* Cabeçalho */
+
+.redacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    gap: 15px;
+}
+
+.redacoes-header h2 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.redacoes-header h2 svg {
+    flex-shrink: 0;
+}
+
+.redacoes-header p {
+    font-family: "Open Sans";
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+#total-redacoes {
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 700;
+    color: #3890B1;
+    white-space: nowrap;
+}
+
+/* Lista de redações */
+
+#lista-redacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mensagem-carregamento {
+    background: rgba(217, 217, 217, 0.2);
+    min-height: 45px;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Open Sans";
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+/* Detalhes da redação */
+
+#detalhe-redacao[hidden] {
+    display: none !important;
+}
+
+#detalhe-redacao {
+    margin-top: 20px;
+}
+
+#fechar-detalhe {
+    background: rgba(217, 217, 217, 0.2);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: 700;
+    color: #3890B1;
+    cursor: pointer;
+}
+
+#fechar-detalhe:hover {
+    background: rgba(139, 192, 212, 0.2);
+}
+
+.detalhe-header {
+    margin-bottom: 20px;
+}
+
+.detalhe-categoria {
+    display: inline-block;
+    background: #E8F9FF;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 700;
+    color: #3890B1;
+    margin-bottom: 10px;
+}
+
+.detalhe-header h3 {
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.detalhe-meta {
+    display: flex;
+    gap: 15px;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+/* Nota */
+
+.detalhe-nota-card {
+    background: rgba(217, 217, 217, 0.2);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.detalhe-nota-card div {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.detalhe-nota-card div > span {
+    flex-basis: 100%;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+.detalhe-nota-card strong {
+    font-family: "Inter";
+    font-size: 25px;
+    color: #3890B1;
+}
+
+.detalhe-nota-card small {
+    font-family: "Inter";
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+#detalhe-status {
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 700;
+    color: #3890B1;
+}
+
+#detalhe-xp {
+    font-family: "Inter";
+    font-size: 18px;
+    font-weight: 700;
+    color: #FACC15;
+    white-space: nowrap;
+}
+
+/* Conteúdo dos detalhes */
+
+.detalhe-bloco {
+    background: rgba(217, 217, 217, 0.2);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.detalhe-bloco h4 {
+    font-family: "Open Sans";
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.detalhe-bloco p {
+    font-family: "Open Sans";
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.69);
+    white-space: pre-wrap;
 }
 
 

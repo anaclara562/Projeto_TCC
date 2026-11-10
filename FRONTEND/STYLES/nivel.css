@@ -485,21 +485,25 @@ button {
 }
 
 .progresso-linha { 
-    display: flex; 
-    justify-content: space-between; 
-    font-size: 13px; 
-    margin-bottom: 6px; 
-    font-family: 'Inter', sans-serif; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
 }
 
 .progresso-linha span { 
     color: #9CA3AF; 
 }
 
-#numExplorador,
-#numLeitura { 
+#numLeitura,
+#numSequencia,
+#numExplorador {
     color: #0C4F68;
-    font-size: 12px; 
+    font-size: 12px;
+    margin-left: auto;
 }
 
 .barra-desafio-bg { 
@@ -516,12 +520,13 @@ button {
     transition: width 0.6s ease; 
 }
 
-.concluido-text { 
-    font-family: 'Inter', sans-serif; 
-    color: #0B8200; 
-    font-weight: bold; 
-    font-size: 14px; 
-    margin-top: 4px; 
+.concluido-text {
+    font-family: 'Inter', sans-serif;
+    color: #0B8200;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: auto;
 }
 
 
@@ -572,14 +577,25 @@ button {
     color: #FFFFFF;
     font-family: 'Inter';  
     font-weight: normal;
+    margin-top: 4px;
 }
 
-.bonus-status { 
-    font-family: 'Inter', sans-serif; 
-    font-size: 12px; 
+.bonus-status {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
     font-weight: bold;
-    margin-left: 780px;
+    text-align: right;
+    margin-left: 0;
     margin-bottom: 5px;
+}
+
+#statusBonusConcluido {
+    font-family: 'Inter', sans-serif;
+    color: #0B8200;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 10px;
 }
 
 .barra-bonus-bg { 
