@@ -1,3 +1,6 @@
+let idCadastroPerfil = null;
+
+
 // ==========================================
 // CONEXÃO COM O BACKEND
 // ==========================================
@@ -622,9 +625,8 @@ function atualizarBio(bio) {
     }
 }
 
-/* ==========================================
-    4. CARREGAR DADOS DO USUÁRIO
-========================================== */
+
+
 async function carregarDadosPerfil() {
     const token = localStorage.getItem("authToken");
 
@@ -647,24 +649,41 @@ async function carregarDadosPerfil() {
             throw new Error(dados.erro || "Erro ao carregar perfil.");
         }
 
-        // O nome vem diretamente do banco de dados
         const usuario = dados.usuario;
-        if (usuario && usuario.nome) {
+
+        if (!usuario || !usuario.id) {
+            throw new Error("O ID do cadastro não foi retornado pela API.");
+        }
+
+        idCadastroPerfil = usuario.id;
+
+        if (usuario.nome) {
             atualizarNome(usuario.nome);
-            localStorage.setItem("perfil_nome", usuario.nome);
         }
 
-        // A biografia continua sendo carregada do localStorage
-        const bioSalva = localStorage.getItem("perfil_bio");
+        // Carrega a biografia exclusiva deste usuário
+        const chaveBio = `perfil_bio_${idCadastroPerfil}`;
+        let bioSalva = localStorage.getItem(chaveBio);
 
-        if (bioSalva !== null) {
-            atualizarBio(bioSalva);
+        // Recupera a biografia antiga, se ainda não houver uma individual
+        if (bioSalva === null) {
+            const bioAntiga = localStorage.getItem("perfil_bio");
+
+            if (bioAntiga !== null) {
+                bioSalva = bioAntiga;
+                localStorage.setItem(chaveBio, bioAntiga);
+                localStorage.removeItem("perfil_bio");
+            }
         }
+
+        atualizarBio(bioSalva || "");
 
     } catch (erro) {
         console.error("Erro ao carregar perfil:", erro);
     }
 }
+
+
 
 /* ==========================================
     5. EDITAR NOME
@@ -707,19 +726,679 @@ async function editarNomePerfil() {
     }
 }
 
-/* ==========================================
-    6. EDITAR BIOGRAFIA
-========================================== */
+
+
 function editarBiografia() {
-    const bioAtual = localStorage.getItem("perfil_bio") || "";
+    if (!idCadastroPerfil) {
+        console.error("ID do usuário não encontrado. Carregue o perfil primeiro.");
+        return;
+    }
+
+    const chaveBio = `perfil_bio_${idCadastroPerfil}`;
+    const bioAtual = localStorage.getItem(chaveBio) || "";
 
     const novaBio = prompt("Digite sua biografia:", bioAtual);
 
     if (novaBio === null) return;
 
-    localStorage.setItem("perfil_bio", novaBio);
+    localStorage.setItem(chaveBio, novaBio);
     atualizarBio(novaBio);
 }
+
+
+async function carregarProgressoMensal() {
+    const container = document.getElementById(
+        "barras-progresso-mensal"
+    );
+
+    if (!container) return;
+
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        container.textContent = "Faça login para visualizar seu progresso.";
+        return;
+    }
+
+    try {
+        const resposta = await fetch(`${API_URL}/api/xp-mensal`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Erro ao carregar XP mensal.");
+        }
+
+        container.innerHTML = "";
+
+        dados.meses.forEach(mes => {
+            const xp = Number(mes.xp) || 0;
+
+            // 20.000 XP representam 100%
+            const porcentagem = Math.min(
+                (xp / 20000) * 100,
+                100
+            );
+
+            const barra = document.createElement("div");
+            barra.className = "barra";
+
+            const topo = document.createElement("div");
+            topo.className = "barra-topo";
+
+            const nome = document.createElement("span");
+            nome.textContent = mes.nome;
+
+            const valor = document.createElement("span");
+            valor.className = "xp";
+            valor.textContent =
+                `${xp.toLocaleString("pt-BR")} XP`;
+
+            topo.append(nome, valor);
+
+            const trilha = document.createElement("div");
+            trilha.className = "trilha";
+
+            const preenchimento = document.createElement("div");
+            preenchimento.className = "preenchimento";
+            preenchimento.style.width = `${porcentagem}%`;
+
+            trilha.appendChild(preenchimento);
+            barra.append(topo, trilha);
+
+            container.appendChild(barra);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar progresso mensal:", erro);
+        container.textContent = "Não foi possível carregar o progresso mensal.";
+    }
+}
+carregarProgressoMensal();
+
+
+async function carregarEstatisticasGerais() {
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+        console.error('Usuário não autenticado.');
+        return;
+    }
+
+    try {
+        const resposta = await fetch('/api/me', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!resposta.ok) {
+            throw new Error('Não foi possível carregar as estatísticas.');
+        }
+
+        const dados = await resposta.json();
+        const estatisticas = dados.estatisticas;
+
+        if (!estatisticas) {
+            throw new Error('Estatísticas não encontradas na resposta.');
+        }
+
+        // DATA DE CADASTRO
+        const elementoData = document.getElementById('data-membro-desde');
+
+        if (elementoData && estatisticas.dataCadastro) {
+            const dataTexto = String(estatisticas.dataCadastro).slice(0, 10);
+            const [ano, mes, dia] = dataTexto.split('-');
+
+            const dataFormatada = new Date(
+                Number(ano),
+                Number(mes) - 1,
+                Number(dia)
+            );
+
+            elementoData.textContent = dataFormatada.toLocaleDateString(
+                'pt-BR',
+                {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                }
+            );
+        }
+
+        // PORCENTAGEM TOTAL DE LEITURA
+        const elementoProgresso = document.getElementById(
+            'porcentagem-total-leitura'
+        );
+
+        if (elementoProgresso) {
+            const porcentagem = Number(
+                estatisticas.porcentagemTotalLeitura
+            );
+
+            elementoProgresso.textContent =
+                `${porcentagem.toLocaleString('pt-BR', {
+                    maximumFractionDigits: 2
+                })}%`;
+        }
+
+    } catch (erro) {
+        console.error('Erro ao carregar estatísticas:', erro);
+    }
+}
+carregarEstatisticasGerais();
+
+
+
+/* ==========================================
+   7. CARREGAR HISTÓRICO DE REDAÇÕES
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarRedacoes();
+
+    document.getElementById("fechar-detalhe")
+        ?.addEventListener("click", fecharDetalheRedacao);
+});
+
+
+let redacoesCarregadas = [];
+let mostrarTodasRedacoes = false;
+let dataFiltroRedacoes = "";
+
+
+function renderizarRedacoes() {
+
+    const lista = document.getElementById("lista-redacoes");
+
+    if (!lista) return;
+
+    // Remove detalhes abertos antes de atualizar a lista
+    document.querySelectorAll(".detalhe-redacao-item").forEach(d => d.remove());
+
+    // Filtrar por data, se houver uma data selecionada
+    let redacoesFiltradas = [...redacoesCarregadas];
+
+    if (dataFiltroRedacoes) {
+
+        redacoesFiltradas = redacoesFiltradas.filter(redacao => {
+            const dataRedacao = String(redacao.data_envio).slice(0, 10);
+
+            return dataRedacao === dataFiltroRedacoes;
+        });
+
+    }
+
+    // Mostrar somente as cinco últimas quando não houver filtro
+    if (!mostrarTodasRedacoes && !dataFiltroRedacoes) {
+        redacoesFiltradas = redacoesFiltradas.slice(0, 5);
+    }
+
+    lista.innerHTML = "";
+
+    if (redacoesFiltradas.length === 0) {
+
+        const mensagem = document.createElement("div");
+        mensagem.className = "mensagem-sem-redacoes";
+
+        mensagem.textContent = dataFiltroRedacoes
+            ? "Nenhuma redação encontrada nesta data."
+            : "Você ainda não possui redações.";
+
+        lista.appendChild(mensagem);
+
+        return;
+    }
+
+    redacoesFiltradas.forEach(redacao => {
+
+        const item = document.createElement("div");
+        item.className = "item redacao";
+
+        const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg"
+                height="26px"
+                viewBox="0 -960 960 960"
+                width="26px"
+                fill="#8BC0D4">
+                <path d="M200-200h560v-560H200v560Zm0 80q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm80-160h400v-80H280v80Zm0-160h400v-80H280v80Zm0-160h260v-80H280v80ZM200-200v-560 560Z"/>
+            </svg>
+        `;
+
+        const data = new Date(
+            String(redacao.data_envio).replace(" ", "T")
+        );
+
+        const tempo = Number.isNaN(data.getTime())
+            ? "Data indisponível"
+            : data.toLocaleString("pt-BR", {
+                dateStyle: "short",
+                timeStyle: "short"
+            });
+
+        item.innerHTML = `
+            ${svg}
+
+            <div class="texto">
+                <span class="titulo"></span>
+                <span class="tempo"></span>
+            </div>
+
+            <span class="pontos"></span>
+        `;
+
+        item.querySelector(".titulo").textContent =
+            redacao.tema || "Redação sem título";
+
+        item.querySelector(".tempo").textContent = tempo;
+
+        item.querySelector(".pontos").textContent =
+            `${Number(redacao.nota_final) || 0}/1000`;
+
+        item.addEventListener("click", () => {
+
+            const detalheAberto = item.nextElementSibling;
+
+            if (detalheAberto?.classList.contains("detalhe-redacao-item")) {
+                detalheAberto.remove();
+                return;
+            }
+
+            abrirDetalheRedacao(redacao, item);
+
+        });
+
+        lista.appendChild(item);
+
+    });
+
+}
+
+
+async function carregarRedacoes() {
+
+    const lista = document.getElementById("lista-redacoes");
+    const total = document.getElementById("total-redacoes");
+    const token = localStorage.getItem("authToken");
+
+    if (!lista || !total) {
+        console.error("Elementos de redações não encontrados.");
+        return;
+    }
+
+    if (!token) {
+        lista.textContent = "Faça login para visualizar suas redações.";
+        total.textContent = "0 redações";
+        return;
+    }
+
+    try {
+
+        const resposta = await fetch(`${API_URL}/api/redacoes`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(
+                dados.erro || "Erro ao carregar redações."
+            );
+        }
+
+        redacoesCarregadas = dados.redacoes || [];
+
+        // Ordenar da mais recente para a mais antiga
+        redacoesCarregadas.sort((a, b) => {
+            return new Date(b.data_envio) - new Date(a.data_envio);
+        });
+
+        total.textContent =
+            `${redacoesCarregadas.length} ${
+                redacoesCarregadas.length === 1
+                    ? "redação"
+                    : "redações"
+            }`;
+
+        // BOTÃO ÚLTIMAS 5
+        document.getElementById("btn-ultimas-redacoes")
+            ?.addEventListener("click", () => {
+
+                mostrarTodasRedacoes = false;
+                dataFiltroRedacoes = "";
+
+                document.getElementById("filtro-data-redacoes").value = "";
+
+                document.getElementById("btn-ultimas-redacoes")
+                    .classList.add("ativo");
+
+                document.getElementById("btn-todas-redacoes")
+                    .classList.remove("ativo");
+
+                renderizarRedacoes();
+
+            });
+
+        // BOTÃO VER TODAS
+        document.getElementById("btn-todas-redacoes")
+            ?.addEventListener("click", () => {
+
+                mostrarTodasRedacoes = true;
+                dataFiltroRedacoes = "";
+
+                document.getElementById("filtro-data-redacoes").value = "";
+
+                document.getElementById("btn-todas-redacoes")
+                    .classList.add("ativo");
+
+                document.getElementById("btn-ultimas-redacoes")
+                    .classList.remove("ativo");
+
+                renderizarRedacoes();
+
+            });
+
+        // FILTRAR POR DIA
+        document.getElementById("filtro-data-redacoes")
+            ?.addEventListener("change", (evento) => {
+
+                dataFiltroRedacoes = evento.target.value;
+
+                if (dataFiltroRedacoes) {
+
+                    mostrarTodasRedacoes = true;
+
+                    document.getElementById("btn-ultimas-redacoes")
+                        .classList.remove("ativo");
+
+                    document.getElementById("btn-todas-redacoes")
+                        .classList.remove("ativo");
+
+                } else {
+
+                    mostrarTodasRedacoes = false;
+
+                    document.getElementById("btn-ultimas-redacoes")
+                        .classList.add("ativo");
+
+                    document.getElementById("btn-todas-redacoes")
+                        .classList.remove("ativo");
+
+                }
+
+                renderizarRedacoes();
+
+            });
+
+        // LIMPAR FILTRO
+        document.getElementById("limpar-filtro-redacoes")
+            ?.addEventListener("click", () => {
+
+                dataFiltroRedacoes = "";
+                mostrarTodasRedacoes = false;
+
+                document.getElementById("filtro-data-redacoes").value = "";
+
+                document.getElementById("btn-ultimas-redacoes")
+                    .classList.add("ativo");
+
+                document.getElementById("btn-todas-redacoes")
+                    .classList.remove("ativo");
+
+                renderizarRedacoes();
+
+            });
+
+        // Exibição inicial: cinco últimas
+        renderizarRedacoes();
+
+    } catch (erro) {
+
+        console.error("Erro ao carregar redações:", erro);
+
+        lista.textContent =
+            "Não foi possível carregar suas redações.";
+
+    }
+
+}
+
+
+document.addEventListener("DOMContentLoaded", carregarRedacoes);
+
+
+
+
+/* ==========================================
+   8. MOSTRAR DETALHES DA REDAÇÃO
+========================================== */
+
+
+
+
+function abrirDetalheRedacao(redacao, itemClicado) {
+    // Remove detalhes que já estejam abertos
+    document.querySelectorAll(".detalhe-redacao-item").forEach(d => d.remove());
+
+    const detalhe = document.createElement("div");
+    detalhe.className = "detalhe-redacao-item";
+
+    const data = new Date(redacao.data_envio);
+
+    const dataFormatada = Number.isNaN(data.getTime())
+        ? "Data indisponível"
+        : data.toLocaleString("pt-BR");
+
+    detalhe.innerHTML = `
+        <div class="detalhe-conteudo">
+
+            <button type="button" id="fechar-detalhe">
+                Fechar detalhes ✕
+            </button>
+
+            <div class="detalhe-header">
+                <span class="detalhe-categoria"></span>
+                <h3></h3>
+
+                <div class="detalhe-meta">
+                    <span class="detalhe-data"></span>
+                    <span class="detalhe-nivel"></span>
+                </div>
+            </div>
+
+            <div class="detalhe-nota-card">
+                <div>
+                    <span>Nota final</span>
+                    <strong class="nota"></strong>
+                    <small>/1000</small>
+                </div>
+
+                <span id="detalhe-status"></span>
+                <span id="detalhe-xp"></span>
+            </div>
+
+            <div class="detalhe-bloco">
+                <h4>Minha redação</h4>
+                <p class="texto-redacao"></p>
+            </div>
+
+            <div class="detalhe-bloco">
+                <h4>Comentário da IA</h4>
+                <p class="comentario-redacao"></p>
+            </div>
+
+            <div class="detalhe-bloco">
+                <h4>Critérios de avaliação</h4>
+                <div id="detalhe-criterios"></div>
+            </div>
+
+            <div class="detalhe-bloco">
+                <h4>Sugestões da IA</h4>
+                <div id="detalhe-sugestoes"></div>
+            </div>
+
+        </div>
+    `;
+
+    // Preencher informações principais
+    detalhe.querySelector(".detalhe-categoria").textContent =
+        redacao.categoria || "Sem categoria";
+
+    detalhe.querySelector(".detalhe-header h3").textContent =
+        redacao.tema || "Redação sem título";
+
+    detalhe.querySelector(".detalhe-data").textContent = dataFormatada;
+
+    detalhe.querySelector(".detalhe-nivel").textContent =
+        redacao.nivel || "Não informado";
+
+    detalhe.querySelector(".nota").textContent =
+        Number(redacao.nota_final) || 0;
+
+    detalhe.querySelector("#detalhe-status").textContent =
+        redacao.status_nota || "Correção concluída";
+
+    detalhe.querySelector("#detalhe-xp").textContent =
+        `+${Number(redacao.xp_ganhos) || 0} XP`;
+
+    detalhe.querySelector(".texto-redacao").textContent =
+        redacao.texto || "";
+
+    detalhe.querySelector(".comentario-redacao").textContent =
+        redacao.comentario_geral || "Nenhum comentário disponível.";
+
+
+    // SUGESTÕES DA IA
+    
+    // CRITÉRIOS DE AVALIAÇÃO
+    const containerCriterios =
+        detalhe.querySelector("#detalhe-criterios");
+
+    containerCriterios.innerHTML = "";
+
+    if (redacao.criterios && redacao.criterios.length > 0) {
+
+        redacao.criterios.forEach(criterio => {
+            const item = document.createElement("div");
+            item.className = "criterio-item";
+
+            const titulo = document.createElement("h4");
+            titulo.textContent =
+                `${criterio.competencia}. ${criterio.nome_criterio}`;
+
+            const nota = document.createElement("strong");
+            nota.textContent =
+                `${criterio.nota}/${criterio.nota_maxima}`;
+
+            const comentario = document.createElement("p");
+            comentario.textContent =
+                criterio.comentario || "Sem comentário.";
+
+            item.append(titulo, nota, comentario);
+            containerCriterios.appendChild(item);
+        });
+
+    } else {
+        containerCriterios.textContent =
+            "Critérios de avaliação não disponíveis.";
+    }
+
+
+    // SUGESTÕES DA IA
+    const containerSugestoes =
+        detalhe.querySelector("#detalhe-sugestoes");
+
+    containerSugestoes.innerHTML = "";
+
+    if (redacao.sugestoes && redacao.sugestoes.length > 0) {
+
+        redacao.sugestoes.forEach(sugestao => {
+            const item = document.createElement("div");
+            item.className = `sugestao-item ${sugestao.tipo}`;
+
+            const texto = document.createElement("p");
+            texto.textContent = sugestao.sugestao;
+
+            item.appendChild(texto);
+            containerSugestoes.appendChild(item);
+        });
+
+    } else {
+        containerSugestoes.textContent =
+            "Nenhuma sugestão disponível.";
+    }
+
+
+
+    // Coloca os detalhes imediatamente abaixo da redação
+    itemClicado.insertAdjacentElement("afterend", detalhe);
+
+    // Botão para fechar os detalhes
+    detalhe.querySelector("#fechar-detalhe").addEventListener("click", () => {
+        detalhe.remove();
+    });
+}
+
+
+
+
+
+
+
+/* ==========================================
+   9. VOLTAR PARA A LISTA DE REDAÇÕES
+========================================== */
+
+function fecharDetalheRedacao() {
+
+    const lista = document.getElementById("lista-redacoes");
+    const detalhe = document.getElementById("detalhe-redacao");
+
+    if (!lista || !detalhe) return;
+
+    detalhe.hidden = true;
+    lista.hidden = false;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ==========================================
 // 9. MÉTRICA DE LIVROS LIDOS
@@ -1172,126 +1851,6 @@ document.addEventListener("DOMContentLoaded", () => {
         essayInput.addEventListener("input", updateEditorStats);
     }
 
-    async function corrigirRedacao(tema, texto) {
-        await new Promise(r => setTimeout(r, 1200));
-        const criterios = [18, 17, 16, 18, 15];
-        return {
-            nota: criterios.reduce((a, b) => a + b, 0) * 10,
-            criterios,
-            comentario: "Redação bem estruturada! Continue desenvolvendo seu repertório cultural."
-        };
-    }
-
-    function mostrarResultado({ nota, criterios, comentario }) {
-        $("score-value").textContent = nota;
-
-        const anel = $("score-ring-fill");
-        if (anel) {
-            anel.style.strokeDasharray = "100 100";
-            anel.style.strokeDashoffset = 100 - nota / 10;
-        }
-
-        const status = document.querySelector(".score-badge-status p");
-        if (status) {
-            status.textContent =
-                nota >= 800 ? "Excelente" : nota >= 600 ? "Muito bom" : nota >= 400 ? "Bom" : "Pode melhorar";
-        }
-
-        const pill = document.querySelector(".xp-reward-pill");
-        if (pill) pill.textContent = `★ +${Math.round(chosenXp * (nota / 1000))} XP ganhos`;
-
-        const corpo = document.querySelector(".comment-body");
-        if (corpo) corpo.textContent = comentario;
-
-        document.querySelectorAll(".criterion-card").forEach((card, i) => {
-            if (criterios[i] === undefined) return;
-            card.querySelectorAll(".criterion-row span")[1].textContent = `${criterios[i]}/20`;
-            card.querySelector(".criterion-fill").style.width = `${(criterios[i] / 20) * 100}%`;
-        });
-    }
-
-    async function submitEssay() {
-        const texto = $("essay-input").value.trim();
-        const palavras = texto ? texto.split(/\s+/).length : 0;
-
-        if (!chosenTheme) {
-            alert("Escolha um tema primeiro.");
-            navigateToStep(1);
-            return;
-        }
-
-        if (palavras < MIN_PALAVRAS) {
-            alert(`Sua redação precisa de pelo menos ${MIN_PALAVRAS} palavras.`);
-            return;
-        }
-
-        const btn = document.querySelector("#view-2 .submit-btn");
-        const textoOriginal = btn.textContent;
-
-        btn.disabled = true;
-        btn.textContent = "Corrigindo...";
-
-        try {
-            // 1. Recebe a correção
-            const resultado = await corrigirRedacao(chosenTheme, texto);
-
-            // 2. Calcula o XP
-            const xp = Math.round(chosenXp * (resultado.nota / 1000));
-
-            // 3. Mostra o resultado
-            mostrarResultado(resultado);
-
-            // 4. Salva no banco de dados
-            const token = localStorage.getItem("token");
-
-            if (!token) {
-                throw new Error("Usuário não autenticado.");
-            }
-
-            const resposta = await fetch("/api/redacoes", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    tema: chosenTheme,
-                    categoria: chosenCategory,
-                    nivel: chosenLevel,
-                    texto: texto,
-                    nota_final: resultado.nota,
-                    status_nota: resultado.nota >= 800
-                        ? "Excelente"
-                        : resultado.nota >= 600
-                        ? "Muito bom"
-                        : resultado.nota >= 400
-                        ? "Bom"
-                        : "Pode melhorar",
-                    comentario_geral: resultado.comentario,
-                    xp_ganhos: xp
-                })
-            });
-
-            const dados = await resposta.json();
-
-            if (!resposta.ok) {
-                throw new Error(dados.mensagem || "Erro ao salvar redação.");
-            }
-
-            console.log("Redação salva!", dados);
-
-            navigateToStep(3);
-
-        } catch (erro) {
-            console.error("Erro ao enviar redação:", erro);
-            alert(erro.message || "Não foi possível enviar a redação.");
-
-        } finally {
-            btn.disabled = false;
-            btn.textContent = textoOriginal;
-        }
-    }
-
     const submitBtn = document.querySelector("#view-2 .submit-btn");
 
     if (submitBtn) {
@@ -1328,57 +1887,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.submitEssay = submitEssay;
     window.navigateToStep = navigateToStep;
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document.getElementById("btn-sair")?.addEventListener("click", sairSite);
 

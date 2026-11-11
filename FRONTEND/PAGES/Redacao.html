@@ -79,7 +79,7 @@
                     </div>
                     <div class="theme-meta">
                         <span class="badge medio">Médio</span>
-                        <span class="xp-text">★ + 150</span>
+                        <span class="xp-text">★ + 300</span>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="theme-meta">
                         <span class="badge dificil">Difícil</span>
-                        <span class="xp-text">★ + 200</span>
+                        <span class="xp-text">★ + 400</span>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="theme-meta">
                         <span class="badge facil">Fácil</span>
-                        <span class="xp-text">★ + 100</span>
+                        <span class="xp-text">★ + 200</span>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="theme-meta">
                         <span class="badge dificil">Difícil</span>
-                        <span class="xp-text">★ + 220</span>
+                        <span class="xp-text">★ + 400</span>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="theme-meta">
                         <span class="badge medio">Médio</span>
-                        <span class="xp-text">★ + 160</span>
+                        <span class="xp-text">★ + 300</span>
                     </div>
                 </div>
             </div>
@@ -981,7 +981,7 @@
                         <circle class="ring-bg" cx="74" cy="74" r="67" pathLength="100"/>
                         <circle class="ring-fill" id="score-ring-fill" cx="74" cy="74" r="67" pathLength="100"/>
                     </svg>
-                    <div class="score-value" id="score-value">100</div>
+                    <div class="score-value" id="score-value">0</div>
                     <div class="score-max">/ 1000</div>
                 </div>
                 <div class="score-badge-status">
@@ -1008,7 +1008,7 @@
             <div class="criterion-card">
                 <div class="criterion-row">
                     <span>Adequação Linguística</span>
-                    <span style="color: var(--primary);">19/20</span>
+                    <span style="color: var(--primary);">0/200</span>
                 </div>
                 <div class="criterion-progress">
                     <div class="criterion-fill" style="width: 95%;"></div>
@@ -1018,7 +1018,7 @@
             <div class="criterion-card">
                 <div class="criterion-row">
                     <span>Pertinência ao Tema e Estrutura Textual</span>
-                    <span style="color: var(--primary);">19/20</span>
+                    <span style="color: var(--primary);">0/200</span>
                 </div>
                 <div class="criterion-progress">
                     <div class="criterion-fill" style="width: 95%;"></div>
@@ -1028,7 +1028,7 @@
             <div class="criterion-card">
                 <div class="criterion-row">
                     <span>Argumentação</span>
-                    <span style="color: var(--primary);">19/20</span>
+                    <span style="color: var(--primary);">0/200</span>
                 </div>
                 <div class="criterion-progress">
                     <div class="criterion-fill" style="width: 95%;"></div>
@@ -1038,7 +1038,7 @@
             <div class="criterion-card">
                 <div class="criterion-row">
                     <span>Coesão e Coerência</span>
-                    <span style="color: var(--primary);">19/20</span>
+                    <span style="color: var(--primary);">0/200</span>
                 </div>
                 <div class="criterion-progress">
                     <div class="criterion-fill" style="width: 95%;"></div>
@@ -1048,7 +1048,7 @@
             <div class="criterion-card">
                 <div class="criterion-row">
                     <span>Proposta de Intervenção</span>
-                    <span style="color: var(--primary);">20/20</span>
+                    <span style="color: var(--primary);">0/200</span>
                 </div>
                 <div class="criterion-progress">
                     <div class="criterion-fill" style="width: 100%;"></div>
@@ -1087,7 +1087,7 @@
             </div>
 
             <div class="actions-bottom">
-                <button class="btn-secondary" onclick="navigateToStep(1)">Nova Redação</button>
+                <button class="btn-secondary"  id="btn-nova-redacao">Nova Redação</button>
                 <button class="submit-btn" style="flex: 1;" onclick="navigateToStep(2)">Reescrever</button>
             </div>
         </section>
@@ -1122,6 +1122,8 @@
         </div>
         <p>© 2026 - lêBrasil</p>
     </footer>
+<script src="/FRONTEND/SCRIPTS/redacaoIA.js"></script>
+<script src="/FRONTEND/SCRIPTS/redacao.js"></script>
 <script src="/FRONTEND/SCRIPTS/script.js"></script>
 </body>
 </html>

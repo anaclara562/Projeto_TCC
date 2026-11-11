@@ -51,7 +51,7 @@
     <main>
         <section id="perfil">
             <div id="avatar">
-                <span id="avatar-inicial">E</span>
+                <span id="avatar-inicial"></span>
                 <div id="avatar-icone" title="Editar Nome">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#3B84A0">
                         <path d="M216-216h51l375-375-51-51-375 375v51Zm-72 72v-153l498-498q11-11 23.84-16 12.83-5 27-5 14.16 0 27.16 5t24 16l51 51q11 11 16 24t5 26.54q0 14.45-5.02 27.54T795-642L297-144H144Zm600-549-51-51 51 51Zm-127.95 76.95L591-642l51 51-25.95-25.05Z"/>
@@ -60,9 +60,8 @@
             </div>
 
             <div id="info">
-                <h2 id="nome">Emilia </h2>
+                <h2 id="nome"></h2>
                 <p id="bio">
-                    Eu amo vc 
                     <svg id="editar" title="Editar Descrição" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#8BC0D4">
                         <path d="M216-216h51l375-375-51-51-375 375v51Zm-72 72v-153l498-498q11-11 23.84-16 12.83-5 27-5 14.16 0 27.16 5t24 16l51 51q11 11 16 24t5 26.54q0 14.45-5.02 27.54T795-642L297-144H144Zm600-549-51-51 51 51Zm-127.95 76.95L591-642l51 51-25.95-25.05Z"/>
                     </svg>
@@ -92,28 +91,16 @@
         <div id="grade">
             <section id="progresso">
                 <h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#33A8F0">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#33A8F0">
                         <path d="m135.76-232.83-63.89-63.65L377.2-603.57l160 160 196.04-194.52H631.87v-91h256.26v256.02h-91v-101.36L537.2-314.26l-160-160-241.44 241.43Z"/>
                     </svg>
                     Progresso Mensal
                 </h2>
-                <div class="barra">
-                    <div class="barra-topo">
-                        <span>Mar</span>
-                        <span class="xp">2.100 XP</span>
-                    </div>
-                    <div class="trilha">
-                        <div class="preenchimento" style="width:50%"></div>
-                    </div>
-                </div>
-                <div class="barra">
-                    <div class="barra-topo">
-                        <span>Abr</span>
-                        <span class="xp">2.800 XP</span>
-                    </div>
-                    <div class="trilha">
-                        <div class="preenchimento" style="width:65%"></div>
-                    </div>
+
+                <div id="barras-progresso-mensal">
+                    <p>Carregando progresso...</p>
                 </div>
             </section>
 
@@ -124,14 +111,15 @@
                     </svg>
                     Estatísticas Gerais
                 </h2>
-                    <div class="linha">
-                        <span class="chave">Membro desde</span>
-                        <span class="dado">Jan 2025</span>
-                    </div>
-                    <div class="linha">
-                        <span class="chave">Tempo de leitura</span>
-                        <span class="dado">40h</span>
-                    </div>
+                <div class="linha">
+                    <span class="chave">Membro desde</span>
+                    <span class="dado" id="data-membro-desde">-</span>
+                </div>
+
+                <div class="linha">
+                    <span class="chave">Porcentagem total de leitura</span>
+                    <span class="dado" id="porcentagem-total-leitura">0%</span>
+                </div>
             </section>
         </div>
 
@@ -151,6 +139,49 @@
                 <span id="total-atividades">0 atividades recentes</span>
             </div>
 
+
+            <!-- CONTROLES DAS ATIVIDADES -->
+            <div class="controles-atividades">
+
+                <div class="filtros-atividades">
+
+                    <button
+                        type="button"
+                        id="btn-ultimas-atividades"
+                        class="filtro-atividade ativo">
+                        Últimas 5
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btn-todas-atividades"
+                        class="filtro-atividade">
+                        Ver todas
+                    </button>
+
+                </div>
+
+                <div class="filtro-data-atividade">
+
+                    <label for="filtro-data-atividades">
+                        Filtrar por dia:
+                    </label>
+
+                    <input
+                        type="date"
+                        id="filtro-data-atividades">
+
+                    <button
+                        type="button"
+                        id="limpar-filtro-atividades">
+                        Limpar Filtragem
+                    </button>
+
+                </div>
+
+            </div>
+
+
             <div id="lista-atividades">
                 <div class="lista-atividades-recentes">
                     Carregando suas atividades...
@@ -158,40 +189,6 @@
 
             </div>
         
-            <div id="detalhe-atividade" hidden>
-                <div class="item livro">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
-                        <path d="M480.72-146.37q-48.24-37.76-104.24-59.6-56-21.83-116.48-21.83-41.18 0-80.9 11-39.71 11-76.23 30.52-24.35 12.67-47.32-1.16-22.96-13.83-22.96-40.34V-709.3q0-14.35 6.81-27.13 6.82-12.77 20.45-19.16 46.48-23.76 96.72-35.4 50.23-11.64 102.69-11.64 58.5 0 114.24 15 55.74 15 106.5 45.72v491.89q51-32 107-48.6t113-16.6q36 0 70.5 6.36T840-290.5v-489.57q15.48 5 30.7 10.86 15.21 5.86 29.93 13.62 13.87 5.96 20.33 18.97 6.45 13.01 6.45 27.32v485.1q0 25.64-22.84 38.23-22.85 12.6-47.44-.31-36.52-19.52-76.23-30.52-39.72-11-80.9-11-60 0-115.64 21.95-55.64 21.96-103.64 59.48ZM560-353.78v-388.13l200-201.68v407.89L560-353.78Zm-167.41 61.41v-395.76q-31.33-13.28-64.8-20.19-33.46-6.9-67.79-6.9-37 0-72 6.7t-68 20.11v398.43q35-13 69.5-19.12 34.5-6.12 70.5-6.12 34.33 0 67.03 5.4 32.71 5.41 65.56 17.45Zm0 0v-396 396Z"/>
-                    </svg>
-                    <div class="texto">
-                        <span class="titulo">Completou "A Hora da Estrela"</span>
-                        <span class="tempo">2 dias atrás</span>
-                    </div>
-                    <span class="pontos">★ + 600</span>
-                </div>
-
-                <div class="item next_nivel">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
-                        <path d="M618.09-518.09q25.95 0 43.93-17.98Q680-554.04 680-580t-17.98-43.93q-17.98-17.98-43.93-17.98-25.72 0-43.7 18.09-17.98 18.1-17.98 43.82t17.98 43.82q17.98 18.09 43.7 18.09Zm-276.18 0q25.72 0 43.7-18.09 17.98-18.1 17.98-43.82t-17.98-43.82q-17.98-18.09-43.7-18.09-25.95 0-43.93 17.98Q280-605.96 280-580t17.98 43.93q17.98 17.98 43.93 17.98Zm262.91 218.75q55.85-39.33 80.38-103.53H274.8q24.53 64.2 80.38 103.53Q411.04-260 480-260t124.82-39.34ZM320.89-103.97q-74.43-32.1-129.63-87.29-55.19-55.2-87.29-129.63-32.1-74.44-32.1-159.11 0-84.67 32.1-159.11 32.1-74.43 87.29-129.63 55.2-55.19 129.63-87.29 74.44-32.1 159.11-32.1 84.67 0 159.11 32.1 74.43 32.1 129.63 87.29 55.19 55.2 87.29 129.63 32.1 74.44 32.1 159.11 0 84.67-32.1 159.11-32.1 74.43-87.29 129.63-55.2 55.19-129.63 87.29-74.44 32.1-159.11 32.1-84.67 0-159.11-32.1ZM480-480Zm224.85 224.85q92.28-92.28 92.28-224.85t-92.28-224.85Q612.57-797.13 480-797.13t-224.85 92.28Q162.87-612.57 162.87-480t92.28 224.85q92.28 92.28 224.85 92.28t224.85-92.28Z"/>
-                    </svg>
-                    <div class="texto">
-                        <span class="titulo">Subiu para o Nível 12!</span>
-                        <span class="tempo">5 dias atrás</span>
-                    </div>
-                    <span class="pontos">★ + 30</span>
-                </div>
-
-                <div class="item inicio">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#8BC0D4">
-                        <path d="M358.54-293.46 480-366.59l121.46 74.13-32.05-138.5 107.18-92.65-140.74-12.52L480-667.11l-55.85 130.22-140.74 12.28 107.18 93.41-32.05 137.74ZM221.04-103.5l68.35-294.63L60.63-596.46l301.87-25.95L480-900.33l117.5 277.92 301.87 25.95-228.76 198.33 68.35 294.63L480-259.91 221.04-103.5ZM480-469.28Z"/>
-                    </svg>
-                    <div class="texto">
-                        <span class="titulo">Iniciou "Dom Casmurro"</span>
-                        <span class="tempo">1 semana atrás</span>
-                    </div>
-                    <span class="pontos">★ + 50</span>
-                </div>
-            </div>
         </section>
 
         <section id="redacoes">
@@ -214,80 +211,57 @@
                 <span id="total-redacoes">0 redações</span>
             </div>
 
+            <!-- CONTROLES DO HISTÓRICO -->
+            <div class="controles-redacoes">
+
+                <div class="filtros-redacoes">
+
+                    <button
+                        type="button"
+                        id="btn-ultimas-redacoes"
+                        class="filtro-redacao ativo">
+                        Últimas 5
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btn-todas-redacoes"
+                        class="filtro-redacao">
+                        Ver todas
+                    </button>
+
+                </div>
+
+                <div class="filtro-data-redacao">
+
+                    <label for="filtro-data-redacoes">
+                        Filtrar por dia:
+                    </label>
+
+                    <input
+                        type="date"
+                        id="filtro-data-redacoes">
+
+                    <button
+                        type="button"
+                        id="limpar-filtro-redacoes">
+                        Limpar Filtragem
+                    </button>
+
+                </div>
+
+            </div>
+
+
             <!-- LISTA DE REDAÇÕES -->
             <div id="lista-redacoes">
-
                 <div class="mensagem-carregamento">
                     Carregando suas redações...
                 </div>
-
             </div>
 
             <!-- DETALHES DA REDAÇÃO -->
-            <div id="detalhe-redacao" hidden>
-
-                <button type="button" id="fechar-detalhe">
-                    ← Voltar para o histórico
-                </button>
-
-                <div class="detalhe-header">
-                    <span class="detalhe-categoria" id="detalhe-categoria">
-                        Categoria
-                    </span>
-
-                    <h3 id="detalhe-tema">Tema da redação</h3>
-
-                    <div class="detalhe-meta">
-                        <span id="detalhe-data"></span>
-                        <span id="detalhe-nivel"></span>
-                    </div>
-                </div>
-
-                <!-- NOTA -->
-                <div class="detalhe-nota-card">
-
-                    <div>
-                        <span>NOTA FINAL</span>
-                        <strong id="detalhe-nota">0</strong>
-                        <small>/ 1000</small>
-                    </div>
-
-                    <span id="detalhe-status">Correção concluída</span>
-
-                    <span id="detalhe-xp">+0 XP</span>
-
-                </div>
-
-                <!-- TEXTO ORIGINAL -->
-                <div class="detalhe-bloco">
-                    <h4>Minha redação</h4>
-
-                    <p id="detalhe-texto"></p>
-                </div>
-
-                <!-- COMENTÁRIO DA IA -->
-                <div class="detalhe-bloco">
-                    <h4>Comentário geral da IA</h4>
-
-                    <p id="detalhe-comentario"></p>
-                </div>
-
-                <!-- COMPETÊNCIAS -->
-                <div class="detalhe-bloco">
-                    <h4>Critérios de avaliação</h4>
-
-                    <div id="detalhe-criterios"></div>
-                </div>
-
-                <!-- SUGESTÕES -->
-                <div class="detalhe-bloco">
-                    <h4>Sugestões da IA</h4>
-
-                    <div id="detalhe-sugestoes"></div>
-                </div>
-
-            </div>
-
+            <div id="detalhe-redacao"></div>
         </section>
     </main>
 

@@ -1,4 +1,5 @@
 require('dotenv').config();
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 const path = require('path');
 const express = require('express');
@@ -135,12 +136,34 @@ app.post('/api/auth/register', registerLimiter, async (req, res, next) => {
       'INSERT INTO nivel (idnivel, pontuacao, progresso_de_evolucao, ranking_idranking) VALUES (?, 0, 0, ?)',
       [nivelId, rankingId]
     );
+    
     await conn.execute(
-      `INSERT INTO usuario
-       (idcadastro, nome_do_usuario, email, cpf, senha1, senha2, usuario_idusuario, nivel_idnivel, nivel_ranking_idranking)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [idcadastro, nome, email, cpf, passwordHash, passwordHash, usuarioId, nivelId, rankingId]
+    `INSERT INTO usuario (
+        idcadastro,
+        nome_do_usuario,
+        email,
+        cpf,
+        senha1,
+        senha2,
+        usuario_idusuario,
+        nivel_idnivel,
+        nivel_ranking_idranking,
+        data_cadastro
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
+    [
+        idcadastro,
+        nome,
+        email,
+        cpf,
+        passwordHash,
+        passwordHash,
+        usuarioId,
+        nivelId,
+        rankingId
+    ]
     );
+
     await conn.execute(
       `INSERT INTO login (idLogin, email, senha, usuario_idusuario, usuario_idcadastro, usuario_usuario_idusuario)
        VALUES (?, ?, ?, ?, ?, ?)`,
@@ -205,17 +228,51 @@ app.post('/api/auth/login', loginLimiter, async (req, res, next) => {
   }
 });
 
+
 app.get('/api/me', auth, async (req, res, next) => {
   try {
     const [rows] = await pool.execute(
-      `SELECT idcadastro, usuario_idusuario, nome_do_usuario, email, nivel_idnivel, nivel_ranking_idranking
-       FROM usuario WHERE idcadastro = ? AND usuario_idusuario = ? LIMIT 1`,
+      `SELECT
+          idcadastro,
+          usuario_idusuario,
+          nome_do_usuario,
+          email,
+          nivel_idnivel,
+          nivel_ranking_idranking,
+          data_cadastro
+       FROM usuario
+       WHERE idcadastro = ? AND usuario_idusuario = ?
+       LIMIT 1`,
       [req.auth.cadastroId, Number(req.auth.sub)]
     );
-    if (!rows.length) return fail(res, 404, 'Usuário não encontrado.');
-    res.json({ usuario: publicUser(rows[0]) });
-  } catch (error) { next(error); }
+
+    if (!rows.length) {
+      return fail(res, 404, 'Usuário não encontrado.');
+    }
+
+    const [leitura] = await pool.execute(
+        `SELECT
+            COALESCE(SUM(pl.progresso), 0) AS porcentagem_total
+        FROM livros l
+        LEFT JOIN progresso_leitura pl
+            ON pl.idlivros = l.idlivros
+        AND pl.usuario_idcadastro = ?`,
+        [req.auth.cadastroId]
+    );
+
+    res.json({
+      usuario: publicUser(rows[0]),
+      estatisticas: {
+        dataCadastro: rows[0].data_cadastro,
+        porcentagemTotalLeitura: Number(leitura[0].porcentagem_total)
+      }
+    });
+
+  } catch (error) {
+    next(error);
+  }
 });
+
 
 app.put('/api/me', auth, async (req, res, next) => {
   try {
@@ -261,6 +318,9 @@ app.put('/api/me', auth, async (req, res, next) => {
     next(error);
   }
 });
+
+
+
 
 
 app.post('/api/login-diario', auth, async (req, res, next) => {
@@ -430,12 +490,18 @@ async function adicionarXP(
 
     // Busca os IDs de nível e ranking do usuário.
     const [usuarios] = await conn.execute(
-        `SELECT nivel_idnivel, nivel_ranking_idranking
-         FROM usuario
-         WHERE idcadastro = ?
-           AND usuario_idusuario = ?
-         LIMIT 1
-         FOR UPDATE`,
+        `SELECT
+            u.nivel_idnivel,
+            u.nivel_ranking_idranking,
+            n.pontuacao
+        FROM usuario u
+        INNER JOIN nivel n
+            ON n.idnivel = u.nivel_idnivel
+            AND n.ranking_idranking = u.nivel_ranking_idranking
+        WHERE u.idcadastro = ?
+        AND u.usuario_idusuario = ?
+        LIMIT 1
+        FOR UPDATE`,
         [cadastroId, usuarioId]
     );
 
@@ -445,6 +511,7 @@ async function adicionarXP(
 
     const nivelId = usuarios[0].nivel_idnivel;
     const rankingId = usuarios[0].nivel_ranking_idranking;
+    const xpAnterior = Number(usuarios[0].pontuacao) || 0;
 
     // Registra o evento. A chave única impede XP duplicado.
     const [resultado] = await conn.execute(
@@ -484,6 +551,51 @@ async function adicionarXP(
 
     if (atualizacao.affectedRows !== 1) {
         throw new Error("Não foi possível atualizar a pontuação do usuário.");
+    }
+
+    // Verifica se o usuário subiu de nível.
+    // Verifica se o usuário subiu de nível.
+    const xpAtual = xpAnterior + xp;
+
+    const nivelAnterior = Math.floor(xpAnterior / 500) + 1;
+    const nivelNovo = Math.floor(xpAtual / 500) + 1;
+
+    // Registra cada nível conquistado.
+    for (
+        let nivelConquistado = nivelAnterior + 1;
+        nivelConquistado <= nivelNovo;
+        nivelConquistado++
+    ) {
+        await registrarAtividade(
+            conn,
+            cadastroId,
+            'nivel',
+            `Alcançou o nível ${nivelConquistado}!`,
+            30
+        );
+    } {
+        
+        async function registrarAtividade(
+            conn,
+            cadastroId,
+            tipo,
+            descricao,
+            pontos = 0
+        ) {
+            const pontosRegistro = tipo === "nivel" ? 30 : pontos;
+
+            await conn.execute(
+                `INSERT INTO atividades_recentes (
+                    usuario_idcadastro,
+                    tipo,
+                    descricao,
+                    pontos
+                )
+                VALUES (?, ?, ?, ?)`,
+                [cadastroId, tipo, descricao, pontosRegistro]
+            );
+        }
+
     }
 
     return true;
@@ -758,30 +870,24 @@ async function registrarProgressoLeituraDiaria(
     return novoProgresso;
 }
 
-async function registrarAtividade(
-    conn,
-    cadastroId,
-    tipo,
-    descricao,
-    pontos = 0
-) {
+async function registrarAtividade(conn, cadastroId, tipo, descricao, pontos = 0) {
+    let pontosRegistro = pontos;
+
+    if (tipo === 'inicio') {
+        pontosRegistro = 50;
+    } else if (tipo === 'conclusao') {
+        pontosRegistro = 100;
+    } else if (tipo === 'nivel') {
+        pontosRegistro = 30;
+    }
+
     await conn.execute(
-        `INSERT INTO atividades_recentes (
-            usuario_idcadastro,
-            tipo,
-            descricao,
-            pontos
-        )
-        VALUES (?, ?, ?, ?)`,
-        [
-            cadastroId,
-            tipo,
-            descricao,
-            pontos
-        ]
+        `INSERT INTO atividades_recentes
+         (usuario_idcadastro, tipo, descricao, pontos)
+         VALUES (?, ?, ?, ?)`,
+        [cadastroId, tipo, descricao, pontosRegistro]
     );
 }
-
 
 
 
@@ -1153,7 +1259,7 @@ app.put('/api/progresso-leitura', auth, async (req, res, next) => {
         }
 
         // 8. Registra a primeira vez que o usuário inicia este livro.
-        if (progressoAnterior === 0 && progresso >= 1) {
+        if (progressoAtualAnterior === 0 && progresso > 0) {
 
             const concedido = await concluirDesafio(
                 conn,
@@ -1180,7 +1286,7 @@ app.put('/api/progresso-leitura', auth, async (req, res, next) => {
                     cadastroId,
                     'inicio',
                     `Iniciou "${livros[0].titulo}"`,
-                    concedido ? 120 : 0
+                    50
                 );
             }
         }
@@ -1234,7 +1340,7 @@ app.put('/api/progresso-leitura', auth, async (req, res, next) => {
                 cadastroId,
                 'conclusao',
                 `Concluiu "${titulo}"`,
-                xpLivro ? xp : 0
+                100
             );
         }
 
@@ -1335,7 +1441,187 @@ app.get('/api/progresso-leitura/:idlivros', auth, async (req, res, next) => {
 // SALVAR REDAÇÃO CORRIGIDA
 // ==========================================
 
+app.post('/api/corrigir-redacao', auth, async (req, res, next) => {
+    try {
+        const tema = typeof req.body.tema === 'string'
+            ? req.body.tema.trim()
+            : '';
+
+        const texto = typeof req.body.texto === 'string'
+            ? req.body.texto.trim()
+            : '';
+
+        const categoria = req.body.categoria || '';
+        const nivel = req.body.nivel || '';
+
+        if (!GROQ_API_KEY) {
+            return fail(res, 503, 'Chave da API Groq não configurada no servidor.');
+        }
+
+        if (!tema || !texto) {
+            return fail(res, 400, 'Informe o tema e o texto da redação.');
+        }
+
+        if (texto.length > 15000) {
+            return fail(res, 400, 'A redação ultrapassou o limite de caracteres.');
+        }
+
+        const resposta = await fetch(
+            'https://api.groq.com/openai/v1/chat/completions',
+            {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${GROQ_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'openai/gpt-oss-20b',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: `
+                                
+                                Você é um professor especialista em redação e literatura brasileira.
+
+                                Corrija a redação considerando cinco critérios:
+                                1. Adequação ao tema.
+                                2. Argumentação e desenvolvimento.
+                                3. Coesão e coerência.
+                                4. Gramática e norma-padrão.
+                                5. Conclusão e proposta de intervenção, quando aplicável.
+
+                                Atribua notas de 0 a 200 para cada critério.
+                                A soma dos cinco critérios deve ser exatamente a nota final, entre 0 e 1000.
+
+                                Responda exclusivamente com um objeto JSON válido, sem Markdown, sem blocos de código e sem texto antes ou depois.
+
+                                Utilize obrigatoriamente esta estrutura:
+
+                                {
+                                "nota_final": 800,
+                                "status_nota": "Muito bom",
+                                "comentario_geral": "Comentário detalhado e construtivo sobre a redação.",
+                                "criterios": [
+                                    {
+                                    "nome": "Adequação ao tema",
+                                    "nota": 180,
+                                    "comentario": "Comentário específico."
+                                    },
+                                    {
+                                    "nome": "Argumentação e desenvolvimento",
+                                    "nota": 160,
+                                    "comentario": "Comentário específico."
+                                    },
+                                    {
+                                    "nome": "Coesão e coerência",
+                                    "nota": 170,
+                                    "comentario": "Comentário específico."
+                                    },
+                                    {
+                                    "nome": "Gramática e norma-padrão",
+                                    "nota": 150,
+                                    "comentario": "Comentário específico."
+                                    },
+                                    {
+                                    "nome": "Conclusão e proposta de intervenção",
+                                    "nota": 140,
+                                    "comentario": "Comentário específico."
+                                    }
+                                ],
+                                "sugestoes": [
+                                    {
+                                    "tipo": "tip",
+                                    "titulo": "Sugestão de Melhoria",
+                                    "texto": "Sugestão específica para melhorar a redação."
+                                    },
+                                    {
+                                    "tipo": "warning",
+                                    "titulo": "Atenção",
+                                    "texto": "Problema real encontrado na redação."
+                                    },
+                                    {
+                                    "tipo": "info",
+                                    "titulo": "Ponto Positivo",
+                                    "texto": "Qualidade real identificada na redação."
+                                    }
+                                ]
+                                }
+
+                                As notas acima são apenas um exemplo de estrutura. Avalie cada redação individualmente e nunca copie as notas do exemplo.
+                                Não invente erros, qualidades ou argumentos que não estejam no texto.
+
+                            `
+                        },
+                        {
+                            role: 'user',
+                            content: `
+                            Tema: ${tema}
+                            Categoria: ${categoria}
+                            Nível: ${nivel}
+
+                            Redação do estudante:
+                            ${texto}
+                            `
+                        }
+                    ],
+                    response_format: {
+                        type: 'json_object'
+                    },
+                    temperature: 0.3
+                })
+            }
+        );
+
+        if (!resposta.ok) {
+            const erroGroq = await resposta.text();
+            console.error('Erro retornado pela Groq:', erroGroq);
+
+            return fail(
+                res,
+                502,
+                'Não foi possível corrigir a redação pela inteligência artificial.'
+            );
+        }
+
+        const dados = await resposta.json();
+        const conteudo = dados.choices?.[0]?.message?.content;
+
+        if (!conteudo) {
+            return fail(res, 502, 'A Groq não retornou uma correção válida.');
+        }
+
+        const correcao = JSON.parse(conteudo);
+
+        if (
+            !Number.isFinite(Number(correcao.nota_final)) ||
+            Number(correcao.nota_final) < 0 ||
+            Number(correcao.nota_final) > 1000 ||
+            typeof correcao.comentario_geral !== 'string'
+        ) {
+            return fail(res, 502, 'A correção retornada está em formato inválido.');
+        }
+
+        return res.json({
+            mensagem: 'Redação corrigida com sucesso!',
+            correcao
+        });
+
+    } catch (error) {
+        console.error('Erro ao corrigir redação:', error);
+        next(error);
+    }
+});
+
+
+
+
+
+
+
+
 app.post('/api/redacoes', auth, async (req, res, next) => {
+    let conn;
+
     try {
         const {
             tema,
@@ -1345,36 +1631,70 @@ app.post('/api/redacoes', auth, async (req, res, next) => {
             nota_final,
             status_nota,
             comentario_geral,
-            xp_ganhos
+            criterios,
+            sugestoes
         } = req.body;
 
-        // Verifica os dados obrigatórios
-        if (
-            typeof tema !== 'string' ||
-            typeof texto !== 'string' ||
-            !tema.trim() ||
-            !texto.trim()
-        ) {
-            return fail(res, 400, 'Tema e texto são obrigatórios.');
+        const cadastroId = Number(req.auth.cadastroId);
+        const nota = Number(nota_final);
+
+        if (!cadastroId || !tema || !texto) {
+            return res.status(400).json({
+                erro: "Dados obrigatórios não informados."
+            });
         }
 
-        if (
-            !Number.isInteger(Number(nota_final)) ||
-            Number(nota_final) < 0 ||
-            Number(nota_final) > 1000
-        ) {
-            return fail(res, 400, 'Nota inválida.');
+        if (!Number.isFinite(nota) || nota < 0 || nota > 1000) {
+            return res.status(400).json({
+                erro: "Nota inválida."
+            });
         }
 
-        const cadastroId = req.auth.cadastroId;
+        // XP máximo de cada tema
+        const xpPorTema = {
+            "O papel da literatura na formação do cidadão brasileiro": 300,
+            "Regionalismo versus universalismo na literatura brasileira": 400,
+            "A influência das redes sociais na leitura entre jovens": 200,
+            "Identidade nacional na obra de Guimarães Rosa": 400,
+            "A mulher na literatura realista brasileira do século XIX": 300
+        };
 
-        if (!cadastroId) {
-            return fail(res, 401, 'Usuário não identificado.');
+        const xpMaximo = xpPorTema[tema];
+
+        if (xpMaximo === undefined) {
+            return res.status(400).json({
+                erro: "Tema de redação não reconhecido."
+            });
         }
 
-        const [resultado] = await pool.execute(
-            `INSERT INTO redacao
-            (
+        const xpCalculado = Math.round(
+            xpMaximo * (nota / 1000)
+        );
+
+        conn = await pool.getConnection();
+        await conn.beginTransaction();
+
+        // 1. Buscar os dados do usuário
+        const [usuarios] = await conn.execute(
+            `SELECT
+                usuario_idusuario,
+                nivel_idnivel,
+                nivel_ranking_idranking
+             FROM usuario
+             WHERE idcadastro = ?
+             FOR UPDATE`,
+            [cadastroId]
+        );
+
+        if (usuarios.length === 0) {
+            throw new Error("Usuário não encontrado.");
+        }
+
+        const usuario = usuarios[0];
+
+        // 2. Salvar a redação
+        const [resultado] = await conn.execute(
+            `INSERT INTO redacoes (
                 tema,
                 categoria,
                 nivel,
@@ -1384,38 +1704,143 @@ app.post('/api/redacoes', auth, async (req, res, next) => {
                 comentario_geral,
                 xp_ganhos,
                 usuario_idcadastro
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
-                tema.trim(),
+                tema,
                 categoria || null,
                 nivel || null,
-                texto.trim(),
-                Number(nota_final),
+                texto,
+                nota,
                 status_nota || null,
                 comentario_geral || null,
-                Number(xp_ganhos) || 0,
+                xpCalculado,
                 cadastroId
             ]
         );
 
+        const idRedacao = resultado.insertId;
+
+        // 3. Salvar os critérios
+        if (Array.isArray(criterios)) {
+            for (let i = 0; i < criterios.length; i++) {
+                const criterio = criterios[i];
+
+                await conn.execute(
+                    `INSERT INTO criterios_redacao (
+                        redacao_idredacao,
+                        competencia,
+                        nome_criterio,
+                        nota,
+                        nota_maxima,
+                        comentario
+                    ) VALUES (?, ?, ?, ?, ?, ?)`,
+                    [
+                        idRedacao,
+                        Number(criterio.competencia) || i + 1,
+                        criterio.nome_criterio || criterio.nome || `Critério ${i + 1}`,
+                        Number(criterio.nota) || 0,
+                        Number(criterio.nota_maxima) || 200,
+                        criterio.comentario || ""
+                    ]
+                );
+            }
+        }
+
+        // 4. Salvar as sugestões
+        if (Array.isArray(sugestoes)) {
+            for (const sugestao of sugestoes) {
+                const textoSugestao = [
+                    sugestao.titulo,
+                    sugestao.texto
+                ].filter(Boolean).join(": ");
+
+                await conn.execute(
+                    `INSERT INTO sugestoes_redacao (
+                        redacao_idredacao,
+                        tipo,
+                        sugestao
+                    ) VALUES (?, ?, ?)`,
+                    [
+                        idRedacao,
+                        sugestao.tipo || "info",
+                        textoSugestao || "Sem descrição."
+                    ]
+                );
+            }
+        }
+
+        console.log("TESTE XP REDAÇÃO:", {
+            cadastroId,
+            usuarioId: usuario.usuario_idusuario,
+            nivelId: usuario.nivel_idnivel,
+            rankingId: usuario.nivel_ranking_idranking,
+            xpCalculado,
+            idRedacao
+        });
+
+        // 5. Registrar o evento de XP
+        const xpRegistrado = await adicionarXP(
+            conn,
+            cadastroId,
+            Number(usuario.usuario_idusuario),
+            xpCalculado,
+            "redacao",
+            `redacao_${idRedacao}`
+        );
+
+        if (!xpRegistrado) {
+            throw new Error("O XP desta redação já foi registrado.");
+        }
+
+
+        console.log("XP DA REDAÇÃO REGISTRADO COM SUCESSO!");
+
+        await conn.execute(
+            `UPDATE nivel
+            SET pontuacao = pontuacao + ?
+            WHERE idnivel = ?`,
+            [
+                xpCalculado,
+                usuario.nivel_idnivel
+            ]
+        );
+
+        // 6. Confirmar todas as operações
+        await conn.commit();
+
         return res.status(201).json({
-            mensagem: 'Redação salva com sucesso!',
-            idredacao: resultado.insertId
+            mensagem: "Redação salva e XP contabilizado com sucesso!",
+            idredacao: idRedacao,
+            xp_ganhos: xpCalculado,
+            xp_maximo: xpMaximo
         });
 
     } catch (error) {
+        if (conn) {
+            await conn.rollback();
+        }
+
+        console.error("Erro ao salvar redação e XP:", error);
         next(error);
+
+    } finally {
+        if (conn) {
+            conn.release();
+        }
     }
 });
+
+
+
 
 // ==========================================
 // BUSCAR REDAÇÕES DO USUÁRIO
 // ==========================================
 
+
 app.get('/api/redacoes', auth, async (req, res, next) => {
     try {
-        const cadastroId = req.auth.cadastroId;
+        const cadastroId = Number(req.auth.cadastroId);
 
         const [redacoes] = await pool.execute(
             `SELECT
@@ -1429,11 +1854,41 @@ app.get('/api/redacoes', auth, async (req, res, next) => {
                 comentario_geral,
                 xp_ganhos,
                 data_envio
-            FROM redacao
+            FROM redacoes
             WHERE usuario_idcadastro = ?
             ORDER BY data_envio DESC`,
             [cadastroId]
         );
+
+        // Buscar critérios e sugestões de cada redação
+        for (const redacao of redacoes) {
+
+            const [criterios] = await pool.execute(
+                `SELECT
+                    competencia,
+                    nome_criterio,
+                    nota,
+                    nota_maxima,
+                    comentario
+                FROM criterios_redacao
+                WHERE redacao_idredacao = ?
+                ORDER BY competencia ASC`,
+                [redacao.idredacao]
+            );
+
+            const [sugestoes] = await pool.execute(
+                `SELECT
+                    tipo,
+                    sugestao
+                FROM sugestoes_redacao
+                WHERE redacao_idredacao = ?
+                ORDER BY idsugestao ASC`,
+                [redacao.idredacao]
+            );
+
+            redacao.criterios = criterios;
+            redacao.sugestoes = sugestoes;
+        }
 
         return res.json({ redacoes });
 
@@ -1441,6 +1896,8 @@ app.get('/api/redacoes', auth, async (req, res, next) => {
         next(error);
     }
 });
+
+
 
 app.get('/api/books', auth, async (req, res, next) => {
 
@@ -1517,6 +1974,92 @@ app.get('/api/xp', auth, async (req, res, next) => {
     }
 });
 
+
+app.get('/api/xp-mensal', auth, async (req, res, next) => {
+    try {
+        const cadastroId = Number(req.auth.cadastroId);
+        const usuarioId = Number(req.auth.sub);
+
+        // Primeiro dia do mês anterior
+        const agora = new Date();
+        const inicioMesAtual = new Date(
+            agora.getFullYear(),
+            agora.getMonth(),
+            1
+        );
+
+        const inicioMesAnterior = new Date(
+            agora.getFullYear(),
+            agora.getMonth() - 1,
+            1
+        );
+
+        // Primeiro dia do próximo mês
+        const inicioProximoMes = new Date(
+            agora.getFullYear(),
+            agora.getMonth() + 1,
+            1
+        );
+
+        // Formata datas como YYYY-MM-DD
+        function formatarDataSQL(data) {
+            const ano = data.getFullYear();
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const dia = String(data.getDate()).padStart(2, '0');
+
+            return `${ano}-${mes}-${dia}`;
+        }
+
+        const dataInicial = formatarDataSQL(inicioMesAnterior);
+        const dataFinal = formatarDataSQL(inicioProximoMes);
+
+        const [resultados] = await pool.execute(
+            `SELECT
+                DATE_FORMAT(data_evento, '%Y-%m') AS mes,
+                COALESCE(SUM(xp_ganho), 0) AS xp
+             FROM xp_eventos
+             WHERE usuario_idcadastro = ?
+               AND usuario_idusuario = ?
+               AND data_evento >= ?
+               AND data_evento < ?
+             GROUP BY DATE_FORMAT(data_evento, '%Y-%m')`,
+            [
+                cadastroId,
+                usuarioId,
+                dataInicial,
+                dataFinal
+            ]
+        );
+
+        // Organiza os valores dos dois meses, inclusive quando forem zero
+        const meses = [inicioMesAnterior, inicioMesAtual].map(data => {
+            const ano = data.getFullYear();
+            const mesNumero = String(data.getMonth() + 1).padStart(2, '0');
+            const chave = `${ano}-${mesNumero}`;
+
+            const registro = resultados.find(item => item.mes === chave);
+            const xp = registro ? Number(registro.xp) : 0;
+
+            const nomeMes = data.toLocaleDateString('pt-BR', {
+                month: 'long'
+            });
+
+            return {
+                mes: chave,
+                nome: nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1),
+                xp
+            };
+        });
+
+        return res.json({ meses });
+
+    } catch (erro) {
+        console.error('Erro ao buscar XP mensal:', erro);
+        next(erro);
+    }
+});
+
+
 app.patch('/api/books/:id/progress', auth, async (req, res, next) => {
   const id = Number(req.params.id);
   const progress = Number(req.body.progresso);
@@ -1588,14 +2131,27 @@ app.use(express.static(path.resolve(__dirname, '..'), {
 
 app.use((req, res) => fail(res, 404, 'Rota não encontrada.'));
 app.use((error, req, res, next) => {
-  if (res.headersSent) return next(error);
-  if (error instanceof SyntaxError && error.status === 400 && Object.prototype.hasOwnProperty.call(error, 'body')) {
-    return fail(res, 400, 'O corpo da requisição deve conter JSON válido.');
-  }
-  if (error && error.code === 'ER_DUP_ENTRY') return fail(res, 409, 'Já existe um registro com esses dados.');
-  if (error && error.code === 'ER_NO_SUCH_TABLE') return fail(res, 503, 'A estrutura do banco não está pronta. Execute a migração SQL documentada.');
-  console.error('Erro interno:', error.code || error.name || 'UNKNOWN');
-  return fail(res, 500, 'Erro interno do servidor.');
+    if (res.headersSent) return next(error);
+
+    console.error('ERRO COMPLETO:', error);
+
+    if (
+        error instanceof SyntaxError &&
+        error.status === 400 &&
+        Object.prototype.hasOwnProperty.call(error, 'body')
+    ) {
+        return fail(res, 400, 'O corpo da requisição deve conter JSON válido.');
+    }
+
+    if (error?.code === 'ER_DUP_ENTRY') {
+        return fail(res, 409, 'Já existe um registro com esses dados.');
+    }
+
+    if (error?.code === 'ER_NO_SUCH_TABLE') {
+        return fail(res, 503, 'Tabela não encontrada no banco de dados.');
+    }
+
+    return fail(res, 500, 'Erro interno do servidor.');
 });
 
 app.listen(PORT, HOST, () => {
