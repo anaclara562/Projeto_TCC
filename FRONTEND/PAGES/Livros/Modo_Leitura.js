@@ -288,3 +288,11 @@ if (document.readyState === "complete") {
 } else {
     window.addEventListener("load", iniciarLeitura, { once: true });
 }
+
+
+
+
+document.getElementById("btn-voltar")?.addEventListener("click", function(event) {
+    event.preventDefault();
+    window.history.go(-1);
+});

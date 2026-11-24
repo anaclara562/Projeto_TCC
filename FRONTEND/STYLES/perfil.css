@@ -881,6 +881,99 @@ main {
     gap: 5px;
 }
 
+/* ==========================================
+   CARDS INDIVIDUAIS DAS REDAÇÕES
+========================================== */
+
+#lista-redacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#lista-redacoes .item.redacao {
+    width: 100%;
+    min-height: 75px;
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    background: rgba(217, 217, 217, 0.2);
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#lista-redacoes .item.redacao:hover {
+    background: #E8F9FF;
+    border-color: #8BC0D4;
+}
+
+#lista-redacoes .item.redacao svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+#lista-redacoes .item.redacao .texto {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#lista-redacoes .item.redacao .titulo {
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+
+    overflow-wrap: anywhere;
+}
+
+#lista-redacoes .item.redacao .tempo {
+    font-family: "Open Sans";
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+#lista-redacoes .item.redacao .pontos {
+    flex-shrink: 0;
+
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 700;
+    color: #3890B1;
+
+    white-space: nowrap;
+}
+
+/* Mensagem sem redações */
+
+.mensagem-sem-redacoes {
+    width: 100%;
+    min-height: 65px;
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(217, 217, 217, 0.2);
+    border-radius: 12px;
+
+    font-family: "Open Sans";
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.48);
+    text-align: center;
+}
+
 .mensagem-carregamento {
     background: rgba(217, 217, 217, 0.2);
     min-height: 45px;
@@ -1323,13 +1416,1316 @@ footer a {
 
 
 
+/* =====================================================
+   13. RESPONSIVIDADE — NOTEBOOKS
+===================================================== */
 
-@media (max-width: 600px) {
-  #grade { grid-template-columns: 1fr; }
-  #perfil {
+@media screen and (max-width: 1200px) {
+
+    /* CABEÇALHO */
+
+    header {
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+
+    header img {
+        max-width: 180px;
+        height: auto;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    .abas {
+        gap: 18px;
+    }
+
+    .abas a {
+        padding-right: 10px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 20px;
+    }
+
+    /* PERFIL */
+
+    #perfil {
+        width: 100%;
+        max-width: 968px;
+        box-sizing: border-box;
+    }
+
+    #grade {
+        width: 100%;
+        max-width: 968px;
+        gap: 20px;
+    }
+
+    #progresso,
+    #estatisticas {
+        width: 50%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* ATIVIDADES */
+
+    #atividades,
+    #redacoes {
+        width: 100%;
+        max-width: 998px;
+        box-sizing: border-box;
+    }
+
+    .detalhe-redacao-item {
+        box-sizing: border-box;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        justify-content: space-around;
+        gap: 40px;
+        padding: 0 25px;
+        box-sizing: border-box;
+    }
+
+    .redes-sociais {
+        gap: 50px;
+    }
+}
+
+
+/* =====================================================
+   14. TABLETS
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* CABEÇALHO */
+
+    header {
+        min-height: 80px;
+        height: auto;
+        padding: 12px 20px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    header img {
+        max-width: 170px;
+        max-height: 55px;
+        margin: 0;
+    }
+
+    .abas {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .abas a {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        font-size: 0;
+    }
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    /* CABEÇALHO DO PERFIL */
+
+    .cabecalho {
+        height: auto;
+        min-height: 190px;
+        padding: 30px 18px 65px;
+        box-sizing: border-box;
+    }
+
+    .cabecalho h1 {
+        font-size: 42px;
+        margin-top: 20px;
+    }
+
+    /* INFORMAÇÕES DO PERFIL */
+
+    #perfil {
+        width: 92%;
+        height: auto;
+        min-height: 124px;
+        padding: 22px;
+        margin-top: -65px;
+        gap: 18px;
+        box-sizing: border-box;
+    }
+
+    #avatar {
+        width: 95px;
+        height: 95px;
+        min-width: 95px;
+        font-size: 58px;
+    }
+
+    #avatar-icone {
+        width: 34px;
+        height: 34px;
+        right: -8px;
+        bottom: -8px;
+        margin: 0;
+        transform: none;
+    }
+
+    #nome {
+        font-size: 19px;
+    }
+
+    #bio {
+        font-size: 12px;
+        flex-wrap: wrap;
+    }
+
+    #editar {
+        font-size: 11px;
+    }
+
+    /* MÉTRICAS */
+
+    #metricas {
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .metrica {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 100px;
+        min-height: 48px;
+        height: auto;
+        padding: 8px 10px;
+        box-sizing: border-box;
+    }
+
+    .metrica .valor {
+        font-size: 14px;
+    }
+
+    .metrica .label {
+        font-size: 10px;
+        white-space: normal;
+        text-align: center;
+    }
+
+    /* PROGRESSO E ESTATÍSTICAS */
+
+    #grade {
+        width: 92%;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin: 25px auto 0;
+    }
+
+    #progresso,
+    #estatisticas {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 130px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #progresso h2,
+    #estatisticas h2 {
+        font-size: 25px;
+    }
+
+    .barra-topo {
+        font-size: 17px;
+        margin-bottom: 4px;
+    }
+
+    .xp {
+        font-size: 13px;
+    }
+
+    .linha {
+        font-size: 14px;
+    }
+
+    /* ATIVIDADES */
+
+    #atividades,
+    #redacoes {
+        width: 92%;
+        height: auto;
+        padding: 20px;
+        margin: 25px auto 0;
+        box-sizing: border-box;
+    }
+
+    .atividades-header,
+    .redacoes-header {
+        align-items: flex-start;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .atividades-header h2,
+    .redacoes-header h2 {
+        font-size: 19px;
+    }
+
+    .atividades-header p,
+    .redacoes-header p {
+        font-size: 12px;
+    }
+
+    #total-atividades,
+    #total-redacoes {
+        font-size: 12px;
+    }
+
+    /* FILTROS */
+
+    .controles-atividades,
+    .controles-redacoes {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filtros-atividades,
+    .filtros-redacoes {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .filtro-atividade,
+    .filtro-redacao {
+        padding: 9px 14px;
+        font-size: 12px;
+    }
+
+    .filtro-data-atividade,
+    .filtro-data-redacoes {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #filtro-data-atividades,
+    #filtro-data-redacoes {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* LISTA DE ATIVIDADES */
+
+    .item {
+        height: auto;
+        min-height: 45px;
+        padding: 12px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .texto {
+        min-width: 0;
+    }
+
+    .texto .titulo {
+        font-size: 13px;
+    }
+
+    .texto .tempo {
+        font-size: 11px;
+    }
+
+    .pontos {
+        font-size: 15px;
+        margin-right: 5px;
+    }
+
+    /* MENSAGENS */
+
+    #sem-resultados,
+    .mensagem-sem-redacoes {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 18px;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+
+    /* DETALHES DA REDAÇÃO */
+
+    .detalhe-redacao-item {
+        padding: 22px;
+        margin: 12px 0 20px;
+    }
+
+    .detalhe-header h3 {
+        font-size: 22px;
+    }
+
+    .detalhe-meta {
+        gap: 8px 15px;
+    }
+
+    .detalhe-nota-card {
+        padding: 18px;
+        gap: 12px;
+    }
+
+    .detalhe-nota-card strong {
+        font-size: 28px;
+    }
+
+    #detalhe-xp {
+        font-size: 19px;
+    }
+
+    .detalhe-bloco {
+        padding: 18px;
+    }
+
+    .detalhe-bloco h4 {
+        font-size: 17px;
+    }
+
+    .detalhe-bloco p {
+        font-size: 13px;
+    }
+
+    .criterio-item,
+    .sugestao-item {
+        padding: 14px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        height: auto;
+        min-height: 70px;
+        padding: 20px;
+        box-sizing: border-box;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    footer p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 30px;
+    }
+}
+
+
+/* =====================================================
+   15. CELULARES
+===================================================== */
+
+@media screen and (max-width: 480px) {
+
+    header {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    header img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .abas {
+        gap: 20px;
+    }
+
+    .abas a {
+        padding: 3px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        height: 38px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .abas svg {
+        padding: 3px;
+    }
+
+    .pesquisa {
+        width: 35px;
+        height: 38px;
+        padding-left: 0;
+    }
+
+    .pesquisa svg {
+        margin-top: 0px;
+    }
+
+    /* CABEÇALHO DO PERFIL */
+
+    .cabecalho {
+        min-height: 170px;
+        padding: 25px 12px 55px;
+    }
+
+    .cabecalho h1 {
+        font-size: 32px;
+        margin-top: 15px;
+    }
+
+    /* INFORMAÇÕES DO PERFIL */
+
+    main {
+        padding: 0 12px 25px;
+    }
+
+    #perfil {
+        width: 100%;
+        padding: 20px 14px;
+        margin-top: -55px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        border-width: 4px;
+    }
+
+    #avatar {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        font-size: 55px;
+    }
+
+    #avatar-icone {
+        width: 32px;
+        height: 32px;
+        right: -7px;
+        bottom: -7px;
+    }
+
+    #info {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #nome {
+        font-size: 18px;
+    }
+
+    #bio {
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    #editar {
+        font-size: 11px;
+    }
+
+    /* MÉTRICAS */
+
+    #metricas {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .metrica {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        min-height: 52px;
+        padding: 8px 5px;
+    }
+
+    .metrica .valor {
+        font-size: 14px;
+    }
+
+    .metrica .label {
+        font-size: 9px;
+    }
+
+    /* PROGRESSO E ESTATÍSTICAS */
+
+    #grade {
+        width: 100%;
+        margin-top: 22px;
+        gap: 15px;
+    }
+
+    #progresso,
+    #estatisticas {
+        padding: 17px;
+        border-radius: 16px;
+    }
+
+    #progresso h2,
+    #estatisticas h2 {
+        font-size: 22px;
+        gap: 8px;
+    }
+
+    .barra-topo {
+        font-size: 16px;
+    }
+
+    .trilha {
+        height: 8px;
+    }
+
+    .xp {
+        font-size: 12px;
+    }
+
+    .linha {
+        font-size: 13px;
+        padding: 9px 0;
+    }
+
+    /* ATIVIDADES */
+
+    #atividades,
+    #redacoes {
+        width: 100%;
+        padding: 16px;
+        margin: 20px auto 0;
+        border-radius: 16px;
+    }
+
+    .atividades-header,
+    .redacoes-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .atividades-header h2,
+    .redacoes-header h2 {
+        font-size: 17px;
+        gap: 8px;
+    }
+
+    .atividades-header p,
+    .redacoes-header p {
+        font-size: 12px;
+    }
+
+    #total-atividades,
+    #total-redacoes {
+        font-size: 12px;
+    }
+
+    /* FILTROS */
+
+    .controles-atividades,
+    .controles-redacoes {
+        gap: 14px;
+        margin: 18px 0;
+    }
+
+    .filtros-atividades,
+    .filtros-redacoes {
+        gap: 7px;
+    }
+
+    .filtro-atividade,
+    .filtro-redacao {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .filtro-data-atividade,
+    .filtro-data-redacoes {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .filtro-data-atividade label,
+    .filtro-data-redacoes label {
+        font-size: 12px;
+    }
+
+    #filtro-data-atividades,
+    #filtro-data-redacoes {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #limpar-filtro-atividades,
+    #limpar-filtro-redacoes {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* LISTA DE ATIVIDADES */
+
+    .item {
+        padding: 10px;
+        gap: 9px;
+    }
+
+    .icone-atividade {
+        width: 20px;
+        font-size: 17px;
+    }
+
+    .texto .titulo {
+        font-size: 12px;
+    }
+
+    .texto .tempo {
+        font-size: 10px;
+        margin-top: 4px;
+    }
+
+    .pontos {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .lista-atividades-recentes p,
+    .mensagem-carregamento {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* MENSAGENS */
+
+    #sem-resultados,
+    .mensagem-sem-redacoes {
+        width: 100%;
+        padding: 22px 14px;
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    #sem-resultados::before,
+    .mensagem-sem-redacoes::before {
+        font-size: 22px;
+    }
+
+    /* DETALHES DA REDAÇÃO */
+
+    .detalhe-redacao-item {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .detalhe-conteudo {
+        gap: 14px;
+    }
+
+    .detalhe-redacao-item #fechar-detalhe {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .detalhe-categoria {
+        font-size: 11px;
+        padding: 5px 11px;
+    }
+
+    .detalhe-header h3 {
+        font-size: 20px;
+    }
+
+    .detalhe-meta {
+        flex-direction: column;
+        gap: 6px;
+        font-size: 11px;
+    }
+
+    .detalhe-nota-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .detalhe-nota-card strong {
+        font-size: 27px;
+    }
+
+    .detalhe-nota-card small {
+        font-size: 12px;
+    }
+
+    #detalhe-status {
+        font-size: 11px;
+    }
+
+    #detalhe-xp {
+        font-size: 18px;
+    }
+
+    .detalhe-bloco {
+        padding: 15px;
+    }
+
+    .detalhe-bloco h4 {
+        font-size: 16px;
+    }
+
+    .detalhe-bloco p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .criterio-item,
+    .sugestao-item {
+        padding: 13px;
+        margin-bottom: 10px;
+    }
+
+    .criterio-item h4 {
+        font-size: 15px;
+    }
+
+    .criterio-item strong {
+        font-size: 16px;
+    }
+
+    .criterio-item p,
+    .sugestao-item p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding: 18px 10px;
+        margin-top: 35px;
+    }
+
+    footer p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 25px;
+        justify-content: center;
+    }
+}
+
+
+/* =====================================================
+   16. CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+    /* CABEÇALHO */
+
+    header img {
+        max-width: 125px;
+    }
+
+    .abas {
+        gap: 8px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+    }
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+    }
+
+    /* CABEÇALHO DO PERFIL */
+
+    .cabecalho h1 {
+        font-size: 28px;
+    }
+
+    /* INFORMAÇÕES DO PERFIL */
+
+    #perfil {
+        padding: 16px 10px;
+    }
+
+    #avatar {
+        width: 82px;
+        height: 82px;
+        min-width: 82px;
+        font-size: 48px;
+    }
+
+    #avatar-icone {
+        width: 29px;
+        height: 29px;
+    }
+
+    #nome {
+        font-size: 16px;
+    }
+
+    #bio {
+        font-size: 11px;
+    }
+
+    /* MÉTRICAS */
+
+    .metrica {
+        padding: 8px 4px;
+    }
+
+    .metrica .valor {
+        font-size: 13px;
+    }
+
+    .metrica .label {
+        font-size: 8px;
+    }
+
+    /* PROGRESSO E ESTATÍSTICAS */
+
+    #progresso,
+    #estatisticas {
+        padding: 14px;
+    }
+
+    #progresso h2,
+    #estatisticas h2 {
+        font-size: 20px;
+    }
+
+    .barra-topo {
+        font-size: 14px;
+    }
+
+    .linha {
+        font-size: 12px;
+    }
+
+    /* ATIVIDADES */
+
+    #atividades,
+    #redacoes {
+        padding: 13px;
+    }
+
+    .atividades-header h2,
+    .redacoes-header h2 {
+        font-size: 16px;
+    }
+
+    /* FILTROS */
+
+    .filtro-atividade,
+    .filtro-redacao {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    /* LISTA DE ATIVIDADES */
+
+    .texto .titulo {
+        font-size: 11px;
+    }
+
+    .pontos {
+        font-size: 13px;
+    }
+
+    /* DETALHES DA REDAÇÃO */
+
+    .detalhe-redacao-item {
+        padding: 13px;
+    }
+
+    .detalhe-header h3 {
+        font-size: 18px;
+    }
+
+    .detalhe-nota-card strong {
+        font-size: 24px;
+    }
+
+    .detalhe-xp {
+        font-size: 16px;
+    }
+
+    .detalhe-bloco {
+        padding: 13px;
+    }
+
+    .detalhe-bloco h4 {
+        font-size: 15px;
+    }
+
+    .detalhe-bloco p {
+        font-size: 12px;
+    }
+
+    /* RODAPÉ */
+
+    footer p {
+        font-size: 11px;
+    }
+
+    .redes-sociais {
+        gap: 20px;
+    }
+}
+
+
+/* ==========================================
+   LISTA DE REDAÇÕES
+========================================== */
+
+#lista-redacoes {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  #metricas { flex-wrap: wrap; }
+    gap: 5px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE — NOTEBOOKS
+========================================== */
+
+@media screen and (max-width: 1200px) {
+
+    #lista-redacoes {
+        width: 100%;
+    }
+
+    #lista-redacoes .item.redacao {
+        max-width: 100%;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVIDADE — TABLETS
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    #lista-redacoes .item.redacao {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVIDADE — CELULARES
+========================================== */
+
+@media screen and (max-width: 480px) {
+
+    #lista-redacoes .item.redacao {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #lista-redacoes .item.redacao .texto {
+        min-width: 0;
+    }
+
+    #lista-redacoes .item.redacao .titulo {
+        overflow-wrap: anywhere;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVIDADE — CELULARES MUITO PEQUENOS
+========================================== */
+
+@media screen and (max-width: 360px) {
+
+    #lista-redacoes .item.redacao {
+        max-width: 100%;
+    }
+
+}
+
+
+/* AJUSTES NOS CARDS DE REDAÇÃO */
+
+#lista-redacoes .item.redacao .titulo {
+    font-size: 13px;
+}
+
+#lista-redacoes .item.redacao .texto {
+    gap: 2px;
+}
+
+#lista-redacoes .item.redacao .pontos {
+    color: #f5bc18;
+}
+
+/* CELULARES */
+
+@media screen and (max-width: 480px) {
+
+    #lista-redacoes .item.redacao .titulo {
+        font-size: 12px;
+    }
+
+    #lista-redacoes .item.redacao .texto {
+        gap: 2px;
+    }
+
+}
+
+
+/* =====================================================
+   HEADER RESPONSIVO — IGUAL À PÁGINA PRINCIPAL
+===================================================== */
+/* TABLETS */
+@media screen and (max-width: 768px) {
+
+    .cabecalho {
+        height: auto;
+        min-height: 80px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+
+    .cabecalho img {
+        max-width: 170px;
+        max-height: 55px;
+        margin: 0;
+    }
+
+    .abas {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .abas a {
+        padding: 5px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        height: 42px;
+        font-size: 17px;
+        gap: 3px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin-left: 5px;
+    }
+
+    .abas svg {
+        padding: 5px;
+    }
+
+    .cabecalho button {
+        margin-top: 0;
+    }
+}
+
+/* CELULARES */
+@media screen and (max-width: 480px) {
+
+    .cabecalho {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    .cabecalho img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .abas {
+        gap: 20px;
+    }
+
+    .abas a {
+        padding: 3px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        height: 38px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .abas svg {
+        padding: 3px;
+    }
+
+    .pesquisa {
+        width: 35px;
+        height: 38px;
+        padding-left: 0;
+    }
+
+    .pesquisa svg {
+        margin-top: 0px;
+    }
+}
+
+/* CELULARES MUITO PEQUENOS */
+@media screen and (max-width: 360px) {
+
+    .cabecalho img {
+        max-width: 125px;
+    }
+
+    .abas {
+        gap: 4px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 12px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+/* =====================================================
+   ABAS SOMENTE COM ÍCONES
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    .abas a {
+        font-size: 0;
+        padding: 0;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 0;
+        width: 42px;
+        min-width: 42px;
+        height: 42px;
+        padding: 0;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .abas svg {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin: 0;
+    }
+
+    .pesquisa {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

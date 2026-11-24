@@ -23,6 +23,7 @@ footer {
 }
 
 
+
 /*RADIAIS*/
 .luz-esquerda1 {
     position: absolute;
@@ -351,4 +352,483 @@ footer a {
 .redes-sociais {
     display: flex;
     gap: 200px;
+}
+
+
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+
+/* =====================================================
+   2. TABLETS — ATÉ 768px
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* LOGO */
+
+    #Logo {
+        margin-top: 40px;
+        max-width: 200px;
+        width: 70%;
+        height: auto;
+    }
+
+    /* TÍTULOS */
+
+    header h1 {
+        font-size: 48px;
+        line-height: 1.2;
+        margin-top: 25px;
+        padding: 0 15px;
+    }
+
+    header h2 {
+        font-size: 20px;
+        padding: 0 20px;
+    }
+
+    /* RADIAIS */
+
+    .luz-esquerda1,
+    .luz-esquerda2 {
+        width: 450px;
+        height: 400px;
+        left: -150px;
+        filter: blur(40px);
+    }
+
+    .luz-direita1,
+    .luz-direita2 {
+        width: 450px;
+        height: 400px;
+        left: auto;
+        right: -100px;
+        filter: blur(40px);
+    }
+
+    .luz-direita1 {
+        top: 400px;
+    }
+
+    .luz-esquerda2 {
+        top: 800px;
+    }
+
+    .luz-direita2 {
+        top: 100px;
+    }
+
+    .container-radial {
+        top: 850px;
+        height: 350px;
+    }
+
+    /* FORMULÁRIO */
+
+    form {
+        width: 90%;
+        margin-top: 25px;
+        margin-bottom: 60px;
+        border-radius: 35px;
+    }
+
+    form h3 {
+        font-size: 28px;
+        padding: 30px 15px 0;
+    }
+
+    form h4 {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+
+    .campo1,
+    .campo2,
+    .campo3,
+    .campo4,
+    .campo5 {
+        width: 85%;
+    }
+
+    .campo1 label,
+    .campo2 label,
+    .campo3 label,
+    .campo4 label,
+    .campo5 label {
+        margin-left: 10px;
+    }
+
+    /* CAMPOS */
+
+    .input-wrapper,
+    .campo4 .input-wrapper,
+    .campo5 .input-wrapper {
+        width: 100%;
+        height: 48px;
+        padding: 0 15px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .input-wrapper input {
+        width: 100%;
+        min-width: 0;
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .campo4 .input-wrapper .cadeado,
+    .campo5 .input-wrapper .cadeado {
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    /* BOTÃO */
+
+    .confirmar {
+        width: 75%;
+        max-width: 343px;
+        font-size: 21px;
+    }
+
+    /* SEPARADOR */
+
+    .quebra {
+        gap: 15px;
+        align-items: center;
+    }
+
+    .quebra p {
+        font-size: 17px;
+        white-space: nowrap;
+    }
+
+    hr {
+        width: 30%;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        height: auto;
+        min-height: 70px;
+        padding: 20px;
+        gap: 35px;
+        flex-wrap: wrap;
+    }
+
+    footer p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 40px;
+        justify-content: center;
+    }
+}
+
+
+/* =====================================================
+   3. CELULARES — ATÉ 480px
+===================================================== */
+
+@media screen and (max-width: 480px) {
+
+    /* LOGO */
+
+    #Logo {
+        margin-top: 30px;
+        max-width: 160px;
+        width: 65%;
+    }
+
+    /* TÍTULOS */
+
+    header h1 {
+        font-size: 36px;
+        line-height: 1.2;
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+
+    header h2 {
+        font-size: 16px;
+        line-height: 1.4;
+        margin-top: 10px;
+        padding: 0 20px;
+    }
+
+    /* RADIAIS */
+
+    .luz-esquerda1,
+    .luz-esquerda2 {
+        width: 300px;
+        height: 300px;
+        left: -130px;
+        filter: blur(35px);
+    }
+
+    .luz-esquerda1 {
+        top: -50px;
+    }
+
+    .luz-esquerda2 {
+        top: 510px;
+    }
+
+    .luz-direita1,
+    .luz-direita2 {
+        width: 300px;
+        height: 300px;
+        left: auto;
+        right: -100px;
+        filter: blur(35px);
+    }
+
+    .luz-direita1 {
+        top: 280px;
+    }
+
+    .luz-direita2 {
+        top: 60px;
+    }
+
+    .container-radial {
+        top: 800px;
+        height: 250px;
+    }
+
+    /* FORMULÁRIO */
+
+    form {
+        width: 92%;
+        margin-top: 25px;
+        margin-bottom: 40px;
+        border-radius: 25px;
+    }
+
+    form h3 {
+        font-size: 25px;
+        padding: 25px 12px 0;
+    }
+
+    form h4 {
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 0 12px;
+    }
+
+    .campo1,
+    .campo2,
+    .campo3,
+    .campo4,
+    .campo5 {
+        width: 88%;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .campo1 label,
+    .campo2 label,
+    .campo3 label,
+    .campo4 label,
+    .campo5 label {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+
+    /* CAMPOS DE ENTRADA */
+
+    .input-wrapper,
+    .campo4 .input-wrapper,
+    .campo5 .input-wrapper {
+        width: 100%;
+        height: 44px;
+        border-width: 3px;
+        padding: 0 12px;
+        gap: 8px;
+        box-sizing: border-box;
+    }
+
+    .input-wrapper input {
+        width: 100%;
+        min-width: 0;
+        height: 38px;
+        font-size: 13px;
+    }
+
+    .campo4 .input-wrapper .cadeado,
+    .campo5 .input-wrapper .cadeado {
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    /* BOTÕES DE MOSTRAR SENHA */
+
+    #mostrarSenha1,
+    #mostrarSenha2 {
+        flex-shrink: 0;
+    }
+
+    /* BOTÃO DE CONFIRMAÇÃO */
+
+    .confirmar {
+        width: 80%;
+        height: 50px;
+        font-size: 19px;
+        border-width: 3px;
+    }
+
+    /* SEPARADOR */
+
+    .quebra {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .quebra p {
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    hr {
+        width: 25%;
+        height: 2px;
+        margin-top: 10px;
+    }
+
+    /* LOGIN */
+
+    .login {
+        margin-bottom: 25px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .login p {
+        font-size: 12px;
+    }
+
+    .login a {
+        font-size: 13px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 18px 10px;
+        margin: 0;
+    }
+
+    footer p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =====================================================
+   4. CELULARES MUITO PEQUENOS — ATÉ 360px
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+    /* TÍTULOS */
+
+    header h1 {
+        font-size: 31px;
+    }
+
+    header h2 {
+        font-size: 14px;
+    }
+
+    /* RADIAIS */
+
+    .luz-esquerda1,
+    .luz-esquerda2 {
+        width: 260px;
+        height: 280px;
+        left: -120px;
+    }
+
+    .luz-direita1,
+    .luz-direita2 {
+        width: 260px;
+        height: 280px;
+        left: auto;
+        right: -100px;
+    }
+
+    /* FORMULÁRIO */
+
+    form {
+        width: 94%;
+    }
+
+    form h3 {
+        font-size: 22px;
+    }
+
+    form h4 {
+        font-size: 14px;
+    }
+
+    .campo1,
+    .campo2,
+    .campo3,
+    .campo4,
+    .campo5 {
+        width: 90%;
+    }
+
+    /* CAMPOS */
+
+    .input-wrapper,
+    .campo4 .input-wrapper,
+    .campo5 .input-wrapper {
+        padding: 0 8px;
+    }
+
+    .input-wrapper input {
+        font-size: 12px;
+    }
+
+    /* BOTÃO */
+
+    .confirmar {
+        width: 85%;
+        font-size: 17px;
+    }
+
+    /* SEPARADOR */
+
+    .quebra p {
+        font-size: 13px;
+    }
+
+    /* RODAPÉ */
+
+    footer p {
+        font-size: 11px;
+    }
+
+    .redes-sociais {
+        gap: 20px;
+    }
 }

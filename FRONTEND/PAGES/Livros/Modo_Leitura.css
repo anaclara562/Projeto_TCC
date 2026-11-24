@@ -224,7 +224,7 @@ body.dark-mode .toggle-track {
   cursor: pointer;
 }
 
-#voltar {
+#btn-voltar {
   position: fixed;
   bottom: 24px;
   left: 24px;

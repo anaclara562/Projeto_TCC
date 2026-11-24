@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-/* CONFIG GERAL */
+
+/* =====================================================
+   CONFIGURAÇÃO GERAL
+===================================================== */
+
 ::-webkit-scrollbar { 
   display: none; 
 }
@@ -25,19 +29,6 @@ body {
     isolation: isolate;
 }
 
-/* TODOS OS RADIAIS */
-.luz-esquerda1,
-.luz-direita1,
-.luz-esquerda2,
-.luz-direita2,
-.luz-esquerda3,
-.luz-esquerda4,
-.luz-direita4,
-.container-radial,
-.container-radial2 {
-    pointer-events: none;
-}
-
 /* CONTEÚDO ACIMA DOS RADIAIS */
 header,
 main,
@@ -47,141 +38,10 @@ footer {
 }
 
 
-/*RADIAIS*/
-.luz-esquerda1 {
-  position: absolute;
+/* =====================================================
+   HEADER
+===================================================== */
 
-  top: -100px;
-  left: -100px;
-
-  width: 800px;
-  height: 500px;
-
-  background:
-  radial-gradient( circle at 0% 50%,
-    rgba(97, 202, 248, 0.9) 0%,
-    rgba(97, 202, 248, 0.5) 35%,
-    rgba(97, 202, 248, 0.2) 65%,
-    rgba(97, 202, 248, 0.05) 100%
-  );
-
-  z-index: 0;
-  filter: blur(40px);
-}
-
-.luz-direita1 {
-  position: absolute;
-  top: 350px;
-  left: 900px;
-  width: 800px;
-  height: 500px;
-
-  background:
-  radial-gradient( circle at right center,
-    rgba(97, 202, 248, 0.9) 0%,
-    rgba(97, 202, 248, 0.5) 35%,
-    rgba(97, 202, 248, 0.2) 65%,
-    rgba(97, 202, 248, 0.05) 100%
-  );
-
-  z-index: 0;
-  filter: blur(40px);
-}
-
-.luz-esquerda2 {
-  position: absolute;
-
-  top: 750px;
-  left: -100px;
-
-  width: 800px;
-  height: 500px;
-
-  background:
-  radial-gradient(
-    circle at 0% 50%,
-    rgba(97, 202, 248, 0.9) 0%,
-    rgba(97, 202, 248, 0.5) 35%,
-    rgba(97, 202, 248, 0.2) 65%,
-    rgba(97, 202, 248, 0.05) 100%
-  );
-
-  z-index: 0;
-  filter: blur(40px);
-}
-
-.luz-direita2 {
-  position: absolute;
-  top: 1200px;
-  left: 900px;
-  width: 800px;
-  height: 500px;
-
-  background:
-  radial-gradient( circle at right center,
-    rgba(97, 202, 248, 0.9) 0%,
-    rgba(97, 202, 248, 0.5) 35%,
-    rgba(97, 202, 248, 0.2) 65%,
-    rgba(97, 202, 248, 0.05) 100%
-  );
-
-  z-index: 0;
-  filter: blur(40px);
-}
-
-.luz-esquerda3 {
-  position: absolute;
-  top: 1600px;
-  left: -100px;
-  width: 800px;
-  height: 500px;
-
-  background:
-  radial-gradient(
-    circle at 0% 50%,
-    rgba(97, 202, 248, 0.9) 0%,
-    rgba(97, 202, 248, 0.5) 35%,
-    rgba(97, 202, 248, 0.2) 65%,
-    rgba(97, 202, 248, 0.05) 100%
-  );
-
-  z-index: 0;
-  filter: blur(40px);
-}
-
-.luz-direita3 {
-    position: absolute;
-    top: 300px;
-    left: 1100px;
-    width: 800px;
-    height: 500px;
-    background: radial-gradient(
-        circle at center,
-        rgba(97, 202, 248, 0.9) 0%,
-        rgba(97, 202, 248, 0.5) 35%,
-        rgba(97, 202, 248, 0.2) 65%,
-        rgba(97, 202, 248, 0.05) 100%
-    );
-    filter: blur(40px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.container-radial {
-    position: absolute;
-    top: 1710px;
-    left: 0;
-    width: 100%;
-    height: 700px;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-}
-
-
-
-
-/*HEADER*/
 header {
   background-color: #FFFFFF;
   width: 100%;
@@ -276,8 +136,10 @@ button {
 }
 
 
+/* =====================================================
+   POSIÇÃO NO SITE
+===================================================== */
 
-/*POSIÇÃO NO SITE*/
 .posicao_site {
     width: 165px;
     height: 28px;
@@ -301,9 +163,12 @@ button {
 }
 
 
+/* =====================================================
+   BIBLIOTECA
+===================================================== */
 
-/*BIBLIOTECA*/
-/*TÍTULO*/
+/* TÍTULO */
+
 .biblioteca h1 {
     color: #000000;
     font-size: 40px;
@@ -322,6 +187,9 @@ button {
     font-weight: normal;
     z-index: 100;
 }
+
+
+/* CARDS */
 
 .card {
     width: 303px;
@@ -343,6 +211,9 @@ button {
     position: relative;
     flex-shrink: 0;
 }
+
+
+/* CAPAS DOS LIVROS */
 
 .DC {
     background-image: url('/FRONTEND/IMAGES/Capas_livros/Dom\ Casmurro.png');
@@ -416,6 +287,9 @@ button {
     background-color: #5e5743;
 }
 
+
+/* XP E PONTUAÇÃO */
+
 .badge-xp {
     width: 124px;
     height: 40px;
@@ -446,6 +320,9 @@ button {
     font-size: 16px;
     margin-top: 7px;
 }
+
+
+/* CONTEÚDO DOS CARDS */
 
 .card-body {
     color: #ffffff;
@@ -498,6 +375,9 @@ button {
     height: 14px;
 }
 
+
+/* PROGRESSO DE LEITURA */
+
 .progress-container {
     margin-top: 10px;
     margin-bottom: 12px;
@@ -533,6 +413,9 @@ button {
     transition: width 0.4s ease-out;
 }
 
+
+/* BOTÃO CONTINUAR */
+
 .btn-continue {
     text-align: center;
     text-decoration: none;
@@ -560,6 +443,9 @@ button {
     z-index: 0;
 }
 
+
+/* ORGANIZAÇÃO DOS CARDS */
+
 .card-section {
     width: 100%;
     display: flex;
@@ -583,8 +469,10 @@ button {
 }
 
 
+/* =====================================================
+   POSIÇÃO NO RANKING
+===================================================== */
 
-/*POSIÇÃO NO SITE*/
 .posicao_site-ranking {
     width: 115px;
     height: 28px;
@@ -608,9 +496,12 @@ button {
 }
 
 
+/* =====================================================
+   RANKING
+===================================================== */
 
-/* RANKING */
 /* TÍTULO */
+
 .ranking h1 {
     color: #000000;
     font-size: 40px;
@@ -630,6 +521,9 @@ button {
     z-index: 100;
 }
 
+
+/* ESTRUTURA DO RANKING */
+
 .ranking-frame {
     position: relative;
     margin: auto;
@@ -638,12 +532,14 @@ button {
     z-index: 100;
 }
 
+
+/* PÓDIO */
+
 .podio {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    gap: 18px;
-    margin: auto;
+    gap: 20px;
+    margin-left: 365px;
     position: relative;
     margin-bottom: 48px;
 }
@@ -677,6 +573,9 @@ button {
     border-color: #FB923C;
     margin-top: 100px;
 }
+
+
+/* MEDALHAS */
 
 .medalha {
     position: absolute;
@@ -719,6 +618,9 @@ button {
     );
 }
 
+
+/* AVATARES */
+
 .avatar-ranking {
     margin-top: 50px;
     width: 75px;
@@ -758,6 +660,9 @@ button {
     border: 5px solid #FFD2AD;
 }
 
+
+/* INFORMAÇÕES DO PÓDIO */
+
 .podio-nome {
     margin-top: 8px;
     font-size: 18px;
@@ -792,6 +697,9 @@ button {
     font-family: "Inter", sans-serif;
 }
 
+
+/* LISTA DO RANKING */
+
 .lista-ranking {
     display: flex;
     flex-direction: column;
@@ -818,6 +726,9 @@ button {
     border: 4px solid #8BC0D4;
 }
 
+
+/* POSIÇÃO E AVATAR DOS ITENS */
+
 .item-pos {
     font-size: 20px;
     font-weight: bolder;
@@ -839,6 +750,9 @@ button {
     flex-shrink: 0;
     font-family: "Inter";
 }
+
+
+/* INFORMAÇÕES DOS ITENS */
 
 .item-info-ranking {
     flex: 1;
@@ -881,6 +795,9 @@ button {
     font-family: "Inter", sans-serif;
 }
 
+
+/* DIVISOR DO RANKING */
+
 .divisor-ranking {
     display: flex;
     align-items: center;
@@ -906,7 +823,10 @@ button {
 }
 
 
-/* RODAPÉ */
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
 footer {
     margin-top: 74px;
     display: flex;
@@ -931,4 +851,717 @@ footer a {
 .redes-sociais {
     display: flex;
     gap: 200px;
+}
+
+
+
+
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+
+/* =====================================================
+   1. NOTEBOOKS E TELAS MENORES
+===================================================== */
+
+@media screen and (max-width: 1200px) {
+
+    /* CABEÇALHO */
+
+    header {
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 25px;
+        box-sizing: border-box;
+    }
+
+    header img {
+        margin-left: 0;
+        max-width: 180px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .abas {
+        gap: 15px;
+    }
+
+    .abas a {
+        padding-right: 10px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 20px;
+    }
+
+    /* CARDS DOS LIVROS */
+
+    .primeira-linha,
+    .segunda-linha {
+        gap: 35px;
+        flex-wrap: wrap;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    /* PÓDIO */
+
+    .podio {
+        justify-content: center;
+        margin-left: 0;
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    .podio-card {
+        width: min(255px, 30%);
+    }
+
+    /* LISTA DO RANKING */
+
+    .item-ranking {
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        gap: 100px;
+    }
+
+    .redes-sociais {
+        gap: 80px;
+    }
+}
+
+
+/* =====================================================
+   2. TABLETS
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* CABEÇALHO */
+
+    header {
+        height: auto;
+        min-height: 80px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+
+    header img {
+        max-width: 170px;
+        max-height: 55px;
+        margin: 0;
+    }
+
+    .abas {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .abas a {
+        padding: 5px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        height: 42px;
+        font-size: 17px;
+        gap: 3px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin-left: 5px;
+    }
+
+    .abas svg {
+        padding: 5px;
+    }
+
+    button {
+        margin-top: 0;
+    }
+
+    /* POSIÇÕES */
+
+    .posicao_site,
+    .posicao_site-ranking {
+        margin-top: 55px;
+    }
+
+    /* TÍTULOS DA BIBLIOTECA E DO RANKING */
+
+    .biblioteca h1,
+    .ranking h1 {
+        font-size: 34px;
+        padding: 0 15px;
+    }
+
+    .biblioteca h2,
+    .ranking h2 {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+
+    /* CARDS DOS LIVROS */
+
+    .card-section {
+        margin-top: 40px;
+    }
+
+    .primeira-linha,
+    .segunda-linha {
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .segunda-linha {
+        margin-top: 30px;
+    }
+
+    .card {
+        width: 280px;
+        max-width: 100%;
+        height: 420px;
+    }
+
+    .card-header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .title-row h2 {
+        font-size: 20px;
+    }
+
+    /* RANKING */
+
+    .ranking-frame {
+        margin-top: 55px;
+        margin-bottom: 60px;
+        width: 100%;
+    }
+
+    /* PÓDIO */
+
+    .podio {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 15px;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .podio-card {
+        width: calc(33.333% - 8px);
+        height: 245px;
+        border-radius: 30px;
+    }
+
+    .primeiro {
+        height: 265px;
+    }
+
+    .segundo,
+    .terceiro {
+        margin-top: 75px;
+    }
+
+    .avatar-ranking {
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+    }
+
+    .podio-nome {
+        font-size: 16px;
+        padding: 0 5px;
+    }
+
+    .podio-xp {
+        font-size: 15px;
+        gap: 5px;
+    }
+
+    .podio-sequencia {
+        font-size: 11px;
+    }
+
+    /* LISTA DO RANKING */
+
+    .lista-ranking {
+        width: 100%;
+        gap: 12px;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .item-ranking {
+        width: 100%;
+        min-height: 70px;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .item-pos {
+        font-size: 17px;
+        margin-left: 3px;
+    }
+
+    .item-avatar-ranking {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .item-info-ranking {
+        margin-left: 3px;
+        min-width: 0;
+    }
+
+    .item-nome-ranking {
+        font-size: 16px;
+    }
+
+    .item-detalhes-ranking {
+        font-size: 11px;
+        margin-top: 5px;
+        flex-wrap: wrap;
+    }
+
+    .item-xp-ranking {
+        font-size: 16px;
+        margin-right: 3px;
+    }
+
+    .item-xp-ranking span {
+        font-size: 12px;
+    }
+
+    /* DIVISOR DO RANKING */
+
+    .divisor-ranking {
+        width: 90%;
+    }
+
+    .divisor-ranking hr {
+        max-width: 200px;
+    }
+
+    .divisor-ranking p {
+        font-size: 15px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        height: auto;
+        min-height: 70px;
+        padding: 20px;
+        box-sizing: border-box;
+        gap: 50px;
+    }
+
+    footer p {
+        font-size: 15px;
+    }
+
+    .redes-sociais {
+        gap: 40px;
+    }
+}
+
+
+/* =====================================================
+   3. CELULARES
+===================================================== */
+
+@media screen and (max-width: 480px) {
+
+    /* CABEÇALHO */
+
+    header {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    header img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .abas {
+        gap: 6px;
+    }
+
+    .abas a {
+        padding: 3px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        height: 38px;
+        font-size: 14px;
+        gap: 2px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .abas svg {
+        padding: 3px;
+    }
+
+    .pesquisa {
+        width: 35px;
+        height: 38px;
+        padding-left: 0;
+    }
+
+    .pesquisa svg {
+        margin-top: 5px;
+    }
+
+    /* POSIÇÕES */
+
+    .posicao_site,
+    .posicao_site-ranking {
+        margin-top: 40px;
+        transform: scale(0.9);
+    }
+
+    /* TÍTULOS */
+
+    .biblioteca h1,
+    .ranking h1 {
+        font-size: 29px;
+        margin-top: 5px;
+    }
+
+    .biblioteca h2,
+    .ranking h2 {
+        font-size: 16px;
+        margin-top: 8px;
+        padding: 0 18px;
+    }
+
+    /* CARDS DOS LIVROS */
+
+    .card-section {
+        margin-top: 30px;
+    }
+
+    .primeira-linha,
+    .segunda-linha {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 0 12px;
+    }
+
+    .segunda-linha {
+        margin-top: 25px;
+    }
+
+    .card {
+        width: min(303px, 100%);
+        height: 420px;
+    }
+
+    .card-header {
+        width: 100%;
+        height: 181px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .title-row h2 {
+        font-size: 20px;
+    }
+
+    .year {
+        font-size: 13px;
+    }
+
+    .author {
+        font-size: 13px;
+    }
+
+    .difficulty {
+        font-size: 12px;
+    }
+
+    .progress-text {
+        font-size: 13px;
+    }
+
+    .btn-continue {
+        width: 85%;
+        box-sizing: border-box;
+    }
+
+    /* RANKING */
+
+    .ranking-frame {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+
+    /* PÓDIO */
+
+    .podio {
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+        margin-bottom: 35px;
+        padding: 0 15px;
+    }
+
+    .podio-card {
+        width: min(255px, 100%);
+        height: 245px;
+    }
+
+    .primeiro {
+        height: 265px;
+    }
+
+    .segundo,
+    .terceiro {
+        margin-top: 0;
+    }
+
+    .avatar-ranking {
+        width: 70px;
+        height: 70px;
+        font-size: 35px;
+    }
+
+    .podio-nome {
+        font-size: 18px;
+    }
+
+    .podio-xp {
+        font-size: 17px;
+    }
+
+    /* LISTA DO RANKING */
+
+    .lista-ranking {
+        width: 100%;
+        padding: 0 10px;
+        gap: 10px;
+    }
+
+    .item-ranking {
+        width: 100%;
+        min-height: 65px;
+        padding: 8px;
+        gap: 7px;
+        border-radius: 22px;
+    }
+
+    .item-pos {
+        font-size: 14px;
+        margin-left: 2px;
+    }
+
+    .item-avatar-ranking {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .item-info-ranking {
+        margin-left: 2px;
+    }
+
+    .item-nome-ranking {
+        font-size: 14px;
+    }
+
+    .item-detalhes-ranking {
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .item-xp-ranking {
+        font-size: 13px;
+        margin-right: 2px;
+    }
+
+    .item-xp-ranking span {
+        font-size: 10px;
+    }
+
+    /* DIVISOR */
+
+    .divisor-ranking {
+        width: 92%;
+        gap: 7px;
+    }
+
+    .divisor-ranking hr {
+        max-width: 100px;
+    }
+
+    .divisor-ranking p {
+        font-size: 13px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding: 18px 10px;
+        margin-top: 35px;
+    }
+
+    footer p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 30px;
+        justify-content: center;
+    }
+}
+
+
+/* =====================================================
+   4. CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+    /* CABEÇALHO */
+
+    header img {
+        max-width: 125px;
+    }
+
+    .abas {
+        gap: 4px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 12px;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    /* TÍTULOS */
+
+    .biblioteca h1,
+    .ranking h1 {
+        font-size: 26px;
+    }
+
+    .biblioteca h2,
+    .ranking h2 {
+        font-size: 14px;
+    }
+
+    /* CARDS */
+
+    .card {
+        height: 410px;
+    }
+
+    .title-row h2 {
+        font-size: 18px;
+    }
+
+    .badge-xp {
+        transform: scale(0.9);
+        transform-origin: left bottom;
+    }
+
+    /* PÓDIO */
+
+    .podio-card {
+        width: 90%;
+    }
+
+    /* LISTA DO RANKING */
+
+    .item-ranking {
+        gap: 5px;
+        padding: 7px;
+    }
+
+    .item-avatar-ranking {
+        width: 32px;
+        height: 32px;
+        font-size: 17px;
+    }
+
+    .item-pos {
+        font-size: 12px;
+    }
+
+    .item-nome-ranking {
+        font-size: 12px;
+    }
+
+    .item-detalhes-ranking {
+        font-size: 9px;
+    }
+
+    .item-xp-ranking {
+        font-size: 11px;
+    }
+
+    .item-xp-ranking span {
+        font-size: 9px;
+    }
+
+    /* RODAPÉ */
+
+    footer p {
+        font-size: 11px;
+    }
+
+    .redes-sociais {
+        gap: 20px;
+    }
 }

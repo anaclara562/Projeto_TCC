@@ -488,24 +488,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-
-    const buscasRecentes = document.querySelectorAll(".recent-tag");
-    buscasRecentes.forEach(botao => {
-        botao.addEventListener("click", () => {
-
-            campoPesquisa.value = botao.textContent.trim();
-
-            // Atualiza os livros encontrados
-            atualizarResultados();
-
-            campoPesquisa.focus();
-        });
-    });
-
     // Pesquisa enquanto digita
     if (campoPesquisa) {
         campoPesquisa.addEventListener("input", atualizarResultados);
     }
+
+    // Salva a pesquisa quando o usuário entra em um livro
+    if (listaLivros) {
+        listaLivros.addEventListener("click", evento => {
+            const linkLivro = evento.target.closest("a");
+            const cardLivro = evento.target.closest(".book-card");
+
+            if (!linkLivro || !cardLivro) return;
+
+            const termo = campoPesquisa?.value.trim();
+
+            if (termo) {
+                registrarBuscaRecente(termo);
+            }
+        });
+    }
+
+    // Carrega as buscas recentes ao abrir a página
+    carregarBuscasRecentes();
 
     // Filtros de gênero
     botoesFiltro.forEach(botao => {
@@ -1893,4 +1898,430 @@ document.getElementById("btn-sair")?.addEventListener("click", sairSite);
 function sairSite() {
     localStorage.removeItem("authToken");
     window.location.href = "/FRONTEND/PAGES/login.html";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ==========================================
+// BUSCAS RECENTES — BANCO DE DADOS
+// ==========================================
+
+
+// ==========================================
+// BUSCAS RECENTES — BANCO DE DADOS
+// ==========================================
+
+const API_BUSCAS_URL = "http://127.0.0.1:3000/api/buscas-recentes";
+
+// Carrega as três buscas mais recentes
+async function carregarBuscasRecentes() {
+    const container = document.getElementById("buscas-recentes");
+
+    if (!container) return;
+
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        container.innerHTML =
+            '<p id="sem-buscas-recentes">Faça login para visualizar suas buscas.</p>';
+        return;
+    }
+
+    try {
+        const resposta = await fetch(API_BUSCAS_URL, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const buscas = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(buscas.erro || "Erro ao carregar buscas.");
+        }
+
+        container.innerHTML = "";
+
+        if (!Array.isArray(buscas) || buscas.length === 0) {
+            container.innerHTML =
+                '<p id="sem-buscas-recentes">Nenhuma busca recente.</p>';
+            return;
+        }
+
+        buscas.forEach(busca => {
+            const botao = document.createElement("button");
+
+            botao.type = "button";
+            botao.className = "recent-tag";
+            botao.textContent = busca.termo_pesquisado;
+
+            container.appendChild(botao);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar buscas recentes:", erro);
+    }
+}
+
+
+// Salva uma pesquisa no banco de dados
+async function registrarBuscaRecente(termo) {
+    termo = String(termo || "").trim();
+
+    if (!termo) return;
+
+    const token = localStorage.getItem("authToken");
+
+    if (!token) return;
+
+    try {
+        const resposta = await fetch(API_BUSCAS_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                termo_pesquisado: termo
+            })
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Erro ao salvar pesquisa.");
+        }
+
+        console.log("Busca salva:", termo);
+
+        await carregarBuscasRecentes();
+
+    } catch (erro) {
+        console.error("Erro ao registrar busca recente:", erro);
+    }
+}
+
+
+// Clique nas buscas recentes
+document.addEventListener("click", evento => {
+    const botao = evento.target.closest(
+        "#buscas-recentes .recent-tag"
+    );
+
+    if (!botao) return;
+
+    const campo = document.querySelector(".search-input");
+
+    if (!campo) return;
+
+    campo.value = botao.textContent.trim();
+
+    // Dispara o evento de pesquisa enquanto digita
+    campo.dispatchEvent(new Event("input", {
+        bubbles: true
+    }));
+
+    campo.focus();
+});
+
+// Salva uma pesquisa no banco de dados
+async function registrarBuscaRecente(termo) {
+    termo = String(termo || "").trim();
+
+    if (!termo) return;
+
+    const token = localStorage.getItem("authToken");
+
+    if (!token) return;
+
+    try {
+        const resposta = await fetch(`${API_URL}/api/buscas-recentes`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                termo_pesquisado: termo
+            })
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Erro ao salvar pesquisa.");
+        }
+
+        await carregarBuscasRecentes();
+        // Carrega as buscas recentes do usuário
+        await carregarBuscasRecentes();
+
+    } catch (erro) {
+        console.error("Erro ao registrar busca recente:", erro);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   RANKING MENSAL - LÊBRASIL
+========================================== */
+
+async function carregarRanking() {
+    const rankingFrame = document.querySelector(".ranking-frame");
+
+    // Só executa na página que possui o ranking
+    if (!rankingFrame) return;
+
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        console.error("Usuário não autenticado para carregar o ranking.");
+        return;
+    }
+
+    const listas = rankingFrame.querySelectorAll(".lista-ranking");
+
+    if (listas.length < 2) {
+        console.error("As listas do ranking não foram encontradas.");
+        return;
+    }
+
+    const listaPrincipal = listas[0];
+    const listaPropria = listas[1];
+
+    try {
+        const resposta = await fetch(`${API_URL}/api/ranking`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Não foi possível carregar o ranking.");
+        }
+
+        const ranking = dados.ranking || [];
+        const minhaPosicao = dados.minhaPosicao;
+
+        // Formatação do XP
+        function formatarXP(valor) {
+            return Number(valor || 0).toLocaleString("pt-BR");
+        }
+
+        // ==========================================
+        // ATUALIZAR OS TRÊS PRIMEIROS COLOCADOS
+        // ==========================================
+
+        const podio = rankingFrame.querySelector(".podio");
+
+        const colocacoesPodio = [
+            { classe: ".segundo", indice: 1 },
+            { classe: ".primeiro", indice: 0 },
+            { classe: ".terceiro", indice: 2 }
+        ];
+
+        colocacoesPodio.forEach(({ classe, indice }) => {
+            const card = podio.querySelector(classe);
+            const usuario = ranking[indice];
+
+            if (!usuario) {
+                card.style.display = "none";
+                return;
+            }
+
+            card.style.display = "";
+
+            const avatar = card.querySelector(".avatar-ranking");
+            const nome = card.querySelector(".podio-nome");
+            const nivel = card.querySelector(".podio-nivel");
+            const xp = card.querySelector(".podio-xp");
+
+            const ehUsuarioLogado =
+                minhaPosicao &&
+                Number(usuario.idcadastro) === Number(minhaPosicao.idcadastro);
+
+            const nomeReal = usuario.nome || "Leitor";
+
+            const nomeUsuario = ehUsuarioLogado
+                ? "Você"
+                : nomeReal;
+
+            // A inicial sempre vem do nome verdadeiro
+            avatar.textContent = nomeReal.charAt(0).toUpperCase();
+
+            nome.textContent = nomeUsuario;
+            nivel.textContent = `Nível ${usuario.nivel}`;
+            xp.textContent = `★ ${formatarXP(usuario.xp)} XP`;
+
+            // Não mostrar sequência fictícia
+            const sequencia = card.querySelector(".podio-sequencia");
+
+            if (sequencia) {
+                sequencia.style.display = "none";
+            }
+        });
+
+        // ==========================================
+        // CRIAR OS ITENS DA LISTA
+        // ==========================================
+
+        function criarItemRanking(usuario, proprio = false) {
+            const item = document.createElement("div");
+            item.className = proprio
+                ? "item-ranking proprio"
+                : "item-ranking";
+
+            const posicao = document.createElement("p");
+            posicao.className = "item-pos";
+            posicao.textContent = `#${usuario.posicao}`;
+
+            const avatar = document.createElement("div");
+            avatar.className = "item-avatar-ranking";
+
+            const cores = [
+                "#5B63FF",
+                "#FF5B5B",
+                "#3890B1",
+                "#A66BCE",
+                "#E69B42",
+                "#42A88B"
+            ];
+
+            avatar.style.background = proprio
+                ? "#FF5B97"
+                : cores[(usuario.posicao - 1) % cores.length];
+
+            const nomeReal = usuario.nome || "Leitor";
+
+            const nomeUsuario = proprio
+                ? "Você"
+                : nomeReal;
+
+            // Mostra a inicial do nome real, mesmo quando aparece "Você"
+            avatar.textContent = nomeReal.charAt(0).toUpperCase();
+
+            const informacoes = document.createElement("div");
+            informacoes.className = "item-info-ranking";
+
+            const nome = document.createElement("p");
+            nome.className = "item-nome-ranking";
+            nome.textContent = nomeUsuario;
+
+            const detalhes = document.createElement("div");
+            detalhes.className = "item-detalhes-ranking";
+
+            const nivel = document.createElement("span");
+            nivel.textContent = `Nível ${usuario.nivel}`;
+
+            const separador = document.createElement("span");
+            separador.textContent = "•";
+
+            const livros = document.createElement("span");
+            livros.textContent = `${usuario.livros} livros`;
+
+            detalhes.append(nivel, separador, livros);
+            informacoes.append(nome, detalhes);
+
+            const xp = document.createElement("div");
+            xp.className = "item-xp-ranking";
+
+            xp.appendChild(
+                document.createTextNode(`★ ${formatarXP(usuario.xp)}`)
+            );
+
+            const textoXP = document.createElement("span");
+            textoXP.textContent = "XP";
+
+            xp.appendChild(textoXP);
+
+            item.append(posicao, avatar, informacoes, xp);
+
+            return item;
+        }
+
+        // ==========================================
+        // LISTA PRINCIPAL: SOMENTE TOP 5
+        // ==========================================
+
+        listaPrincipal.replaceChildren();
+
+        ranking.slice(3, 5).forEach(usuario => {
+            const ehUsuarioLogado =
+                minhaPosicao &&
+                Number(usuario.idcadastro) === Number(minhaPosicao.idcadastro);
+
+            listaPrincipal.appendChild(
+                criarItemRanking(usuario, ehUsuarioLogado)
+            );
+        });
+
+
+        // ==========================================
+        // POSIÇÃO DO USUÁRIO: SOMENTE SE ESTIVER
+        // ABAIXO DO TOP 5
+        // ==========================================
+
+        listaPropria.replaceChildren();
+
+        const divisor = rankingFrame.querySelector(".divisor-ranking");
+
+        if (minhaPosicao && Number(minhaPosicao.posicao) > 5) {
+
+            if (divisor) {
+                divisor.style.display = "";
+            }
+
+            listaPropria.style.display = "";
+
+            listaPropria.appendChild(
+                criarItemRanking(minhaPosicao, true)
+            );
+
+        } else {
+
+            if (divisor) {
+                divisor.style.display = "none";
+            }
+
+            listaPropria.style.display = "none";
+        }
+
+        console.log("Ranking mensal carregado com sucesso!");
+
+    } catch (erro) {
+        console.error("Erro ao carregar ranking:", erro);
+    }
+}
+
+// Executar quando a página estiver pronta
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", carregarRanking);
+} else {
+    carregarRanking();
 }

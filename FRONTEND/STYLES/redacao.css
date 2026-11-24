@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&family=Fredoka:wght@300..700&family=Idiqlat:wght@200;300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-/* CONFIG GERAL */
-::-webkit-scrollbar { 
-  display: none; 
+
+/* =====================================================
+   1. CONFIGURAÇÕES GERAIS
+===================================================== */
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -15,8 +19,8 @@ html {
 }
 
 body {
-  background-color: #E2F7FF;
-  overflow-x: hidden;
+    background-color: #E2F7FF;
+    overflow-x: hidden;
 }
 
 header,
@@ -27,8 +31,10 @@ footer {
 }
 
 
+/* =====================================================
+   2. CABEÇALHO
+===================================================== */
 
-/*HEADER*/
 header {
   background-color: #FFFFFF;
   width: 100%;
@@ -64,6 +70,7 @@ button {
 
 .pesquisa svg,
 .nivel svg,
+.redacao svg,
 .perfil svg {
     stroke: #8BC0D4;
     fill: #8BC0D4;
@@ -139,62 +146,48 @@ button {
 
 .nivel svg,
 .perfil svg,
-.redacao svg {
+.redacao svg,
+.perfil svg {
     margin-left: 10px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* =====================================================
+   3. ESTRUTURA PRINCIPAL
+===================================================== */
 
 .main-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
 }
 
 
-/* HEADER */
+/* =====================================================
+   4. CABEÇALHO DA REDAÇÃO
+===================================================== */
+
 .redacao-section {
-  width: 100%;
-  background: linear-gradient( to bottom right, 
-    #0C4F68 0%, 
-    #189CCE 100%
-  );
-  padding: 40px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #FFF;
-  text-align: center;
+    width: 100%;
+    background: linear-gradient(to bottom right,
+        #0C4F68 0%,
+        #189CCE 100%
+    );
+    padding: 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFF;
+    text-align: center;
 }
 
 .titulo-principal {
-  font-family: 'Fredoka';
-  font-weight: bold;
-  font-size: 55px; 
-  margin-bottom: 40px;
+    font-family: 'Fredoka';
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 40px;
 }
 
 .header-right {
@@ -209,50 +202,55 @@ button {
 }
 
 
-/* STEPS NAVIGATION BAR (APENAS INDICADOR VISUAL) */
+/* =====================================================
+   5. BARRA DE ETAPAS
+===================================================== */
+
 #back-btn {
     margin-top: 7px;
     margin-right: 7px;
 }
 
 .steps-bar {
-  display: flex;
-  gap: 0.6rem;
-  overflow-x: auto;
-  padding-bottom: 0.4rem;
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
 }
 
 .steps-bar::-webkit-scrollbar {
-  height: 4px;
+    height: 4px;
 }
 
 .steps-bar::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+    border-radius: 4px;
 }
 
 .step-pill {
-  border: none;
-  background-color: #FFFFFF;
-  color: #8BC0D4;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  font-family: "Inter";
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: default;
-  white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease-in-out;
+    border: none;
+    background-color: #FFFFFF;
+    color: #8BC0D4;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-family: "Inter";
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: default;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
 }
 
 .step-pill.active {
-  background-color: #189CCE;
-  color: #FFFFFF;
+    background-color: #189CCE;
+    color: #FFFFFF;
 }
 
 
+/* =====================================================
+   6. SEÇÕES DAS ETAPAS
+===================================================== */
 
-/* MAIN CONTAINER */
 .view-section {
     display: none;
     flex-direction: column;
@@ -262,19 +260,23 @@ button {
     display: flex;
 }
 
+
+/* =====================================================
+   7. ETAPA 1 — SELEÇÃO DO TEMA
+===================================================== */
+
 #view-1 {
     gap: 24px;
 }
 
+/* Títulos */
 
-
-/* PAGE 1: TEMA */
 .titulo-secundario {
     margin-top: 40px;
     font-family: "Fredoka";
     font-weight: bold;
-    font-size: 36px; 
-    color: #000; 
+    font-size: 36px;
+    color: #000;
     text-align: center;
 }
 
@@ -282,13 +284,12 @@ button {
     font-family: "Jacques Francois";
     font-weight: normal;
     font-size: 20px;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
     text-align: center;
-    color: #000; 
+    color: #000;
 }
 
-
-
+/* Cards dos temas */
 
 .theme-card {
     background: #ffffff;
@@ -320,13 +321,13 @@ button {
     font-size: 17px;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 6px;
-    color: #111827; 
+    color: #111827;
 }
 
 .card-header p {
-    font-family: 'Inter', sans-serif; 
-    font-size: 14px; 
-    color: #9F9F9F; 
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #9F9F9F;
     margin-top: 9px;
 }
 
@@ -340,43 +341,45 @@ button {
     gap: 8px;
 }
 
+/* Badges */
+
 .badge {
     padding: 4px 12px;
     border-radius: 20px;
-    font-family: 'Jacques Francois'; 
-    font-size: 14px; 
+    font-family: 'Jacques Francois';
+    font-size: 14px;
     font-weight: 500;
 }
 
-.badge.medio { 
-    background: #fef3c7; 
-    color: #d97706; 
+.badge.medio {
+    background: #fef3c7;
+    color: #d97706;
 }
 
-.badge.dificil { 
-    background: #fee2e2; 
-    color: #dc2626; 
+.badge.dificil {
+    background: #fee2e2;
+    color: #dc2626;
 }
 
-.badge.facil { 
-    background: #d1fae5; 
-    color: #059669; 
+.badge.facil {
+    background: #d1fae5;
+    color: #059669;
 }
+
+/* XP */
 
 .xp-text {
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: bold;
     color: #FFB800;
 }
 
 
+/* =====================================================
+   8. ETAPA 2 — EDITOR DE REDAÇÃO
+===================================================== */
 
-/* ========================================
-   ETAPA 2 — EDITOR DE REDAÇÃO
-======================================== */
-
-/* Área principal */
 #view-2 {
     width: 100%;
     max-width: 1200px;
@@ -387,9 +390,10 @@ button {
     font-family: 'Inter', sans-serif;
 }
 
-/* ========================================
-   CARTÃO DO TEMA
-======================================== */
+
+/* -----------------------------------------------------
+   8.1. CARTÃO DO TEMA
+----------------------------------------------------- */
 
 #view-2 .topic-highlight-card {
     width: 100%;
@@ -402,7 +406,6 @@ button {
         #FFFFFF 0%,
         #E8F9FF 100%
     );
-
     border: 2px solid #8BC0D4;
     border-radius: 21px;
 }
@@ -415,6 +418,7 @@ button {
 }
 
 /* Título pequeno do cartão */
+
 #view-2 .topic-header-row span {
     color: #0C4F68;
     font-size: 14px;
@@ -424,6 +428,7 @@ button {
 }
 
 /* Ícone antes do título */
+
 #view-2 .topic-header-row::before {
     color: #0C4F68;
     font-size: 24px;
@@ -431,6 +436,7 @@ button {
 }
 
 /* Tema selecionado */
+
 #view-2 .topic-title-main {
     font-size: 20px;
     font-weight: 500;
@@ -441,6 +447,7 @@ button {
 }
 
 /* Informações de nível e XP */
+
 #view-2 .theme-meta-badges {
     display: flex;
     align-items: center;
@@ -449,6 +456,7 @@ button {
 }
 
 /* Nível */
+
 #view-2 .theme-level-badge {
     display: inline-flex;
     align-items: center;
@@ -462,6 +470,7 @@ button {
 }
 
 /* Compatibilidade com a classe usada no HTML */
+
 #view-2 .badge {
     display: inline-flex;
     align-items: center;
@@ -474,22 +483,22 @@ button {
     border-color: #C6E5EF;
 }
 
-#view-2 .badge.medio { 
-    background: #fef3c7; 
+#view-2 .badge.medio {
+    background: #fef3c7;
     color: #d97706;
-    border-color: #d97706; 
+    border-color: #d97706;
 }
 
-#view-2 .badge.dificil { 
-    background: #fee2e2; 
-    color: #dc2626; 
-    border-color: #dc2626; 
+#view-2 .badge.dificil {
+    background: #fee2e2;
+    color: #dc2626;
+    border-color: #dc2626;
 }
 
-#view-2 .badge.facil { 
-    background: #d1fae5; 
+#view-2 .badge.facil {
+    background: #d1fae5;
     color: #059669;
-    border-color: #059669; 
+    border-color: #059669;
 }
 
 #view-2 .xp-complete-text {
@@ -498,9 +507,10 @@ button {
     font-weight: 700;
 }
 
-/* ========================================
-   CHIPS DE ORIENTAÇÃO
-======================================== */
+
+/* -----------------------------------------------------
+   8.2. CHIPS DE ORIENTAÇÃO
+----------------------------------------------------- */
 
 #view-2 .chips-row {
     display: flex;
@@ -509,7 +519,6 @@ button {
     gap: 40px;
     margin: auto;
     margin-bottom: 25px;
-    
 }
 
 #view-2 .chip {
@@ -517,12 +526,10 @@ button {
     align-items: center;
     justify-content: center;
     gap: 6px;
-
     padding: 9px 14px;
     background: #ffffff;
     border: 1px solid #C6E5EF;
     border-radius: 24px;
-
     background-color: #FFFFFF;
     color: #3890B1;
     font-size: 14px;
@@ -531,15 +538,17 @@ button {
 }
 
 /* Brilho decorativo */
+
 #view-2 .chip::before {
     content: "✦";
     color: #3890B1;
     font-size: 13px;
 }
 
-/* ========================================
-   ÁREA DE ESCRITA
-======================================== */
+
+/* -----------------------------------------------------
+   8.3. ÁREA DE ESCRITA
+----------------------------------------------------- */
 
 #view-2 .editor-container {
     position: relative;
@@ -547,41 +556,37 @@ button {
     height: 480px;
     box-sizing: border-box;
     overflow: hidden;
-
     background-color: #FFFFFF;
     border: 2px solid #C6E5EF;
     border-radius: 21px;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
 
 /* Campo de texto */
+
 #view-2 #essay-input {
     display: block;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-
     padding: 25px 24px 65px;
     border: none;
     outline: none;
     resize: none;
-
     background: transparent;
     background-color: transparent;
     color: #263943;
-
     font-family: 'Inter', 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.8;
-
     overflow-y: auto;
 }
 
 /* Placeholder */
+
 #view-2 #essay-input::placeholder {
     color: #9ABBC8;
     opacity: 1;
@@ -589,22 +594,22 @@ button {
 }
 
 /* Realce ao clicar no campo */
+
 #view-2 .editor-container:focus-within {
     border-color: #3890B1;
     box-shadow: 0 0 0 3px rgba(56, 144, 177, 0.12);
 }
 
 /* Contagem de caracteres e palavras */
+
 #view-2 .editor-footer-stats {
     position: absolute;
     right: 24px;
     bottom: 15px;
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 16px;
-
     padding: 5px 0 0 12px;
     background-color: #FFFFFF;
     color: #7899A7;
@@ -612,9 +617,10 @@ button {
     pointer-events: none;
 }
 
-/* ========================================
-   PROGRESSO MÍNIMO
-======================================== */
+
+/* -----------------------------------------------------
+   8.4. PROGRESSO MÍNIMO
+----------------------------------------------------- */
 
 #view-2 .progress-section {
     width: 100%;
@@ -627,48 +633,49 @@ button {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-
     margin-bottom: 10px;
     color: #176783;
     font-size: 14px;
 }
 
 /* Fundo da barra */
+
 #view-2 .progress-bar-bg {
     width: 100%;
     height: 10px;
     margin-bottom: 7px;
-
     overflow: hidden;
     border-radius: 20px;
     background-color: #C6E5EF;
 }
 
 /* Preenchimento atualizado pelo JavaScript */
+
 #view-2 .progress-bar-fill {
     width: 0%;
     height: 100%;
     border-radius: inherit;
-
     background: linear-gradient(
         90deg,
         #8BC0D4 0%,
         #3890B1 100%
     );
-
     transition: width 0.3s ease;
 }
 
 /* Mensagem de palavras restantes */
+
 #view-2 #words-left-text {
-    color:  #526675 !important;
+    color: #526675 !important;
     font-size: 13px;
     line-height: 1.6;
 }
 
-/* ========================================
-   BOTÃO DE ENVIO
-======================================== */
+
+/* -----------------------------------------------------
+   8.5. BOTÃO DE ENVIO
+----------------------------------------------------- */
+
 .submit-btn {
     display: flex;
     align-items: center;
@@ -684,7 +691,6 @@ button {
     font-family: 'Inter', 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 700;
-
     cursor: pointer;
     transition:
         background 0.2s ease,
@@ -693,6 +699,7 @@ button {
 }
 
 /* Hover */
+
 .submit-btn:hover:not(:disabled) {
     background-color: #8BC0D4;
     box-shadow: 0 5px 15px rgba(34, 103, 128, 0.12);
@@ -700,6 +707,7 @@ button {
 }
 
 /* Estado desabilitado */
+
 .submit-btn:disabled {
     background-color: #E8F9FF;
     color: #7899A7;
@@ -708,7 +716,9 @@ button {
 }
 
 
-
+/* =====================================================
+   9. ETAPA 3 — RESULTADO DA REDAÇÃO
+===================================================== */
 
 #view-3 {
     flex-direction: column;
@@ -720,14 +730,18 @@ button {
     box-sizing: border-box;
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
- 
+
 #view-3 *,
 #view-3 *::before,
 #view-3 *::after {
     box-sizing: border-box;
 }
- 
-/* ---------- NOTA FINAL ---------- */
+
+
+/* -----------------------------------------------------
+   9.1. NOTA FINAL
+----------------------------------------------------- */
+
 .score-card {
     display: flex;
     flex-direction: column;
@@ -738,7 +752,7 @@ button {
     background: linear-gradient(135deg, #e9e3fd 0%, #ffffff 50%, #dfe9fc 100%);
     margin-bottom: 4px;
 }
- 
+
 .score-title {
     font-size: 13px;
     font-weight: 700;
@@ -747,7 +761,7 @@ button {
     margin-bottom: 18px;
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
- 
+
 #view-3 .score-container {
     position: relative;
     width: 148px;
@@ -784,12 +798,13 @@ button {
     transition: stroke-dashoffset 1s ease;
 }
 
+/* Número e máximo no centro */
+
 #view-3 .score-value,
 #view-3 .score-max {
     position: relative;
 }
 
-/* número e máximo no centro */
 #view-3 .score-value {
     position: relative;
     font-family: 'Fredoka', sans-serif;
@@ -807,7 +822,7 @@ button {
     color: #7899A7;
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
- 
+
 .score-badge-status {
     margin-top: 22px;
     font-size: 22px;
@@ -817,7 +832,7 @@ button {
     gap: 10px;
     font-family: 'Fredoka', sans-serif;
 }
-  
+
 .xp-reward-pill {
     margin-top: 16px;
     padding: 9px 20px;
@@ -829,12 +844,16 @@ button {
     font-size: 15px;
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
- 
+
 .xp-reward-pill::before {
     margin-right: 8px;
 }
- 
-/* ---------- COMENTÁRIO GERAL ---------- */
+
+
+/* -----------------------------------------------------
+   9.2. COMENTÁRIO GERAL
+----------------------------------------------------- */
+
 .comment-card {
     background: #ffffff;
     border: 1px solid #ece9fb;
@@ -851,22 +870,26 @@ button {
     margin-bottom: 6px;
     font-family: 'Open Sans', sans-serif;
 }
- 
+
 .comment-header::before {
     content: "✦";
     color: #7c3aed;
     font-size: 20px;
     line-height: 1;
 }
- 
+
 .comment-body {
     font-size: 15px;
     line-height: 1.7;
     color: #6b7280;
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
- 
-/* ---------- CRITÉRIOS ---------- */
+
+
+/* -----------------------------------------------------
+   9.3. CRITÉRIOS
+----------------------------------------------------- */
+
 .section-subtitle {
     margin: 18px 0 2px;
     font-size: 15px;
@@ -884,7 +907,7 @@ button {
     padding: 20px 22px 22px;
     box-shadow: 0 1px 3px rgba(124, 58, 237, 0.04);
 }
- 
+
 .criterion-row {
     display: flex;
     justify-content: space-between;
@@ -894,27 +917,32 @@ button {
     margin-bottom: 12px;
     font-family: 'Open Sans', sans-serif;
 }
- 
+
 .criterion-row span:last-child {
     font-weight: 700;
 }
- 
+
 .criterion-progress {
     height: 10px;
     background: #e0e7fb;
     border-radius: 999px;
     overflow: hidden;
 }
- 
+
 .criterion-fill {
     height: 100%;
     border-radius: 999px;
     background: linear-gradient(90deg, #3890B1 0%, #8BC0D4 100%);
     transition: width 0.8s cubic-bezier(.22, 1, .36, 1);
 }
- 
+
+
+/* -----------------------------------------------------
+   9.4. SUGESTÕES
+----------------------------------------------------- */
+
 .suggestion-box {
-    display: block;     
+    display: block;
     padding: 16px 20px;
     border-radius: 20px;
     border: 2px solid;
@@ -949,53 +977,62 @@ button {
     margin: 0;
 }
 
+/* Dica */
+
 .suggestion-box.tip {
     background: #f8f8ff;
     border-color: #ece9fb;
 }
 
-.suggestion-box.tip::before { 
-    color: #1a1a2e; 
+.suggestion-box.tip::before {
+    color: #1a1a2e;
 }
 
-.suggestion-box.tip strong { 
-    color: #1a1a2e; 
+.suggestion-box.tip strong {
+    color: #1a1a2e;
 }
- 
+
 /* Atenção */
+
 .suggestion-box.warning {
     background: #f8e5e8;
     border-color: #f3b0b6;
 }
 
-.suggestion-box.warning::before { 
-    color: #ef4444; 
+.suggestion-box.warning::before {
+    color: #ef4444;
 }
-.suggestion-box.warning strong { 
-    color: #ef4444; 
+
+.suggestion-box.warning strong {
+    color: #ef4444;
 }
- 
+
 /* Ponto positivo */
+
 .suggestion-box.info {
     background: #e0f2ef;
     border-color: #86d9bf;
 }
 
-.suggestion-box.info::before { 
-    color: #10b981; 
+.suggestion-box.info::before {
+    color: #10b981;
 }
 
-.suggestion-box.info strong { 
-    color: #10b981; 
+.suggestion-box.info strong {
+    color: #10b981;
 }
- 
-/* ---------- BOTÕES ---------- */
+
+
+/* -----------------------------------------------------
+   9.5. BOTÕES DE AÇÃO
+----------------------------------------------------- */
+
 .actions-bottom {
     display: flex;
     gap: 16px;
     margin-top: 12px;
 }
- 
+
 .btn-secondary {
     display: flex;
     align-items: center;
@@ -1020,14 +1057,14 @@ button {
     font-family: 'Inter', 'Open Sans', sans-serif;
 }
 
-.btn-secondary::before { 
-    content: "↺"; 
-    font-size: 22px; 
+.btn-secondary::before {
+    content: "↺";
+    font-size: 22px;
 }
 
-#view-3 .submit-btn::before { 
-    content: "✎"; 
-    font-size: 22px; 
+#view-3 .submit-btn::before {
+    content: "✎";
+    font-size: 22px;
 }
 
 .btn-secondary:hover {
@@ -1037,32 +1074,12 @@ button {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* =====================================================
+   10. AJUSTES DE CENTRALIZAÇÃO DA ETAPA 1
+===================================================== */
 
 /* Mantém a página centralizada */
+
 #view-1 {
     width: 100%;
     min-width: 0;
@@ -1071,6 +1088,7 @@ button {
 }
 
 /* Mantém os cards centralizados e com largura limitada */
+
 #view-1 .theme-card {
     max-width: 1025px;
     width: 100%;
@@ -1081,6 +1099,7 @@ button {
 }
 
 /* Impede que os macetes aumentem a largura da página */
+
 #view-1 .macetes,
 #view-1 .macetes-frame,
 #view-1 .quadro-info {
@@ -1090,25 +1109,18 @@ button {
 }
 
 /* Evita expansão por textos longos */
+
 #view-1 .quadro-info {
     overflow-wrap: anywhere;
 }
 
 
+/* =====================================================
+   11. MACETES DE REDAÇÃO
+===================================================== */
 
+/* Identificação */
 
-
-
-
-
-
-
-
-
-
-
-
-/*MACETES*/
 .posicao_site-macete {
     width: 185px;
     height: 28px;
@@ -1118,7 +1130,7 @@ button {
     border-radius: 45px;
     display: flex;
     gap: 9px;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     position: relative;
     z-index: 100;
@@ -1130,6 +1142,8 @@ button {
 .posicao_site-macete p {
     padding-right: 10px;
 }
+
+/* Títulos */
 
 .macetes h1 {
     color: #000000;
@@ -1150,6 +1164,8 @@ button {
     z-index: 100;
 }
 
+/* Botões de navegação */
+
 .botoes-container {
     display: flex;
     gap: 55px;
@@ -1159,36 +1175,34 @@ button {
 }
 
 .botoes-container button {
-    background:
-        linear-gradient(to right,
-        rgba(105, 171, 194, 1) 0%,
-        rgba(226, 247, 255, 1) 100%
-    );
+    background-color: #c4efff;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    border: 1px solid #6B9BAD;
+    color: rgb(68, 138, 163);
     border-radius: 30px;
     font-family: "Coustard", serif;
     margin-bottom: 30px;
 }
 
 .botoes-container button.ativo {
-    background: #29748b;
-    color: #FFFFFF;
-    border-color: #00575E;
+    background: rgba(96, 170, 197, 0.584);
+    color: #E8F9FF;
 }
 
 .botoes-container button:hover {
-    filter: brightness(0.95);
+    background: rgba(96, 170, 197, 0.584);
+    color: #E8F9FF;
 }
+
+/* Quadro de informações */
 
 .quadro-info {
     width: min(92%, 1050px);
     margin: 30px auto 60px;
     padding: 32px 38px;
     background: linear-gradient(145deg,
-        #FFFFFF, 
+        #FFFFFF,
         #F4FBFE
     );
     border: 1px solid #8BC0D4;
@@ -1200,9 +1214,10 @@ button {
     line-height: 1.7;
 }
 
+/* Títulos internos */
+
 .quadro-info h2 {
     margin: 0 0 18px;
-
     color: #0C4F68;
     font-family: 'Fredoka', sans-serif;
     font-size: 28px;
@@ -1214,10 +1229,8 @@ button {
 .quadro-info h3 {
     margin: 26px 0 12px;
     padding-left: 12px;
-
     border-left: 5px solid #3890B1;
     color: #176783;
-
     font-family: 'Fredoka', sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -1226,7 +1239,6 @@ button {
 
 .quadro-info h4 {
     margin: 0 0 10px;
-
     color: #176783;
     font-family: 'Fredoka', sans-serif;
     font-size: 17px;
@@ -1234,9 +1246,10 @@ button {
     line-height: 1.4;
 }
 
+/* Textos */
+
 .quadro-info p {
     margin: 0 0 16px;
-
     color: #263943;
     font-size: 15.5px;
     line-height: 1.8;
@@ -1252,15 +1265,15 @@ button {
     font-weight: 700;
 }
 
+/* Dicas */
+
 .quadro-info .dica-redacao {
     margin: 22px 0;
     padding: 20px 22px;
-
     background: #E8F9FF;
     border: 1px solid #C6E5EF;
     border-left: 5px solid #3890B1;
     border-radius: 12px;
-
     color: #234C5B;
 }
 
@@ -1272,24 +1285,22 @@ button {
     color: #234C5B;
 }
 
+/* Elementos dos macetes */
+
 .elementos-macetes {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
-
     margin-top: 20px;
 }
 
 .elemento-macete {
     min-width: 0;
     padding: 20px;
-
     background: #FFFFFF;
     border: 1px solid #C6E5EF;
     border-radius: 16px;
-
     box-sizing: border-box;
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
@@ -1308,7 +1319,6 @@ button {
 
 .elemento-macete p {
     margin: 0 0 12px;
-
     color: #526675;
     font-size: 14px;
     line-height: 1.7;
@@ -1327,23 +1337,21 @@ button {
     background: #F0FAFD;
 }
 
+/* Tabelas */
+
 .quadro-info table {
     width: 100%;
     margin-top: 18px;
-
     border-collapse: separate;
     border-spacing: 0;
     table-layout: auto;
-
     overflow-wrap: anywhere;
 }
 
 .quadro-info th {
     padding: 13px 12px;
-
     background: #176783;
     color: #FFFFFF;
-
     font-size: 14px;
     font-weight: 600;
     text-align: left;
@@ -1359,14 +1367,14 @@ button {
 
 .quadro-info td {
     padding: 13px 12px;
-
     background: #FFFFFF;
     border-bottom: 1px solid #D5EAF1;
-
     color: #263943;
     font-size: 14px;
     vertical-align: top;
 }
+
+/* Conteúdos */
 
 .quadro-info .conteudo {
     display: none;
@@ -1385,9 +1393,10 @@ button {
 }
 
 
+/* =====================================================
+   12. RODAPÉ
+===================================================== */
 
-
-/* RODAPÉ */
 footer {
     margin-top: 74px;
     display: flex;
@@ -1412,4 +1421,1285 @@ footer a {
 .redes-sociais {
     display: flex;
     gap: 200px;
+}
+
+
+
+
+
+
+/* =====================================================
+   13. RESPONSIVIDADE — NOTEBOOKS
+===================================================== */
+
+@media screen and (max-width: 1200px) {
+
+    /* CABEÇALHO */
+
+    header {
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+
+    header img {
+        max-width: 180px;
+        height: auto;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    .abas {
+        gap: 18px;
+    }
+
+    .abas a {
+        padding-right: 10px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 20px;
+    }
+
+    /* REDAÇÃO */
+
+    .redacao-section {
+        box-sizing: border-box;
+    }
+
+    #view-1 {
+        padding: 0 25px;
+    }
+
+    .theme-card {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #view-2 {
+        max-width: 100%;
+    }
+
+    /* MACETES */
+
+    .botoes-container {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .quadro-info {
+        width: 92%;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        gap: 60px;
+    }
+
+    .redes-sociais {
+        gap: 50px;
+    }
+}
+
+
+/* =====================================================
+   14. TABLETS
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* CABEÇALHO */
+
+    header {
+        min-height: 80px;
+        height: auto;
+        padding: 12px 20px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    header img {
+        max-width: 170px;
+        max-height: 55px;
+        margin: 0;
+    }
+
+    .abas {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .abas a {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        font-size: 0;
+    }
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    /* CABEÇALHO DA REDAÇÃO */
+
+    .redacao-section {
+        padding: 35px 18px;
+    }
+
+    .titulo-principal {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+
+    .steps-bar {
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        gap: 10px;
+        padding: 0 12px 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .step-pill {
+        flex: 0 0 auto;
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    /* ETAPA 1 */
+
+    #view-1 {
+        padding: 0 20px;
+        gap: 18px;
+    }
+
+    .titulo-secundario {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    .subtitulo {
+        font-size: 18px;
+        padding: 0 12px;
+    }
+
+    .theme-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .card-conteudo,
+    .card-header {
+        min-width: 0;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .card-header p {
+        font-size: 13px;
+    }
+
+    .theme-meta {
+        margin-right: 0;
+        gap: 6px;
+    }
+
+    /* ETAPA 2 */
+
+    #view-2 {
+        padding: 22px 18px 40px;
+    }
+
+    #view-2 .topic-highlight-card {
+        padding: 18px;
+    }
+
+    #view-2 .topic-title-main {
+        font-size: 18px;
+    }
+
+    #view-2 .chips-row {
+        gap: 12px;
+        justify-content: center;
+    }
+
+    #view-2 .chip {
+        font-size: 12px;
+        padding: 8px 11px;
+        white-space: normal;
+        text-align: center;
+    }
+
+    #view-2 .editor-container {
+        height: 430px;
+    }
+
+    #view-2 #essay-input {
+        padding: 20px 18px 65px;
+        font-size: 15px;
+    }
+
+    #view-2 .editor-footer-stats {
+        right: 15px;
+        bottom: 12px;
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .submit-btn {
+        min-height: 60px;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    /* ETAPA 3 */
+
+    #view-3 {
+        padding: 25px 18px 45px;
+    }
+
+    .score-card {
+        padding: 25px 15px;
+    }
+
+    .criterion-card {
+        padding: 18px;
+    }
+
+    .criterion-row {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .comment-card {
+        padding: 15px;
+    }
+
+    .suggestion-box {
+        padding: 15px;
+    }
+
+    .actions-bottom {
+        gap: 12px;
+    }
+
+    .btn-secondary {
+        min-height: 60px;
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    /* MACETES */
+
+    .posicao_site-macete {
+        margin-top: 45px;
+    }
+
+    .macetes h1 {
+        font-size: 34px;
+        padding: 0 15px;
+    }
+
+    .macetes h2 {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+
+    .botoes-container {
+        gap: 12px;
+        padding: 0 15px;
+        flex-wrap: wrap;
+    }
+
+    .botoes-container button {
+        font-size: 14px;
+        padding: 9px 15px;
+        margin-bottom: 15px;
+    }
+
+    .quadro-info {
+        width: 94%;
+        padding: 25px;
+        margin: 20px auto 45px;
+    }
+
+    .quadro-info h2 {
+        font-size: 25px;
+    }
+
+    .quadro-info h3 {
+        font-size: 19px;
+    }
+
+    .elementos-macetes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .elemento-macete {
+        padding: 15px;
+    }
+
+    .quadro-info table {
+        display: block;
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        height: auto;
+        min-height: 70px;
+        padding: 20px;
+        box-sizing: border-box;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    footer p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 30px;
+    }
+}
+
+
+/* =====================================================
+   15. CELULARES
+===================================================== */
+
+@media screen and (max-width: 480px) {
+
+    /* CABEÇALHO */
+
+    header {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    header img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .abas {
+        gap: 12px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+    }
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        min-height: 22px;
+    }
+
+    /* CABEÇALHO DA REDAÇÃO */
+
+    .redacao-section {
+        padding: 25px 12px;
+    }
+
+    .titulo-principal {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .steps-bar {
+        gap: 8px;
+    }
+
+    .step-pill {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    /* ETAPA 1 */
+
+    #view-1 {
+        padding: 0 12px;
+        gap: 14px;
+    }
+
+    .titulo-secundario {
+        font-size: 27px;
+        margin-top: 25px;
+    }
+
+    .subtitulo {
+        font-size: 16px;
+        margin-bottom: 18px;
+    }
+
+    .theme-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+        gap: 14px;
+        border-radius: 13px;
+    }
+
+    .card-conteudo {
+        width: 100%;
+    }
+
+    .card-header h3 {
+        font-size: 15px;
+    }
+
+    .card-header p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .theme-meta {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .xp-text {
+        font-size: 12px;
+    }
+
+    /* ETAPA 2 */
+
+    #view-2 {
+        padding: 18px 12px 35px;
+    }
+
+    #view-2 .topic-highlight-card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    #view-2 .topic-header-row span {
+        font-size: 12px;
+    }
+
+    #view-2 .topic-title-main {
+        font-size: 16px;
+    }
+
+    #view-2 .theme-meta-badges {
+        gap: 8px;
+    }
+
+    #view-2 .theme-level-badge,
+    #view-2 .badge {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    #view-2 .xp-complete-text {
+        font-size: 12px;
+    }
+
+    #view-2 .chips-row {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    #view-2 .chip {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    #view-2 .editor-container {
+        height: 380px;
+        border-radius: 15px;
+    }
+
+    #view-2 #essay-input {
+        padding: 16px 14px 65px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    #view-2 #essay-input::placeholder {
+        font-size: 13px;
+    }
+
+    #view-2 .editor-footer-stats {
+        right: 10px;
+        bottom: 10px;
+        gap: 8px;
+        font-size: 10px;
+    }
+
+    #view-2 .progress-info-row {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    #view-2 #words-left-text {
+        font-size: 11px;
+    }
+
+    .submit-btn {
+        min-height: 55px;
+        padding: 13px;
+        font-size: 14px;
+        border-radius: 15px;
+    }
+
+    /* ETAPA 3 */
+
+    #view-3 {
+        padding: 20px 12px 35px;
+        gap: 10px;
+    }
+
+    .score-card {
+        padding: 22px 12px;
+        border-radius: 18px;
+    }
+
+    .score-title {
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+
+    #view-3 .score-container {
+        width: 125px;
+        height: 125px;
+    }
+
+    #view-3 .score-value {
+        font-size: 38px;
+    }
+
+    #view-3 .score-max {
+        font-size: 12px;
+    }
+
+    .score-badge-status {
+        font-size: 19px;
+        margin-top: 17px;
+    }
+
+    .xp-reward-pill {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+
+    .comment-card {
+        padding: 14px;
+    }
+
+    .comment-header {
+        font-size: 13px;
+    }
+
+    .comment-body {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+    }
+
+    .criterion-card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .criterion-row {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .criterion-progress {
+        height: 8px;
+    }
+
+    .suggestion-box {
+        padding: 13px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .suggestion-header strong {
+        font-size: 13px;
+    }
+
+    .suggestion-header svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .actions-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-secondary {
+        min-height: 52px;
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 15px;
+    }
+
+    /* MACETES */
+
+    .posicao_site-macete {
+        width: 165px;
+        margin-top: 35px;
+        font-size: 13px;
+    }
+
+    .macetes h1 {
+        font-size: 28px;
+        padding: 0 12px;
+    }
+
+    .macetes h2 {
+        font-size: 16px;
+        padding: 0 15px;
+    }
+
+    .botoes-container {
+        gap: 8px;
+        padding: 0 10px;
+    }
+
+    .botoes-container button {
+        font-size: 12px;
+        padding: 9px 12px;
+        margin: 0;
+    }
+
+    .quadro-info {
+        width: 94%;
+        padding: 18px 15px;
+        margin: 20px auto 35px;
+        border-radius: 20px;
+    }
+
+    .quadro-info h2 {
+        font-size: 22px;
+    }
+
+    .quadro-info h3 {
+        font-size: 17px;
+        margin-top: 22px;
+    }
+
+    .quadro-info h4 {
+        font-size: 15px;
+    }
+
+    .quadro-info p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .quadro-info .dica-redacao {
+        padding: 15px;
+    }
+
+    .elementos-macetes {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .elemento-macete {
+        padding: 15px;
+    }
+
+    .elemento-macete p {
+        font-size: 13px;
+    }
+
+    .quadro-info th,
+    .quadro-info td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding: 18px 10px;
+        margin-top: 35px;
+    }
+
+    footer p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .redes-sociais {
+        gap: 25px;
+        justify-content: center;
+    }
+}
+
+
+/* =====================================================
+   16. CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+    /* CABEÇALHO */
+
+    header img {
+        max-width: 125px;
+    }
+
+    .abas {
+        gap: 8px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+    }
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+    }
+
+    /* REDAÇÃO */
+
+    .titulo-principal {
+        font-size: 28px;
+    }
+
+    .step-pill {
+        font-size: 11px;
+    }
+
+    /* ETAPA 1 */
+
+    .titulo-secundario {
+        font-size: 24px;
+    }
+
+    .subtitulo {
+        font-size: 14px;
+    }
+
+    .theme-card {
+        padding: 13px;
+    }
+
+    .card-header h3 {
+        font-size: 14px;
+    }
+
+    /* ETAPA 2 */
+
+    #view-2 {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    #view-2 .topic-title-main {
+        font-size: 14px;
+    }
+
+    #view-2 .chip {
+        font-size: 10px;
+        padding: 7px 8px;
+    }
+
+    #view-2 .editor-container {
+        height: 340px;
+    }
+
+    #view-2 #essay-input {
+        font-size: 13px;
+        padding: 14px 12px 60px;
+    }
+
+    #view-2 .editor-footer-stats {
+        font-size: 9px;
+        gap: 5px;
+    }
+
+    /* ETAPA 3 */
+
+    #view-3 {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    #view-3 .score-container {
+        width: 110px;
+        height: 110px;
+    }
+
+    #view-3 .score-value {
+        font-size: 34px;
+    }
+
+    .score-badge-status {
+        font-size: 17px;
+    }
+
+    .criterion-row {
+        font-size: 11px;
+    }
+
+    /* MACETES */
+
+    .macetes h1 {
+        font-size: 25px;
+    }
+
+    .macetes h2 {
+        font-size: 14px;
+    }
+
+    .botoes-container {
+        gap: 6px;
+    }
+
+    .botoes-container button {
+        font-size: 11px;
+        padding: 8px 9px;
+    }
+
+    .quadro-info {
+        padding: 15px 12px;
+    }
+
+    .quadro-info h2 {
+        font-size: 20px;
+    }
+
+    .quadro-info h3 {
+        font-size: 16px;
+    }
+
+    .quadro-info p {
+        font-size: 12px;
+    }
+
+    /* RODAPÉ */
+
+    footer p {
+        font-size: 11px;
+    }
+
+    .redes-sociais {
+        gap: 20px;
+    }
+}
+
+
+/* =====================================================
+   17. AJUSTES GERAIS DE SEGURANÇA
+===================================================== */
+
+
+.theme-card,
+.topic-highlight-card,
+.editor-container,
+.score-card,
+.comment-card,
+.criterion-card,
+.suggestion-box,
+.quadro-info,
+.elemento-macete {
+    min-width: 0;
+}
+
+#view-1,
+#view-2,
+#view-3 {
+    box-sizing: border-box;
+}
+
+#view-2 *,
+#view-3 * {
+    min-width: 0;
+}
+
+.steps-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.step-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/* =====================================================
+   13. RESPONSIVIDADE — NOTEBOOKS
+===================================================== */
+
+@media screen and (max-width: 1200px) {
+
+    /* CABEÇALHO */
+
+    header {
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+
+    header img {
+        max-width: 180px;
+        max-height: 60px;
+        margin: 0;
+    }
+
+    .abas {
+        gap: 18px;
+    }
+
+    .abas a {
+        padding-right: 10px;
+    }
+
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 20px;
+    }
+
+}
+
+
+/* =====================================================
+   14. TABLETS
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* CABEÇALHO */
+
+    header {
+        height: auto;
+        min-height: 80px;
+        padding: 12px 20px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    header img {
+        max-width: 170px;
+        max-height: 55px;
+        margin: 0;
+    }
+
+    .abas {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .abas a {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* BOTÕES */
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+        margin: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+
+        font-size: 0;
+    }
+
+    /* ÍCONES */
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+
+        padding: 0;
+        margin: 0;
+
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+}
+
+
+/* =====================================================
+   15. CELULARES
+===================================================== */
+
+@media screen and (max-width: 480px) {
+
+    /* CABEÇALHO */
+
+    header {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    header img {
+        max-width: 145px;
+        max-height: 48px;
+    }
+
+    .abas {
+        gap: 20px;
+    }
+
+    .abas a {
+        padding: 3px;
+    }
+
+
+    /* BOTÕES */
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        height: 38px;
+        font-size: 14px;
+        gap: 2px;
+    }
+
+    /* ÍCONES */
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .abas svg {
+        padding: 3px;
+    }
+
+    .pesquisa {
+        width: 35px;
+        height: 38px;
+        padding-left: 0;
+    }
+
+    .pesquisa svg {
+        margin-top: 5px;
+    }
+
+}
+
+
+/* =====================================================
+   16. CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+    /* CABEÇALHO */
+
+    header img {
+        max-width: 125px;
+        max-height: 45px;
+    }
+
+    .abas {
+        gap: 8px;
+    }
+
+    /* BOTÕES */
+
+    .nivel,
+    .perfil,
+    .redacao,
+    .pesquisa {
+        width: 36px;
+        min-width: 36px;
+        height: 36px;
+    }
+
+    /* ÍCONES */
+
+    .abas svg,
+    .nivel svg,
+    .perfil svg,
+    .redacao svg,
+    .pesquisa svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+    }
+
+}
+
+/* =====================================================
+   ABAS SOMENTE COM ÍCONES EM TELAS RESPONSIVAS
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* Esconde os textos das abas */
+    .abas a {
+        font-size: 0;
+        padding: 0;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Esconde os textos dos botões */
+    .nivel,
+    .perfil,
+    .redacao {
+        font-size: 0;
+        width: 42px;
+        min-width: 42px;
+        height: 42px;
+        padding: 0;
+        justify-content: center;
+        gap: 0;
+    }
+
+    /* Mantém os ícones visíveis */
+    .abas svg {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .nivel svg,
+    .perfil svg,
+    .redacao svg {
+        margin: 0;
+    }
+
+    .pesquisa {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

@@ -330,7 +330,7 @@ Dica: Comece com uma introdução que apresente o tema e sua tese. Use pelo meno
             wordsLeft.textContent =
                 `Faltam ${faltam} palavras para poder enviar`;
 
-            wordsLeft.style.color = "var(--text-muted)";
+            wordsLeft.style.color = "#64748B";
 
         }
 

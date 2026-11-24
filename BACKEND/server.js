@@ -473,7 +473,6 @@ function obterDataHoje() {
 // ==========================================
 // CONCEDER XP COM PROTEÇÃO CONTRA DUPLICIDADE
 // ==========================================
-
 async function adicionarXP(
     conn,
     cadastroId,
@@ -488,7 +487,7 @@ async function adicionarXP(
         throw new Error("Quantidade de XP inválida.");
     }
 
-    // Busca os IDs de nível e ranking do usuário.
+    // Busca os dados atuais do usuário.
     const [usuarios] = await conn.execute(
         `SELECT
             u.nivel_idnivel,
@@ -499,7 +498,7 @@ async function adicionarXP(
             ON n.idnivel = u.nivel_idnivel
             AND n.ranking_idranking = u.nivel_ranking_idranking
         WHERE u.idcadastro = ?
-        AND u.usuario_idusuario = ?
+          AND u.usuario_idusuario = ?
         LIMIT 1
         FOR UPDATE`,
         [cadastroId, usuarioId]
@@ -513,7 +512,7 @@ async function adicionarXP(
     const rankingId = usuarios[0].nivel_ranking_idranking;
     const xpAnterior = Number(usuarios[0].pontuacao) || 0;
 
-    // Registra o evento. A chave única impede XP duplicado.
+    // Registra o evento para evitar XP duplicado.
     const [resultado] = await conn.execute(
         `INSERT IGNORE INTO xp_eventos (
             usuario_idcadastro,
@@ -540,7 +539,16 @@ async function adicionarXP(
         return false;
     }
 
-    // Atualiza a pontuação na tabela nivel.
+    console.log("ATUALIZAÇÃO DE XP:", {
+        cadastroId,
+        chaveEvento,
+        xp,
+        nivelId,
+        rankingId,
+        horario: new Date().toISOString()
+    });
+
+    // Atualiza o XP.
     const [atualizacao] = await conn.execute(
         `UPDATE nivel
          SET pontuacao = pontuacao + ?
@@ -553,54 +561,39 @@ async function adicionarXP(
         throw new Error("Não foi possível atualizar a pontuação do usuário.");
     }
 
-    // Verifica se o usuário subiu de nível.
-    // Verifica se o usuário subiu de nível.
+    // Calcula o nível anterior e o novo.
     const xpAtual = xpAnterior + xp;
 
     const nivelAnterior = Math.floor(xpAnterior / 500) + 1;
     const nivelNovo = Math.floor(xpAtual / 500) + 1;
 
-    // Registra cada nível conquistado.
+    console.log("VERIFICAÇÃO DE NÍVEL:", {
+        cadastroId,
+        xpAnterior,
+        xpRecebido: xp,
+        xpAtual,
+        nivelAnterior,
+        nivelNovo
+    });
+
+    // Registra a atividade quando o usuário sobe de nível.
     for (
         let nivelConquistado = nivelAnterior + 1;
         nivelConquistado <= nivelNovo;
         nivelConquistado++
     ) {
+        console.log("REGISTRANDO SUBIDA DE NÍVEL:", nivelConquistado);
+
         await registrarAtividade(
             conn,
             cadastroId,
             'nivel',
-            `Alcançou o nível ${nivelConquistado}!`,
-            30
+            `Alcançou o nível ${nivelConquistado}!`
         );
-    } {
-        
-        async function registrarAtividade(
-            conn,
-            cadastroId,
-            tipo,
-            descricao,
-            pontos = 0
-        ) {
-            const pontosRegistro = tipo === "nivel" ? 30 : pontos;
-
-            await conn.execute(
-                `INSERT INTO atividades_recentes (
-                    usuario_idcadastro,
-                    tipo,
-                    descricao,
-                    pontos
-                )
-                VALUES (?, ?, ?, ?)`,
-                [cadastroId, tipo, descricao, pontosRegistro]
-            );
-        }
-
     }
 
     return true;
 
-    
 }
 
 
@@ -1795,15 +1788,6 @@ app.post('/api/redacoes', auth, async (req, res, next) => {
 
         console.log("XP DA REDAÇÃO REGISTRADO COM SUCESSO!");
 
-        await conn.execute(
-            `UPDATE nivel
-            SET pontuacao = pontuacao + ?
-            WHERE idnivel = ?`,
-            [
-                xpCalculado,
-                usuario.nivel_idnivel
-            ]
-        );
 
         // 6. Confirmar todas as operações
         await conn.commit();
@@ -2059,6 +2043,77 @@ app.get('/api/xp-mensal', auth, async (req, res, next) => {
     }
 });
 
+app.post('/api/buscas-recentes', auth, async (req, res, next) => {
+    try {
+        const cadastroId = Number(req.auth.cadastroId);
+        const termo = typeof req.body.termo_pesquisado === 'string'
+            ? req.body.termo_pesquisado.trim()
+            : '';
+
+        if (!termo) {
+            return res.status(400).json({
+                erro: 'Digite um termo para pesquisar.'
+            });
+        }
+
+        if (termo.length > 255) {
+            return res.status(400).json({
+                erro: 'O termo pesquisado é muito longo.'
+            });
+        }
+
+        // Evita duplicar o mesmo termo para o usuário.
+        await pool.execute(
+            `DELETE FROM buscas_recentes
+             WHERE usuario_idcadastro = ?
+             AND LOWER(termo_pesquisado) = LOWER(?)`,
+            [cadastroId, termo]
+        );
+
+        // Registra a pesquisa mais recente.
+        await pool.execute(
+            `INSERT INTO buscas_recentes
+             (usuario_idcadastro, termo_pesquisado)
+             VALUES (?, ?)`,
+            [cadastroId, termo]
+        );
+
+        res.json({
+            sucesso: true,
+            mensagem: 'Pesquisa salva com sucesso.'
+        });
+
+    } catch (erro) {
+        next(erro);
+    }
+});
+
+app.get('/api/buscas-recentes', auth, async (req, res, next) => {
+    try {
+        const cadastroId = Number(req.auth.cadastroId);
+
+        const [buscas] = await pool.execute(
+            `SELECT idbusca, termo_pesquisado, data_busca
+             FROM buscas_recentes
+             WHERE usuario_idcadastro = ?
+             ORDER BY data_busca DESC, idbusca DESC
+             LIMIT 3`,
+            [cadastroId]
+        );
+
+        res.json(buscas);
+
+    } catch (erro) {
+        next(erro);
+    }
+});
+
+
+
+
+
+
+
 
 app.patch('/api/books/:id/progress', auth, async (req, res, next) => {
   const id = Number(req.params.id);
@@ -2075,17 +2130,119 @@ app.patch('/api/books/:id/progress', auth, async (req, res, next) => {
   } catch (error) { next(error); }
 });
 
+
+
 app.get('/api/ranking', auth, async (req, res, next) => {
-  try {
-    const [rows] = await pool.execute(
-      `SELECT u.nome_do_usuario AS nome, n.idnivel AS nivel, n.pontuacao AS pontuacao
-       FROM usuario u JOIN nivel n
-         ON n.idnivel = u.nivel_idnivel AND n.ranking_idranking = u.nivel_ranking_idranking
-       ORDER BY n.pontuacao DESC, n.idnivel DESC LIMIT 50`
-    );
-    res.json({ ranking: rows });
-  } catch (error) { next(error); }
+    try {
+        const cadastroId = Number(req.auth.cadastroId);
+
+        // ==========================================
+        // 1. DEFINIR O PERÍODO DO MÊS ATUAL
+        // ==========================================
+        const agora = new Date();
+
+        const inicioMesAtual = new Date(
+            agora.getFullYear(),
+            agora.getMonth(),
+            1
+        );
+
+        const inicioProximoMes = new Date(
+            agora.getFullYear(),
+            agora.getMonth() + 1,
+            1
+        );
+
+        function formatarDataSQL(data) {
+            const ano = data.getFullYear();
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const dia = String(data.getDate()).padStart(2, '0');
+
+            return `${ano}-${mes}-${dia}`;
+        }
+
+        const dataInicial = formatarDataSQL(inicioMesAtual);
+        const dataFinal = formatarDataSQL(inicioProximoMes);
+
+        // ==========================================
+        // 2. BUSCAR O RANKING DE TODOS OS USUÁRIOS
+        // ==========================================
+        const [rows] = await pool.execute(
+            `SELECT
+                u.idcadastro,
+                u.nome_do_usuario AS nome,
+
+                COALESCE(SUM(x.xp_ganho), 0) AS xp,
+
+                FLOOR(COALESCE(n.pontuacao, 0) / 500) + 1 AS nivel,
+
+                (
+                    SELECT COUNT(DISTINCT pl.idlivros)
+                    FROM progresso_leitura pl
+                    WHERE pl.usuario_idcadastro = u.idcadastro
+                      AND pl.progresso >= 100
+                ) AS livros
+
+            FROM usuario u
+
+            LEFT JOIN nivel n
+                ON n.idnivel = u.nivel_idnivel
+                AND n.ranking_idranking = u.nivel_ranking_idranking
+
+            LEFT JOIN xp_eventos x
+                ON x.usuario_idcadastro = u.idcadastro
+                AND x.usuario_idusuario = u.usuario_idusuario
+                AND x.data_evento >= ?
+                AND x.data_evento < ?
+
+            GROUP BY
+                u.idcadastro,
+                u.nome_do_usuario,
+                n.pontuacao
+
+            ORDER BY
+                xp DESC,
+                u.nome_do_usuario ASC`,
+            [dataInicial, dataFinal]
+        );
+
+        // ==========================================
+        // 3. ORGANIZAR AS POSIÇÕES
+        // ==========================================
+        const rankingCompleto = rows.map((usuario, indice) => ({
+            posicao: indice + 1,
+            idcadastro: Number(usuario.idcadastro),
+            nome: usuario.nome,
+            xp: Number(usuario.xp) || 0,
+            nivel: Number(usuario.nivel) || 1,
+            livros: Number(usuario.livros) || 0
+        }));
+
+        // ==========================================
+        // 4. IDENTIFICAR A POSIÇÃO DO USUÁRIO LOGADO
+        // ==========================================
+        const minhaPosicao = rankingCompleto.find(
+            usuario => usuario.idcadastro === cadastroId
+        ) || null;
+
+        // ==========================================
+        // 5. RETORNAR OS 50 PRIMEIROS
+        // ==========================================
+        const ranking = rankingCompleto.slice(0, 50);
+
+        return res.json({
+            mes: dataInicial.substring(0, 7),
+            ranking,
+            minhaPosicao
+        });
+
+    } catch (erro) {
+        console.error('Erro ao carregar ranking:', erro);
+        next(erro);
+    }
 });
+
+
 
 // Compatibiliza links legados que apontam para subpastas não incluídas no ZIP:
  // os HTML enviados estão na raiz deste pacote.
